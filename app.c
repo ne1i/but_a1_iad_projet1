@@ -114,4 +114,4 @@ void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short grou
 
 }
 
-// Skibidi
+// Skibidi test
