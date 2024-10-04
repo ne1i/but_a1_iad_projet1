@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #define MAX_COMMAND_LENGTH 256
 #define MAX_ARGUMENTS_LENGTH 256
+#define MAX_NAME_LENGHT 30
+#define MAX_NB_STUDENTS 100
 
 void handle_command(const char *command);
 
@@ -20,14 +22,26 @@ enum COMMAND
     COMMAND_DEFAILLANTS
 };
 
+typedef struct {
+    char Name[30];
+    short NB_absence;
+    short Student_ID;
+    short Group;
+} Student;
+
+int current_nb_of_students = 0;
+Student student_list[MAX_NB_STUDENTS];
+
 int main(void)
 {
     char current_command_line[MAX_COMMAND_LENGTH];
 
     // Handle user input until the user enters 'exit'
-    while (0)
+    while (1)
     {
         fgets(current_command_line, MAX_COMMAND_LENGTH, stdin);
+        handle_command(current_command_line);
+
     }
 }
 
@@ -51,6 +65,7 @@ void handle_command(const char *command_line)
     switch (command)
     {
     case COMMAND_INSCRIPTION:
+        inscription();
         break;
     case COMMAND_ABSENCE:
         break;
@@ -81,6 +96,7 @@ void handle_command(const char *command_line)
 void parse_command(const char *command_line, enum COMMAND *command, char **arguments, int *arguments_count)
 {
 
+
     // split command line over space character into list of strings
     // strtok can be used to do this
 
@@ -89,4 +105,11 @@ void parse_command(const char *command_line, enum COMMAND *command, char **argum
     // else, set the command enum value to COMMAND_UNKNOWN
 
     // NOTE(Valentin): ill need to use <string.h> functions to do this
+}
+
+// Signs a student up with his name and his group number
+void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short group) {
+    Student* pstudent_list = &student_list;
+    Student new_student = &(pstudent_list + sizeof(Student) * current_nb_of_students);
+
 }
