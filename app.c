@@ -113,3 +113,5 @@ void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short grou
     Student new_student = &(pstudent_list + sizeof(Student) * current_nb_of_students);
 
 }
+
+// Toilette Ananas Nasdas
