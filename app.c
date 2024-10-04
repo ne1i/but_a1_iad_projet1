@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define MAX_COMMAND_LENGTH 256
 #define MAX_ARGUMENTS_LENGTH 256
 #define MAX_NAME_LENGHT 30
@@ -58,7 +59,7 @@ void handle_command(const char *command_line)
 {
     // parse command and get sublist of arguments
     enum COMMAND command;
-    char *arguments[MAX_ARGUMENTS_LENGTH];
+    char* arguments[MAX_ARGUMENTS_LENGTH];
     int arguments_count;
 
     parse_command(command_line, &command, arguments, &arguments_count);
@@ -86,14 +87,13 @@ void handle_command(const char *command_line)
     case COMMAND_EXIT:
         puts("Exiting...\n");
         exit(0);
-    default:
     }
 }
 // IN: command_line
 // OUT: command enum value, arguments list, and arguments count
 // In this function we transform the command line into a command enum value and a list of arguments
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
-void parse_command(const char *command_line, enum COMMAND *command, char **arguments, int *arguments_count)
+void parse_command(const char *command_line, enum COMMAND *command, char *arguments, int *arguments_count)
 {
 
 
@@ -109,8 +109,6 @@ void parse_command(const char *command_line, enum COMMAND *command, char **argum
 
 // Signs a student up with his name and his group number
 void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short group) {
-    Student* pstudent_list = &student_list;
-    Student new_student = &(pstudent_list + sizeof(Student) * current_nb_of_students);
 
 }
 
