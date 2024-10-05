@@ -1,0 +1,23 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build using MSVC",
+            "command": "cl",
+            "args": [
+                "/W4",
+                "/Zi",
+                "${file}",
+                "/Fe${fileBasenameNoExtension}.exe"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ],
+    "version": "2.0.0"
+}
