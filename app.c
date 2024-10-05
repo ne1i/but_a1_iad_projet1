@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_COMMAND_LENGTH 256
-#define MAX_ARGUMENTS_LENGTH 256
+#define MAX_ARGUMENTS_LENGTH 30
 #define MAX_NAME_LENGHT 30
 #define MAX_NB_STUDENTS 100
 
@@ -23,7 +23,8 @@ enum COMMAND
     COMMAND_DEFAILLANTS
 };
 
-typedef struct {
+typedef struct
+{
     char Name[30];
     short NB_absence;
     short Student_ID;
@@ -40,9 +41,9 @@ int main(void)
     // Handle user input until the user enters 'exit'
     while (1)
     {
+        puts("\nEnter your commands\n");
         fgets(current_command_line, MAX_COMMAND_LENGTH, stdin);
         handle_command(current_command_line);
-
     }
 }
 
@@ -59,14 +60,13 @@ void handle_command(const char *command_line)
 {
     // parse command and get sublist of arguments
     enum COMMAND command;
-    char* arguments[MAX_ARGUMENTS_LENGTH];
-    int arguments_count;
+    char *arguments_list[MAX_ARGUMENTS_LENGTH];
+    int arguments_count = 0;
 
-    parse_command(command_line, &command, arguments, &arguments_count);
+    parse_command(command_line, &command, arguments_list, &arguments_count);
     switch (command)
     {
     case COMMAND_INSCRIPTION:
-        inscription();
         break;
     case COMMAND_ABSENCE:
         break;
@@ -93,23 +93,48 @@ void handle_command(const char *command_line)
 // OUT: command enum value, arguments list, and arguments count
 // In this function we transform the command line into a command enum value and a list of arguments
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
-void parse_command(const char *command_line, enum COMMAND *command, char *arguments, int *arguments_count)
+void parse_command(const char *command_line, enum COMMAND *command, char **arguments_list, int *arguments_count)
 {
+    char *separator = " ";
+    char *word = strtok(command_line, separator);
+    if (arguments_count == 0)
+    {
+        if (word == "exit")
+            *command = COMMAND_EXIT;
+        if (word == "inscription")
+            *command = COMMAND_INSCRIPTION;
+        if (word == "abscence")
+            *command = COMMAND_ABSENCE;
+        if (word == "etudiants")
+            *command = COMMAND_ETUDIANTS;
+        if (word == "justificatif")
+            *command = COMMAND_JUSTIFICATIF;
+        if (word == "validations")
+            *command = COMMAND_VALIDATIONS;
+        if (word == "validation")
+            *command = COMMAND_VALIDATION;
+        if (word == "etudiant")
+            *command = COMMAND_ETUDIANT;
+        if (word == "defaillants")
+            *command = COMMAND_DEFAILLANTS;
+        else
+            *command = COMMAND_UNKNOWN;
+    }
 
-
-    // split command line over space character into list of strings
-    // strtok can be used to do this
-
-    // then, check the first element (which is the command) and compare it's value with all the possible commands
-    // if it's a valid command, then set the command enum value
-    // else, set the command enum value to COMMAND_UNKNOWN
-
-    // NOTE(Valentin): ill need to use <string.h> functions to do this
+    else
+    {
+        for (int i = 0; word != NULL; ++i)
+        {
+            word = strtok(NULL, separator);
+            arguments_list[*arguments_count] = word;
+            *arguments_count += 1;
+        }
+    }
+    // Stupid test that made me lose 1 hour of my life
+    // printf("command: %d\nargument_1 %s\nargument_2 %s\n", *command, arguments_list[0], arguments_list[1]);
 }
 
 // Signs a student up with his name and his group number
-void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short group) {
-
+void student_sign_up(char **student_list, char Name[MAX_NAME_LENGHT], short group)
+{
 }
-
-// Skibidi test
