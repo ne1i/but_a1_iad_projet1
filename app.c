@@ -1,20 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// #include <conio.h>
 #include "app.h"
-
 #pragma warning(disable : 4996)
-
-int current_nb_of_students = 0;
-Student global_student_list[MAX_NB_STUDENTS];
-
-// void wait_for_user_input(void)
-// {
-//     while (1)
-//         if (kbhit())
-//             break;
-// }
 
 int main(void)
 {
@@ -23,12 +11,9 @@ int main(void)
     // Handle user input until the user enters 'exit'
     while (1)
     {
-        puts("Type in your command:");
         char *result = fgets(current_command_line, MAX_COMMAND_LENGTH, stdin);
         if (result == 0)
         {
-            puts("Nothing to read. Press any key to exit...");
-            // wait_for_user_input();
             exit(0);
         }
         handle_command(current_command_line);
@@ -51,40 +36,34 @@ void handle_command(char *command_line)
     // parse command and get sublist of arguments
     ParsedCommand parsed_command;
     parse_command(command_line, &parsed_command);
-    debug_print(&parsed_command);
 
     switch (parsed_command.command_type)
     {
     case COMMAND_INSCRIPTION:
-        puts("INSCRIPTION");
-        student_sign_up(global_student_list, &parsed_command, &current_nb_of_students);
+        inscription(global_student_list, parsed_command, &current_nb_of_students);
         break;
     case COMMAND_ABSENCE:
-        puts("ABSENCE");
+        GestionAbsence absence_args;
+        absence_args.student_id = atoi(parsed_command.arguments_list[0]);
+        absence_args.date = atoi(parsed_command.arguments_list[1]);
+        strcpy(absence_args.am_pm, parsed_command.arguments_list[2]);
+        absence(parsed_command, absence_args);
         break;
     case COMMAND_ETUDIANTS:
-        puts("ETUDIANTS");
         break;
     case COMMAND_JUSTIFICATIF:
-        puts("JUSTIFICATIF");
         break;
     case COMMAND_VALIDATIONS:
-        puts("VALIDATIONS");
         break;
     case COMMAND_VALIDATION:
-        puts("VALIDATION");
         break;
     case COMMAND_ETUDIANT:
-        puts("ETUDIANT");
         break;
     case COMMAND_DEFAILLANTS:
-        puts("DEFAILLANTS");
         break;
     case COMMAND_UNKNOWN:
-        puts("Unknown command");
         break;
     case COMMAND_EXIT:
-        puts("Exiting...\n");
         exit(0);
     }
 }
@@ -101,7 +80,6 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     if (word == NULL)
     {
         parsed_command->command_type = COMMAND_UNKNOWN;
-        puts("Error: empty command");
         return;
     }
 
@@ -134,9 +112,6 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
         count++;
     };
     parsed_command->arguments_count = count;
-    // int memory_to_allocate = count * sizeof(char *);
-    // char *a = malloc(memory_to_allocate);
-
     // Stupid test that made me lose 1 hour of my life
     // printf("command: %d\nargument_1 %s\nargument_2 %s\n", *command, arguments_list[0], arguments_list[1]);
     // NOTE(Valentin): never use printf to test your code, use breakpoints !
@@ -144,26 +119,53 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
 
 // Signs a student up with his name and his group number
 
-void student_sign_up(Student *student_list, ParsedCommand* parsed_command, int* current_nb_of_students)
+void inscription(Student *student_list, const ParsedCommand parsed_command, int* current_nb_of_students)
 {
-    if (parsed_command->arguments_count < SIGN_UP_PARAMETERS_COUNT)
+    for (int i = 0; i < *current_nb_of_students; ++i)
     {
-        puts("Not enough parameters were given (2 were expected)");
-        return;
+        if ((((strcmp(parsed_command.arguments_list[0], student_list[i].Name)) == 0) &&
+         (atoi(parsed_command.arguments_list[1]) == student_list[i].Group)))
+        {
+            puts("Nom incorrect");
+            return;
+        }
     }
-    if (parsed_command->arguments_count > SIGN_UP_PARAMETERS_COUNT)
-    {
-        puts("Too many parameters were given (2 were expected)");
+    if (parsed_command.arguments_count != SIGN_UP_PARAMETERS_COUNT)
         return;
-    }
-    Student student;
-    strcpy(student.Name, parsed_command->arguments_list[0]);
-    student.Group = atoi(parsed_command->arguments_list[1]);
-    student.Student_ID = ++(*current_nb_of_students);
 
+    Student student;
+    strcpy(student.Name, parsed_command.arguments_list[0]);
+    student.Group = atoi(parsed_command.arguments_list[1]);
+    student.Student_ID = ++(*current_nb_of_students);
+    student.NB_absence = 0;
     student_list[*current_nb_of_students - 1] = student;
-    printf("Sign up completed. (%d)\n", student.Student_ID);
+    
+    printf("Inscription enregistree (%d)\n", student.Student_ID);
 }
 
-// Adds an absence to the student with the student_id Idé
-void absence(int student_id, HalfDay half_day, Student* global_student_list);
+// Adds an absence to the student with the student_id
+void absence(const ParsedCommand parsed_command, GestionAbsence absence_args)
+{
+    if (parsed_command.arguments_count != SIGN_UP_PARAMETERS_COUNT)
+        return;
+
+    if (absence_args.student_id > current_nb_of_students)
+    {
+        puts("Identifiant incorrect");
+        return;
+    }
+
+    if ((absence_args.date < 1) || (absence_args.date > 40))
+    {
+        puts("Date incorrecte");
+        return;
+    }
+
+    if ((strcmp(absence_args.am_pm, "am") != 0) && (strcmp(absence_args.am_pm, "pm") != 0))
+    {
+        puts("Demi-journée incorrecte");
+        return;
+    }
+
+
+}
