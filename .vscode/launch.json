@@ -9,7 +9,7 @@
       "type": "cppvsdbg",
       "program": "${workspaceFolder}/app.exe",
       "request": "launch",
-      "externalConsole": true,
+      "console": "externalTerminal",
       "stopAtEntry": false,
       "cwd": "${workspaceRoot}",
       "preLaunchTask": "Build (MSVC)"
@@ -29,7 +29,7 @@
       "name": "Launch initial tests (Windows)",
       "type": "cppvsdbg",
       "request": "launch",
-      "externalConsole": true,
+      "console": "externalTerminal",
       "program": "${workspaceFolder}/app.exe",
       "args": [
         "<",
