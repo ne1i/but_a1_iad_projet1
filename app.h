@@ -7,10 +7,18 @@
 #define MAX_ARGUMENTS_COUNT 30
 #define MAX_NAME_LENGTH 30
 #define MAX_NB_STUDENTS 100
-#define SIGN_UP_PARAMETERS_COUNT 2
 
+#define INSCRIPTION_ARGS_COUNT 2
+#define ABSENCE_ARGS_COUNT 3
+#define ETUDIANTS_ARGS_COUNT 1
+#define JUSTIFICATIF_ARGS_COUNT 3
+#define VALIDATIONS_ARGS_COUNT 0
+#define VALIDATION_ARGS_COUNT 2
+#define ETUDIANT_ARGS_COUNT 2
+#define DEFAILLANTS_ARGS_COUNT 1
 
-int current_nb_of_students = 0;
+int student_id_counter = 0;
+int absence_id_counter = 0;
 
 typedef struct
 {
@@ -18,6 +26,8 @@ typedef struct
     char justification[MAX_JUSTIFICATION_LENGTH];
     char am_pm[3];
     int id_absence;
+    int date;
+    int justified;
 } Absence;
 
 enum CommandType
@@ -44,26 +54,19 @@ typedef struct
 
 typedef struct
 {
-    char Name[MAX_NAME_LENGTH];
-    int NB_absence;
+    char name[MAX_NAME_LENGTH];
+    int nb_absence;
     Absence absences[MAX_ABSENCES];
-    int Student_ID;
-    int Group;
+    int student_id;
+    int group;
 } Student;
 
 Student global_student_list[MAX_NB_STUDENTS];
 
-typedef struct
-{  
-    int student_id;
-    char am_pm[3];
-    int date;
-} GestionAbsence;
-
 void handle_command(char *command);
 void parse_command(char *command_line, ParsedCommand *parsed_command);
-void inscription(Student *student_list, ParsedCommand parsed_command, int* current_nb_of_students);
-void absence(const ParsedCommand parsed_command, GestionAbsence absence_args);
+void inscription(ParsedCommand parsed_command);
+void absence(const ParsedCommand parsed_command);
 
 // Utility function to print the command and its arguments
 // void debug_print(ParsedCommand *parsed_command)

@@ -1,22 +1,42 @@
 {
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "Build using MSVC",
-            "command": "cl",
-            "args": [
-                "/W4",
-                "/Zi",
-                "${file}",
-                "/Fe${fileBasenameNoExtension}.exe"
-            ],
-            "problemMatcher": [
-                "$msCompile"
-            ],
+            "type": "process",
+            "label": "Build (GCC)",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "command": "gcc",
+            "args": [
+                "-g",
+                "${workspaceFolder}/app.c",
+                "-o",
+                "${workspaceFolder}/app.out"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "process",
+            "label": "Build (MSVC)",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "command": "cl",
+            "args": [
+                "/W4",
+                "/Zi",
+                "/Od",
+                "/nologo",
+                "/Fe${workspaceFolder}/app.exe",
+                "${workspaceFolder}/app.c"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ]
         }
     ],
     "version": "2.0.0"

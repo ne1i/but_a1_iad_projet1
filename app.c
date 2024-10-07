@@ -9,15 +9,11 @@ int main(void)
     char current_command_line[MAX_COMMAND_LENGTH];
 
     // Handle user input until the user enters 'exit'
-    while (1)
+    while (fgets(current_command_line, MAX_COMMAND_LENGTH, stdin) != 0)
     {
-        char *result = fgets(current_command_line, MAX_COMMAND_LENGTH, stdin);
-        if (result == 0)
-        {
-            exit(0);
-        }
         handle_command(current_command_line);
     }
+    return 0;
 }
 
 // NOTE(Valentin): Naming conventions
@@ -40,14 +36,10 @@ void handle_command(char *command_line)
     switch (parsed_command.command_type)
     {
     case COMMAND_INSCRIPTION:
-        inscription(global_student_list, parsed_command, &current_nb_of_students);
+        inscription(parsed_command);
         break;
     case COMMAND_ABSENCE:
-        GestionAbsence absence_args;
-        absence_args.student_id = atoi(parsed_command.arguments_list[0]);
-        absence_args.date = atoi(parsed_command.arguments_list[1]);
-        strcpy(absence_args.am_pm, parsed_command.arguments_list[2]);
-        absence(parsed_command, absence_args);
+        absence(parsed_command);
         break;
     case COMMAND_ETUDIANTS:
         break;
@@ -119,53 +111,71 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
 
 // Signs a student up with his name and his group number
 
-void inscription(Student *student_list, const ParsedCommand parsed_command, int* current_nb_of_students)
+void inscription(const ParsedCommand parsed_command)
 {
-    for (int i = 0; i < *current_nb_of_students; ++i)
+    if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
+        return;
+
+    for (int i = 0; i < student_id_counter; ++i)
     {
-        if ((((strcmp(parsed_command.arguments_list[0], student_list[i].Name)) == 0) &&
-         (atoi(parsed_command.arguments_list[1]) == student_list[i].Group)))
+        if ((((strcmp(parsed_command.arguments_list[0], global_student_list[i].name)) == 0) &&
+             (atoi(parsed_command.arguments_list[1]) == global_student_list[i].group)))
         {
             puts("Nom incorrect");
             return;
         }
     }
-    if (parsed_command.arguments_count != SIGN_UP_PARAMETERS_COUNT)
-        return;
 
     Student student;
-    strcpy(student.Name, parsed_command.arguments_list[0]);
-    student.Group = atoi(parsed_command.arguments_list[1]);
-    student.Student_ID = ++(*current_nb_of_students);
-    student.NB_absence = 0;
-    student_list[*current_nb_of_students - 1] = student;
-    
-    printf("Inscription enregistree (%d)\n", student.Student_ID);
+    strcpy(student.name, parsed_command.arguments_list[0]);
+    student.group = atoi(parsed_command.arguments_list[1]);
+    student.student_id = ++student_id_counter;
+    student.nb_absence = 0;
+    global_student_list[student_id_counter - 1] = student;
+
+    printf("Inscription enregistree (%d)\n", student.student_id);
 }
 
 // Adds an absence to the student with the student_id
-void absence(const ParsedCommand parsed_command, GestionAbsence absence_args)
+void absence(const ParsedCommand parsed_command)
 {
-    if (parsed_command.arguments_count != SIGN_UP_PARAMETERS_COUNT)
+    if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
         return;
 
-    if (absence_args.student_id > current_nb_of_students)
+    int student_id = atoi(parsed_command.arguments_list[0]);
+    if (student_id > student_id_counter)
     {
         puts("Identifiant incorrect");
         return;
     }
 
-    if ((absence_args.date < 1) || (absence_args.date > 40))
+    Student *student = &global_student_list[student_id - 1];
+    Absence *absence = &student->absences[student->nb_absence];
+    absence->date = atoi(parsed_command.arguments_list[1]);
+    if ((absence->date < 1) || (absence->date > 40))
     {
         puts("Date incorrecte");
         return;
     }
 
-    if ((strcmp(absence_args.am_pm, "am") != 0) && (strcmp(absence_args.am_pm, "pm") != 0))
+    strcpy(absence->am_pm, parsed_command.arguments_list[2]);
+
+    if ((strcmp(absence->am_pm, "am") != 0) && (strcmp(absence->am_pm, "pm") != 0))
     {
-        puts("Demi-journée incorrecte");
+        puts("Demi-journee incorrecte");
         return;
     }
 
-
+    for (int i = 0; i < student->nb_absence; ++i)
+    {
+        Absence *curr = &student->absences[i];
+        if (absence->date == curr->date && strcmp(absence->am_pm, curr->am_pm) == 0)
+        {
+            puts("Absence deja connue");
+            return;
+        }
+    }
+    student->nb_absence++;
+    absence->id_absence = ++absence_id_counter;
+    printf("Absence enregistree [%d]\n", absence->id_absence);
 }
