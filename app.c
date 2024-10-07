@@ -1,11 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 #include "app.h"
+
 #pragma warning(disable : 4996)
 
 int current_nb_of_students = 0;
 Student global_student_list[MAX_NB_STUDENTS];
+
+void wait_for_user_input(void)
+{
+    while (1)
+        if (kbhit())
+            break;
+}
 
 int main(void)
 {
@@ -14,11 +23,12 @@ int main(void)
     // Handle user input until the user enters 'exit'
     while (1)
     {
-        puts("\nEnter your commands\n");
+        puts("Type in your command:");
         char *result = fgets(current_command_line, MAX_COMMAND_LENGTH, stdin);
         if (result == 0)
         {
-            puts("Nothing to read, exiting...");
+            puts("Nothing to read. Press any key to exit...");
+            wait_for_user_input();
             exit(0);
         }
         handle_command(current_command_line);
@@ -33,7 +43,7 @@ int main(void)
 
 // EXAMPLE: "inscription Lea 101"
 // command = inscription
-// arguments = Lea 101
+// arguments = Lea, 101
 void handle_command(char *command_line)
 {
     // cleanup command by replacing trailing newline (\n) with string terminator (\0)
@@ -41,6 +51,8 @@ void handle_command(char *command_line)
     // parse command and get sublist of arguments
     ParsedCommand parsed_command;
     parse_command(command_line, &parsed_command);
+    debug_print(&parsed_command);
+
     switch (parsed_command.command_type)
     {
     case COMMAND_INSCRIPTION:
@@ -85,6 +97,13 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     const char *separator = " ";
     char *word = strtok(command_line, separator);
 
+    if (word == NULL)
+    {
+        parsed_command->command_type = COMMAND_UNKNOWN;
+        puts("Error: empty command");
+        return;
+    }
+
     if (strcmp(word, "exit") == 0)
         // -> instead of . because parsed_command is a ParsedCommand*
         parsed_command->command_type = COMMAND_EXIT;
@@ -107,13 +126,13 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     else
         parsed_command->command_type = COMMAND_UNKNOWN;
 
-    int count;
-    for (count = 0; word != NULL; ++count)
+    int count = 0;
+    while ((word = strtok(NULL, separator)) != NULL && count < MAX_ARGUMENTS_COUNT)
     {
-        word = strtok(NULL, separator);
         parsed_command->arguments_list[count] = word;
-    }
-    // parsed_command->arguments_count = count;
+        count++;
+    };
+    parsed_command->arguments_count = count;
     // int memory_to_allocate = count * sizeof(char *);
     // char *a = malloc(memory_to_allocate);
 
