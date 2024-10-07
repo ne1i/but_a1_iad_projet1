@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
+// #include <conio.h>
 #include "app.h"
 
 #pragma warning(disable : 4996)
@@ -9,12 +9,12 @@
 int current_nb_of_students = 0;
 Student global_student_list[MAX_NB_STUDENTS];
 
-void wait_for_user_input(void)
-{
-    while (1)
-        if (kbhit())
-            break;
-}
+// void wait_for_user_input(void)
+// {
+//     while (1)
+//         if (kbhit())
+//             break;
+// }
 
 int main(void)
 {
@@ -28,7 +28,7 @@ int main(void)
         if (result == 0)
         {
             puts("Nothing to read. Press any key to exit...");
-            wait_for_user_input();
+            // wait_for_user_input();
             exit(0);
         }
         handle_command(current_command_line);
@@ -57,6 +57,7 @@ void handle_command(char *command_line)
     {
     case COMMAND_INSCRIPTION:
         puts("INSCRIPTION");
+        student_sign_up(global_student_list, &parsed_command, &current_nb_of_students);
         break;
     case COMMAND_ABSENCE:
         puts("ABSENCE");
@@ -142,6 +143,27 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
 }
 
 // Signs a student up with his name and his group number
-// void student_sign_up(char **student_list, char Name[MAX_NAME_LENGTH], short group)
-// {
-// }
+
+void student_sign_up(Student *student_list, ParsedCommand* parsed_command, int* current_nb_of_students)
+{
+    if (parsed_command->arguments_count < SIGN_UP_PARAMETERS_COUNT)
+    {
+        puts("Not enough parameters were given (2 were expected)");
+        return;
+    }
+    if (parsed_command->arguments_count > SIGN_UP_PARAMETERS_COUNT)
+    {
+        puts("Too many parameters were given (2 were expected)");
+        return;
+    }
+    Student student;
+    strcpy(student.Name, parsed_command->arguments_list[0]);
+    student.Group = atoi(parsed_command->arguments_list[1]);
+    student.Student_ID = ++(*current_nb_of_students);
+
+    student_list[*current_nb_of_students - 1] = student;
+    printf("Sign up completed. (%d)\n", student.Student_ID);
+}
+
+// Adds an absence to the student with the student_id Idé
+void absence(int student_id, HalfDay half_day, Student* global_student_list);

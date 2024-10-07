@@ -5,6 +5,7 @@
 #define MAX_ARGUMENTS_COUNT 30
 #define MAX_NAME_LENGTH 30
 #define MAX_NB_STUDENTS 100
+#define SIGN_UP_PARAMETERS_COUNT 2
 
 enum CommandType
 {
@@ -31,13 +32,21 @@ typedef struct
 typedef struct
 {
     char Name[MAX_NAME_LENGTH];
-    short NB_absence;
-    short Student_ID;
-    short Group;
+    int NB_absence;
+    int Student_ID;
+    int Group;
 } Student;
+
+typedef struct
+{
+    int day;
+    char midday[];
+} HalfDay;
 
 void handle_command(char *command);
 void parse_command(char *command_line, ParsedCommand *parsed_command);
+void student_sign_up(Student *student_list, ParsedCommand* parsed_command, int* current_nb_of_students);
+void absence(int student_id, HalfDay half_day, Student* global_student_list);
 
 // Utility function to print the command and its arguments
 void debug_print(ParsedCommand *parsed_command)
