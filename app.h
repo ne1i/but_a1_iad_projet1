@@ -5,8 +5,12 @@
 #define MAX_JUSTIFICATION_LENGTH 512
 #define MAX_COMMAND_LENGTH 256
 #define MAX_ARGUMENTS_COUNT 30
-#define MAX_NAME_LENGTH 30
+#define MAX_NAME_LENGTH 31
 #define MAX_NB_STUDENTS 100
+#define MAX_ASBENCE_DAY 40
+
+#define MIN_DAY 1
+#define MIN_ABSENCE_DAY 1
 
 #define INSCRIPTION_ARGS_COUNT 2
 #define ABSENCE_ARGS_COUNT 3
@@ -65,9 +69,11 @@ Student global_student_list[MAX_NB_STUDENTS];
 
 void handle_command(char *command);
 void parse_command(char *command_line, ParsedCommand *parsed_command);
-void inscription(ParsedCommand parsed_command);
-void absence(const ParsedCommand parsed_command);
+void handle_inscription(ParsedCommand parsed_command);
+void handle_absence(const ParsedCommand parsed_command);
+void handle_etudiants(ParsedCommand parsed_command);
 
+int compare_group(const void *a, const void *b);
 // Utility function to print the command and its arguments
 // void debug_print(ParsedCommand *parsed_command)
 // {

@@ -36,12 +36,13 @@ void handle_command(char *command_line)
     switch (parsed_command.command_type)
     {
     case COMMAND_INSCRIPTION:
-        inscription(parsed_command);
+        handle_inscription(parsed_command);
         break;
     case COMMAND_ABSENCE:
-        absence(parsed_command);
+        handle_absence(parsed_command);
         break;
     case COMMAND_ETUDIANTS:
+        handle_etudiants(parsed_command);
         break;
     case COMMAND_JUSTIFICATIF:
         break;
@@ -111,7 +112,7 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
 
 // Signs a student up with his name and his group number
 
-void inscription(const ParsedCommand parsed_command)
+void handle_inscription(const ParsedCommand parsed_command)
 {
     if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
         return;
@@ -137,13 +138,13 @@ void inscription(const ParsedCommand parsed_command)
 }
 
 // Adds an absence to the student with the student_id
-void absence(const ParsedCommand parsed_command)
+void handle_absence(const ParsedCommand parsed_command)
 {
     if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
         return;
 
     int student_id = atoi(parsed_command.arguments_list[0]);
-    if (student_id > student_id_counter)
+    if (student_id > student_id_counter || student_id == 0)
     {
         puts("Identifiant incorrect");
         return;
@@ -152,7 +153,7 @@ void absence(const ParsedCommand parsed_command)
     Student *student = &global_student_list[student_id - 1];
     Absence *absence = &student->absences[student->nb_absence];
     absence->date = atoi(parsed_command.arguments_list[1]);
-    if ((absence->date < 1) || (absence->date > 40))
+    if ((absence->date < MIN_ABSENCE_DAY) || (absence->date > MAX_ASBENCE_DAY))
     {
         puts("Date incorrecte");
         return;
@@ -178,4 +179,50 @@ void absence(const ParsedCommand parsed_command)
     student->nb_absence++;
     absence->id_absence = ++absence_id_counter;
     printf("Absence enregistree [%d]\n", absence->id_absence);
+}
+
+void handle_etudiants(ParsedCommand parsed_command)
+{
+    if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
+        return;
+
+    int current_day = atoi(parsed_command.arguments_list[0]);
+    if (current_day < MIN_DAY)
+    {
+        puts("Date incorrecte");
+        return;
+    }
+
+    // creating a temporary copy of global_student_list that we will sort by group
+    Student *sorted_student_array = NULL;
+    int mem = sizeof(Student) * student_id_counter;
+    sorted_student_array = (Student *)malloc(mem);
+    memcpy(sorted_student_array, global_student_list, mem);
+    qsort(sorted_student_array, student_id_counter, sizeof(Student), compare_group);
+
+    for (int i = 0; i < student_id_counter; ++i)
+    {
+        int total_absences = 0;
+        for (int j = 0; j < sorted_student_array[i].nb_absence; ++j)
+        {
+            if (sorted_student_array[i].absences[j].date <= current_day)
+                ++total_absences;
+        }
+        printf("(%d) %-15s %3d %2d\n", sorted_student_array[i].student_id,
+               sorted_student_array[i].name,
+               sorted_student_array[i].group,
+               total_absences);
+    }
+    free(sorted_student_array);
+}
+
+int compare_group(const void *a, const void *b)
+{
+    const Student *s1 = (const Student *)a;
+    const Student *s2 = (const Student *)b;
+    if (s1->group < s2->group)
+        return -1;
+    if (s1->group > s2->group)
+        return 1;
+    return strcmp(s1->name, s2->name);
 }
