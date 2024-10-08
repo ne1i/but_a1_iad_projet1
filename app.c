@@ -45,6 +45,7 @@ void handle_command(char *command_line)
         handle_etudiants(parsed_command);
         break;
     case COMMAND_JUSTIFICATIF:
+        handle_justificatif(parsed_command);
         break;
     case COMMAND_VALIDATIONS:
         break;
@@ -67,6 +68,10 @@ void handle_command(char *command_line)
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
 void parse_command(char *command_line, ParsedCommand *parsed_command)
 {
+    // creating a copy of command_line to use for justificatif
+    // char *intact_command_line = NULL;
+    // strcpy(intact_command_line, command_line);
+
     const char *separator = " ";
     char *word = strtok(command_line, separator);
 
@@ -86,7 +91,10 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     else if (strcmp(word, "etudiants") == 0)
         parsed_command->command_type = COMMAND_ETUDIANTS;
     else if (strcmp(word, "justificatif") == 0)
-        parsed_command->command_type = COMMAND_JUSTIFICATIF;
+    {
+        parse_command_justificatif(parsed_command);
+        return;
+    }
     else if (strcmp(word, "validations") == 0)
         parsed_command->command_type = COMMAND_VALIDATIONS;
     else if (strcmp(word, "validation") == 0)
@@ -110,8 +118,18 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     // NOTE(Valentin): never use printf to test your code, use breakpoints !
 }
 
-// Signs a student up with his name and his group number
+void parse_command_justificatif(ParsedCommand *parsed_command)
+{
+    const char *space_separator = " ";
+    const char *newline_separator = "\n";
 
+    parsed_command->command_type = COMMAND_JUSTIFICATIF;
+    parsed_command->arguments_list[0] = strtok(NULL, space_separator);
+    parsed_command->arguments_list[1] = strtok(NULL, space_separator);
+    parsed_command->arguments_list[2] = strtok(NULL, newline_separator);
+}
+
+// Signs a student up with his name and his group number
 void handle_inscription(const ParsedCommand parsed_command)
 {
     if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
@@ -178,6 +196,7 @@ void handle_absence(const ParsedCommand parsed_command)
     }
     student->nb_absence++;
     absence->id_absence = ++absence_id_counter;
+    absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
@@ -231,4 +250,60 @@ int get_absence_count_before(const Student *student, int max_day)
             ++total_absences;
     }
     return total_absences;
+}
+
+void handle_justificatif(ParsedCommand parsed_command)
+{
+    // check if absence exists, and get the id of the corresponding student
+    int absence_id = atoi(parsed_command.arguments_list[0]);
+    int student_id = check_absence_exists(absence_id);
+    if (student_id == -1)
+    {
+        puts("Identifiant incorrect");
+        return;
+    }
+
+    // check if the date is correct
+    if (atoi(parsed_command.arguments_list[1]) < global_student_list[student_id - 1].absences[absence_id - 1].date)
+    {
+        puts("Date incorrecte");
+        return;
+    }
+
+    // check if the justification is given in time (3 days max)
+    Student student = global_student_list[student_id - 1];
+    if ((atoi(parsed_command.arguments_list[1]) - student.absences[absence_id - 1].date) > 3)
+    {
+        student.absences[absence_id - 1].justified = ABSENCE_NOT_JUSTIFIED;
+        return;
+    }
+    if (strlen(parsed_command.arguments_list[2]) > MAX_JUSTIFICATION_LENGTH)
+        return;
+
+    if (strcmp(student.absences[absence_id - 1].justification, parsed_command.arguments_list[2]) == 0)
+    {
+        puts("Justificatif deja connu");
+        return;
+    }
+
+    strcpy(student.absences[absence_id - 1].justification, parsed_command.arguments_list[2]);
+    student.absences[absence_id - 1].justified = ABSENCE_JUSTIFIED;
+    puts("Justificatif enregistre");
+}
+
+int check_absence_exists(int absence_id)
+{
+    int student_id = -1;
+    for (int i = 0; i < student_id_counter; ++i)
+    {
+        for (int j = 0; j < global_student_list[i].nb_absence; ++j)
+        {
+            if (global_student_list[i].absences[j].id_absence == absence_id)
+            {
+                student_id = global_student_list[i].student_id;
+                break;
+            }
+        }
+    }
+    return student_id;
 }
