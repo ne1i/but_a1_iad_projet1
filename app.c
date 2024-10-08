@@ -202,13 +202,8 @@ void handle_etudiants(ParsedCommand parsed_command)
 
     for (int i = 0; i < student_id_counter; ++i)
     {
-        int total_absences = 0;
-        for (int j = 0; j < sorted_student_array[i].nb_absence; ++j)
-        {
-            if (sorted_student_array[i].absences[j].date <= current_day)
-                ++total_absences;
-        }
-        printf("(%d) %-15s %3d %2d\n", sorted_student_array[i].student_id,
+        int total_absences = get_absence_count_before(&sorted_student_array[i], current_day);
+        printf("(%d) %-13s %2d %d\n", sorted_student_array[i].student_id,
                sorted_student_array[i].name,
                sorted_student_array[i].group,
                total_absences);
@@ -225,4 +220,15 @@ int compare_group(const void *a, const void *b)
     if (s1->group > s2->group)
         return 1;
     return strcmp(s1->name, s2->name);
+}
+
+int get_absence_count_before(const Student *student, int max_day)
+{
+    int total_absences = 0;
+    for (int j = 0; j < student->nb_absence; ++j)
+    {
+        if (student->absences[j].date <= max_day)
+            ++total_absences;
+    }
+    return total_absences;
 }
