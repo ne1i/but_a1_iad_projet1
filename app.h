@@ -83,10 +83,13 @@ void handle_inscription(ParsedCommand parsed_command);
 void handle_absence(const ParsedCommand parsed_command);
 void handle_etudiants(ParsedCommand parsed_command);
 void handle_justificatif(ParsedCommand parsed_command);
+void handle_validations();
 
 int compare_group(const void *a, const void *b);
+int compare_student_id(const void *a, const void *b);
 int get_absence_count_before(const Student *student, int max_day);
 int check_absence_exists(int student_id);
+int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS);
 
 // Utility function to print the command and its arguments
 // void debug_print(ParsedCommand *parsed_command)
