@@ -19,7 +19,7 @@
       "type": "cppdbg",
       "program": "${workspaceFolder}/app.out",
       "request": "launch",
-      "externalConsole": true,
+      "externalConsole": false,
       "stopAtEntry": false,
       "cwd": "${workspaceRoot}",
       "preLaunchTask": "Build (GCC)"

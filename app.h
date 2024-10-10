@@ -21,9 +21,6 @@
 #define ETUDIANT_ARGS_COUNT 2
 #define DEFAILLANTS_ARGS_COUNT 1
 
-int student_id_counter = 0;
-int absence_id_counter = 0;
-
 enum AbsenceStatus
 {
     ABSENCE_JUSTIFIED,
@@ -39,7 +36,7 @@ typedef struct
     char am_pm[3];
     int id_absence;
     int date;
-    int justified;
+    enum AbsenceStatus justified;
 } Absence;
 
 enum CommandType
@@ -73,23 +70,21 @@ typedef struct
     int group;
 } Student;
 
-Student global_student_list[MAX_NB_STUDENTS];
-
-void handle_command(char *command);
+void handle_command(char *command, int *nb_students, int *nb_absence, Student *student_list);
 void parse_command(char *command_line, ParsedCommand *parsed_command);
 void parse_command_justificatif(ParsedCommand *parsed_command);
 
-void handle_inscription(ParsedCommand parsed_command);
-void handle_absence(const ParsedCommand parsed_command);
-void handle_etudiants(ParsedCommand parsed_command);
-void handle_justificatif(ParsedCommand parsed_command);
-void handle_validations();
+void handle_inscription(ParsedCommand parsed_command, int *nb_students, Student *student_list);
+void handle_absence(const ParsedCommand parsed_command, int *nb_students, Student *student_list);
+void handle_etudiants(ParsedCommand parsed_command, int *nb_students, Student *student_list);
+void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list);
+void handle_validations(int *nb_students, int *nb_absences, Student *student_list);
 
 int compare_group(const void *a, const void *b);
 int compare_student_id(const void *a, const void *b);
 int get_absence_count_before(const Student *student, int max_day);
-int check_absence_exists(int student_id);
-int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS);
+int check_absence_exists(int student_id, int *nb_students, Student *student_list);
+int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS, int *nb_absences, int *nb_students, Student *student_list);
 
 // Utility function to print the command and its arguments
 // void debug_print(ParsedCommand *parsed_command)

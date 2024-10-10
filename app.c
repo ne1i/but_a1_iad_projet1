@@ -6,12 +6,16 @@
 
 int main(void)
 {
+    int student_id_counter = 0;
+    int absence_id_counter = 0;
+    Student student_list[MAX_NB_STUDENTS];
+
     char current_command_line[MAX_COMMAND_LENGTH];
 
     // Handle user input until the user enters 'exit'
     while (fgets(current_command_line, MAX_COMMAND_LENGTH, stdin) != 0)
     {
-        handle_command(current_command_line);
+        handle_command(current_command_line, &student_id_counter, &absence_id_counter, student_list);
     }
     return 0;
 }
@@ -25,7 +29,7 @@ int main(void)
 // EXAMPLE: "inscription Lea 101"
 // command = inscription
 // arguments = Lea, 101
-void handle_command(char *command_line)
+void handle_command(char *command_line, int *nb_students, int *nb_absence, Student *student_list)
 {
     // cleanup command by replacing trailing newline (\n) with string terminator (\0)
     command_line[strcspn(command_line, "\n")] = 0;
@@ -36,19 +40,19 @@ void handle_command(char *command_line)
     switch (parsed_command.command_type)
     {
     case COMMAND_INSCRIPTION:
-        handle_inscription(parsed_command);
+        handle_inscription(parsed_command, nb_students, student_list);
         break;
     case COMMAND_ABSENCE:
-        handle_absence(parsed_command);
+        handle_absence(parsed_command, nb_students, student_list);
         break;
     case COMMAND_ETUDIANTS:
-        handle_etudiants(parsed_command);
+        handle_etudiants(parsed_command, nb_students, student_list);
         break;
     case COMMAND_JUSTIFICATIF:
-        handle_justificatif(parsed_command);
+        handle_justificatif(parsed_command, nb_students, student_list);
         break;
     case COMMAND_VALIDATIONS:
-        handle_validations();
+        handle_validations(nb_students, nb_absence, student_list);
         break;
     case COMMAND_VALIDATION:
         break;
@@ -131,15 +135,15 @@ void parse_command_justificatif(ParsedCommand *parsed_command)
 }
 
 // Signs a student up with his name and his group number
-void handle_inscription(const ParsedCommand parsed_command)
+void handle_inscription(const ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
         return;
 
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
-        if ((((strcmp(parsed_command.arguments_list[0], global_student_list[i].name)) == 0) &&
-             (atoi(parsed_command.arguments_list[1]) == global_student_list[i].group)))
+        if ((((strcmp(parsed_command.arguments_list[0], student_list[i].name)) == 0) &&
+             (atoi(parsed_command.arguments_list[1]) == student_list[i].group)))
         {
             puts("Nom incorrect");
             return;
@@ -149,27 +153,27 @@ void handle_inscription(const ParsedCommand parsed_command)
     Student student;
     strcpy(student.name, parsed_command.arguments_list[0]);
     student.group = atoi(parsed_command.arguments_list[1]);
-    student.student_id = ++student_id_counter;
+    student.student_id = ++*(nb_students);
     student.nb_absence = 0;
-    global_student_list[student_id_counter - 1] = student;
+    student_list[*nb_students - 1] = student;
 
     printf("Inscription enregistree (%d)\n", student.student_id);
 }
 
 // Adds an absence to the student with the student_id
-void handle_absence(const ParsedCommand parsed_command)
+void handle_absence(const ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
         return;
 
     int student_id = atoi(parsed_command.arguments_list[0]);
-    if (student_id > student_id_counter || student_id == 0)
+    if (student_id > *nb_students || student_id == 0)
     {
         puts("Identifiant incorrect");
         return;
     }
 
-    Student *student = &global_student_list[student_id - 1];
+    Student *student = &student_list[student_id - 1];
     Absence *absence = &student->absences[student->nb_absence];
     absence->date = atoi(parsed_command.arguments_list[1]);
     if ((absence->date < MIN_ABSENCE_DAY) || (absence->date > MAX_ASBENCE_DAY))
@@ -196,14 +200,14 @@ void handle_absence(const ParsedCommand parsed_command)
         }
     }
     student->nb_absence++;
-    absence->id_absence = ++absence_id_counter;
+    absence->id_absence = ++*(nb_students);
     absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     absence->date = atoi(parsed_command.arguments_list[1]);
     absence->student_id = atoi(parsed_command.arguments_list[0]);
-    printf("Absence enregistree [%d]\n", absence->id_absence);
+    printf("Absence enregistree [%d]\n", absence->id_absence - 1);
 }
 
-void handle_etudiants(ParsedCommand parsed_command)
+void handle_etudiants(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
         return;
@@ -215,14 +219,14 @@ void handle_etudiants(ParsedCommand parsed_command)
         return;
     }
 
-    // creating a temporary copy of global_student_list that we will sort by group
+    // creating a temporary copy of student_list that we will sort by group
     Student *sorted_student_array = NULL;
-    int mem = sizeof(Student) * student_id_counter;
+    int mem = sizeof(Student) * *nb_students;
     sorted_student_array = (Student *)malloc(mem);
-    memcpy(sorted_student_array, global_student_list, mem);
-    qsort(sorted_student_array, student_id_counter, sizeof(Student), compare_group);
+    memcpy(sorted_student_array, student_list, mem);
+    qsort(sorted_student_array, *nb_students, sizeof(Student), compare_group);
 
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
         int total_absences = get_absence_count_before(&sorted_student_array[i], current_day);
         printf("(%d) %-13s %2d %d\n", sorted_student_array[i].student_id,
@@ -255,11 +259,11 @@ int get_absence_count_before(const Student *student, int max_day)
     return total_absences;
 }
 
-void handle_justificatif(ParsedCommand parsed_command)
+void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     // check if absence exists, and get the id of the corresponding student
     int absence_id = atoi(parsed_command.arguments_list[0]);
-    int student_id = check_absence_exists(absence_id);
+    int student_id = check_absence_exists(absence_id, nb_students, student_list);
     if (student_id == -1)
     {
         puts("Identifiant incorrect");
@@ -267,7 +271,7 @@ void handle_justificatif(ParsedCommand parsed_command)
     }
 
     // check if the date is correct
-    Student *student = &global_student_list[student_id - 1];
+    Student *student = &student_list[student_id - 1];
     int student_absence_index = 0;
     for (int i = 0; i < student->nb_absence; ++i)
     {
@@ -301,16 +305,16 @@ void handle_justificatif(ParsedCommand parsed_command)
     puts("Justificatif enregistre");
 }
 
-int check_absence_exists(int absence_id)
+int check_absence_exists(int absence_id, int *nb_students, Student *student_list)
 {
     int student_id = -1;
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
-        for (int j = 0; j < global_student_list[i].nb_absence; ++j)
+        for (int j = 0; j < student_list[i].nb_absence; ++j)
         {
-            if (global_student_list[i].absences[j].id_absence == absence_id)
+            if (student_list[i].absences[j].id_absence == absence_id)
             {
-                student_id = global_student_list[i].student_id;
+                student_id = student_list[i].student_id;
                 break;
             }
         }
@@ -318,20 +322,20 @@ int check_absence_exists(int absence_id)
     return student_id;
 }
 
-void handle_validations()
+void handle_validations(int *nb_students, int *nb_absences, Student *student_list)
 {
-    if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION) == -1)
+    if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, nb_absences, nb_students, student_list) == -1)
     {
         puts("Aucune validation en attente");
         return;
     }
 
     int nb_absences_waiting_validation = 0;
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
-        for (int j = 0; j < absence_id_counter; ++j)
+        for (int j = 0; j < *nb_absences; ++j)
         {
-            if (global_student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
+            if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
             {
                 ++nb_absences_waiting_validation;
             }
@@ -341,14 +345,14 @@ void handle_validations()
     // creating a list with all the absences that we will later sort
     Absence *absences_waiting_validation_list = (Absence *)malloc(nb_absences_waiting_validation * sizeof(Absence));
     int count = 0;
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
-        for (int j = 0; j < absence_id_counter; ++j)
+        for (int j = 0; j < *nb_absences; ++j)
         {
-            if (global_student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
+            if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
             {
                 ++count;
-                memcpy(absences_waiting_validation_list, &global_student_list[i].absences[j], sizeof(Absence));
+                memcpy(absences_waiting_validation_list, &student_list[i].absences[j], sizeof(Absence));
             }
         }
     }
@@ -360,8 +364,8 @@ void handle_validations()
         int absence_id = absences_waiting_validation_list[i].id_absence;
         int student_id = absences_waiting_validation_list[i].student_id;
         char student_name[MAX_NAME_LENGTH];
-        strcpy(student_name, global_student_list[student_id - 1].name); // BUGGY
-        int group = global_student_list[student_id - 1].group;
+        strcpy(student_name, student_list[student_id - 1].name); // BUGGY
+        int group = student_list[student_id - 1].group;
         int absence_date = absences_waiting_validation_list[i].date;
         char am_pm[3];
         strcpy(am_pm, absences_waiting_validation_list[i].am_pm); // PROBABLY BUGGY
@@ -373,14 +377,14 @@ void handle_validations()
     free(absences_waiting_validation_list);
 }
 
-int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS)
+int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS, int *nb_absences, int *nb_students, Student *student_list)
 {
     int exists = -1;
-    for (int i = 0; i < student_id_counter; ++i)
+    for (int i = 0; i < *nb_students; ++i)
     {
-        for (int j = 0; j < absence_id_counter; ++j)
+        for (int j = 0; j < *nb_absences; ++j)
         {
-            if (global_student_list[i].absences[j].justified == ABSENCE_STATUS)
+            if (student_list[i].absences[j].justified == ABSENCE_STATUS)
             {
                 exists = 1;
                 return exists;
