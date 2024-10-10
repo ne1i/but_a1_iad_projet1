@@ -38,6 +38,20 @@
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "preLaunchTask": "Build (MSVC)"
+    },
+    {
+      "name": "Launch initial tests (Linux)",
+      "type": "cppdbg",
+      "program": "${workspaceFolder}/app.out",
+      "args": [
+        "<",
+        "${workspaceFolder}/test.txt"
+      ],
+      "request": "launch",
+      "externalConsole": false,
+      "stopAtEntry": false,
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": "Build (GCC)"
     }
   ]
 }

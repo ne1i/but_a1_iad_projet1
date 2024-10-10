@@ -43,7 +43,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         handle_inscription(parsed_command, nb_students, student_list);
         break;
     case COMMAND_ABSENCE:
-        handle_absence(parsed_command, nb_students, student_list);
+        handle_absence(parsed_command, nb_students, nb_absence, student_list);
         break;
     case COMMAND_ETUDIANTS:
         handle_etudiants(parsed_command, nb_students, student_list);
@@ -161,7 +161,7 @@ void handle_inscription(const ParsedCommand parsed_command, int *nb_students, St
 }
 
 // Adds an absence to the student with the student_id
-void handle_absence(const ParsedCommand parsed_command, int *nb_students, Student *student_list)
+void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *nb_absences, Student *student_list)
 {
     if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
         return;
@@ -200,11 +200,11 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, Studen
         }
     }
     student->nb_absence++;
-    absence->id_absence = ++*(nb_students);
+    absence->id_absence = ++*(nb_absences);
     absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     absence->date = atoi(parsed_command.arguments_list[1]);
     absence->student_id = atoi(parsed_command.arguments_list[0]);
-    printf("Absence enregistree [%d]\n", absence->id_absence - 1);
+    printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
 void handle_etudiants(ParsedCommand parsed_command, int *nb_students, Student *student_list)
