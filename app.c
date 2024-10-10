@@ -342,8 +342,8 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
         {
             if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
             {
-                ++count;
                 memcpy(absences_waiting_validation_list + count, &student_list[i].absences[j], sizeof(Absence));
+                ++count;
             }
         }
     }
@@ -355,15 +355,15 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
         int absence_id = absences_waiting_validation_list[i].id_absence;
         int student_id = absences_waiting_validation_list[i].student_id;
         char student_name[MAX_NAME_LENGTH];
-        strcpy(student_name, student_list[student_id - 1].name); // BUGGY
+        strcpy(student_name, student_list[student_id - 1].name);
         int group = student_list[student_id - 1].group;
         int absence_date = absences_waiting_validation_list[i].date;
         char am_pm[3];
-        strcpy(am_pm, absences_waiting_validation_list[i].am_pm); // PROBABLY BUGGY
+        strcpy(am_pm, absences_waiting_validation_list[i].am_pm);
         char justification[MAX_JUSTIFICATION_LENGTH];
-        strcpy(justification, absences_waiting_validation_list[i].justification); // PROBABLY BUGGY
+        strcpy(justification, absences_waiting_validation_list[i].justification);
 
-        printf("[%d] (%d) %s %d %d/%s (%s)", absence_id, student_id, student_name, group, absence_date, am_pm, justification);
+        printf("[%-2d]   (%-2d)   %-5s   %-3d   %5d/%s   (%s)\n", absence_id, student_id, student_name, group, absence_date, am_pm, justification);
     }
     free(absences_waiting_validation_list);
 }
@@ -402,11 +402,11 @@ int count_absence_status(enum AbsenceStatus status, int nb_students, Student *st
 }
 int compare_student_id(const void *a, const void *b)
 {
-    const Student *s1 = (const Student *)a;
-    const Student *s2 = (const Student *)b;
-    if (s1->student_id < s2->student_id)
+    const Absence *a1 = (const Absence *)a;
+    const Absence *a2 = (const Absence *)b;
+    if (a1->student_id < a2->student_id)
         return -1;
-    if (s1->student_id > s2->student_id)
+    if (a1->student_id > a2->student_id)
         return 1;
-    return strcmp(s1->name, s2->name);
+    return a1->date - a2->date;
 }
