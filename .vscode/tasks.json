@@ -5,7 +5,7 @@
             "label": "Build (GCC)",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "command": "gcc",
             "args": [
@@ -23,7 +23,7 @@
             "label": "Build (MSVC)",
             "group": {
                 "kind": "build",
-                "isDefault": false
+                "isDefault": true
             },
             "command": "cl",
             "args": [

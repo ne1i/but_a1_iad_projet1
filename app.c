@@ -46,7 +46,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         handle_absence(parsed_command, nb_students, nb_absence, student_list);
         break;
     case COMMAND_ETUDIANTS:
-        handle_etudiants(parsed_command, nb_students, student_list);
+        handle_etudiants(parsed_command, *nb_students, student_list);
         break;
     case COMMAND_JUSTIFICATIF:
         handle_justificatif(parsed_command, nb_students, student_list);
@@ -207,7 +207,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
-void handle_etudiants(ParsedCommand parsed_command, int *nb_students, Student *student_list)
+void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
         return;
@@ -221,12 +221,12 @@ void handle_etudiants(ParsedCommand parsed_command, int *nb_students, Student *s
 
     // creating a temporary copy of student_list that we will sort by group
     Student *sorted_student_array = NULL;
-    int mem = sizeof(Student) * *nb_students;
+    int mem = sizeof(Student) * nb_students;
     sorted_student_array = (Student *)malloc(mem);
     memcpy(sorted_student_array, student_list, mem);
-    qsort(sorted_student_array, *nb_students, sizeof(Student), compare_group);
+    qsort(sorted_student_array, nb_students, sizeof(Student), compare_group);
 
-    for (int i = 0; i < *nb_students; ++i)
+    for (int i = 0; i < nb_students; ++i)
     {
         int total_absences = get_absence_count_before(&sorted_student_array[i], current_day);
         printf("(%d) %-13s %2d %d\n", sorted_student_array[i].student_id,
@@ -261,6 +261,7 @@ int get_absence_count_before(const Student *student, int max_day)
 
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
+
     // check if absence exists, and get the id of the corresponding student
     int absence_id = atoi(parsed_command.arguments_list[0]);
     int student_id = check_absence_exists(absence_id, nb_students, student_list);
@@ -324,23 +325,13 @@ int check_absence_exists(int absence_id, int *nb_students, Student *student_list
 
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list)
 {
-    if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, nb_absences, nb_students, student_list) == -1)
+    if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, *nb_students, student_list) == -1)
     {
         puts("Aucune validation en attente");
         return;
     }
 
-    int nb_absences_waiting_validation = 0;
-    for (int i = 0; i < *nb_students; ++i)
-    {
-        for (int j = 0; j < *nb_absences; ++j)
-        {
-            if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
-            {
-                ++nb_absences_waiting_validation;
-            }
-        }
-    }
+    int nb_absences_waiting_validation = count_absence_status(ABSENCE_WAITING_VALIDATION, *nb_students, student_list);
 
     // creating a list with all the absences that we will later sort
     Absence *absences_waiting_validation_list = (Absence *)malloc(nb_absences_waiting_validation * sizeof(Absence));
@@ -352,7 +343,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
             if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
             {
                 ++count;
-                memcpy(absences_waiting_validation_list, &student_list[i].absences[j], sizeof(Absence));
+                memcpy(absences_waiting_validation_list + count, &student_list[i].absences[j], sizeof(Absence));
             }
         }
     }
@@ -377,14 +368,14 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
     free(absences_waiting_validation_list);
 }
 
-int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS, int *nb_absences, int *nb_students, Student *student_list)
+int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Student *student_list)
 {
     int exists = -1;
-    for (int i = 0; i < *nb_students; ++i)
+    for (int i = 0; i < nb_students; ++i)
     {
-        for (int j = 0; j < *nb_absences; ++j)
+        for (int j = 0; j < student_list[i].nb_absence; ++j)
         {
-            if (student_list[i].absences[j].justified == ABSENCE_STATUS)
+            if (student_list[i].absences[j].justified == status)
             {
                 exists = 1;
                 return exists;
@@ -394,6 +385,21 @@ int check_absence_status_exists(const enum AbsenceStatus ABSENCE_STATUS, int *nb
     return exists;
 }
 
+int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list)
+{
+    int absence_count = 0;
+    for (int i = 0; i < nb_students; ++i)
+    {
+        for (int j = 0; j < student_list[i].nb_absence; ++j)
+        {
+            if (student_list[i].absences[j].justified == status)
+            {
+                ++absence_count;
+            }
+        }
+    }
+    return absence_count;
+}
 int compare_student_id(const void *a, const void *b)
 {
     const Student *s1 = (const Student *)a;
