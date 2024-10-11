@@ -88,6 +88,7 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list);
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list);
 void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list);
+void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list);
 void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list);
 
 int compare_group(const void *a, const void *b);
