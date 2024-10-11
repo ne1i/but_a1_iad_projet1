@@ -29,6 +29,12 @@ enum AbsenceStatus
     ABSENCE_WAITING_VALIDATION
 };
 
+enum estDefaillant
+{
+    DEFAILLANT,
+    PASDEFAILLANT
+};
+
 typedef struct
 {
     int student_id;
@@ -68,6 +74,7 @@ typedef struct
     Absence absences[MAX_ABSENCES];
     int student_id;
     int group;
+    enum estDefaillant defaillance;
 } Student;
 
 void handle_command(char *command, int *nb_students, int *nb_absence, Student *student_list);
@@ -81,6 +88,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list);
 void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list);
 void handle_etudiant(ParsedCommand parsed_command, int nb_student, Student *student_list);
+void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list);
 
 int compare_group(const void *a, const void *b);
 int compare_student_id(const void *a, const void *b);
@@ -88,25 +96,6 @@ int get_absence_count_before(const Student *student, int max_day);
 int check_absence_exists(int student_id, int *nb_students, Student *student_list);
 int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, Student *student_list);
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
-
-// Utility function to print the command and its arguments
-// void debug_print(ParsedCommand *parsed_command)
-// {
-//     if (parsed_command->command_type == COMMAND_UNKNOWN)
-//         return;
-//     puts("Parsed command = {");
-//     printf("\tcommand_type = %d\n", parsed_command->command_type);
-//     printf("\targuments_count = %d\n", parsed_command->arguments_count);
-//     fputs("\targuments_list = [ ", stdout);
-//     // use for loop to print all arguments
-//     for (int i = 0; i < parsed_command->arguments_count; i++)
-//     {
-//         printf("%s ", parsed_command->arguments_list[i]);
-//         if (i < parsed_command->arguments_count - 1)
-//             printf(", ");
-//     }
-//     puts("]");
-//     puts("}");
-// }
+int count_absences_injustifiees(int student_id, Student *student_list);
 
 #endif
