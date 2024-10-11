@@ -1,36 +1,33 @@
-inscription Valentin 111
-inscription Sacha 1
-validation 1 ok
-absence 1 1 am
-absence 1 2 pm
-absence 1 3 pm
-absence 1 4 pm
-absence 1 5 pm
-absence 1 6 pm
-absence 1 7 pm
-absence 1 8 pm
-absence 1 9 pm
-absence 1 10 pm
-absence 1 11 pm
-
-justificatif 1 1 abc
-justificatif 2 2 abc
-justificatif 3 3 abc
-justificatif 4 4 abc
-justificatif 5 5 abc
-justificatif 6 6 abc
-justificatif 7 7 abc
-justificatif 8 8 abc
-justificatif 9 9 abc
-justificatif 10 10 abc
-justificatif 11 11 abc
+inscription Stella 1
+inscription Yves-Francois 3
+inscription Abel 1
+inscription Loriane 3
 validations
-validation 0 ok
+absence 2 1 pm
+absence 4 3 pm
+absence 2 1 am
+absence 1 2 am
+validations
+justificatif 1 2 J'ai eu mal au ventre
+validations
+justificatif 3 5 J'avais piscine
+justificatif 2 6 Ma chaine de velo a deraille
+validations
+etudiants 3
+etudiants 2
 validation 1 ok
+validations
 validation 2 ko
-validation 3 ok
-validation 3 ok
-validation 3 ko
-validation 4 ko
-validation 5 kk
 validations
+etudiants 3
+etudiants 2
+justificatif 0 2 J'ai eu mal au ventre
+justificatif 5 2 J'ai eu mal au ventre
+justificatif 2 2 J'ai eu mal au ventre
+justificatif 2 0 J'ai eu mal au ventre
+justificatif 1 2 Je n'aime pas le C
+validation 0 ok
+validation 5 ok
+validation 1 oc
+validation 1 ak
+validation 1 ko
