@@ -55,6 +55,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         handle_validations(nb_students, nb_absence, student_list);
         break;
     case COMMAND_VALIDATION:
+        handle_validation(parsed_command, *nb_students, *nb_absence, student_list);
         break;
     case COMMAND_ETUDIANT:
         break;
@@ -411,20 +412,19 @@ int compare_student_id(const void *a, const void *b)
     return a1->date - a2->date;
 }
 
-
 void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list)
 {
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
         return;
 
-    int absence_id = parsed_command.arguments_list[0];
+    int absence_id = atoi(parsed_command.arguments_list[0]);
     if (absence_id > nb_absence || absence_id <= 0)
     {
         puts("Identifiant incorrect");
         return;
     }
 
-    char validation_code[3];
+    char validation_code[3]; // 3 because "ok\0" or "ko\0"
     strcpy(validation_code, parsed_command.arguments_list[1]);
     if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
     {
@@ -432,14 +432,14 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
         return;
     }
 
-    int student_id;
-    int student_absence_idx;
-    
+    int student_id = 0;
+    int student_absence_idx = 0;
+
     for (int i = 0; i < nb_student; ++i)
     {
         for (int j = 0; j < student_list[i].nb_absence; ++j)
         {
-            if (student_list[i].absences[j].id_absence ==  absence_id)
+            if (student_list[i].absences[j].id_absence == absence_id)
             {
                 student_id = student_list[i].absences[j].student_id;
                 student_absence_idx = j;
@@ -447,12 +447,24 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
             }
         }
     }
-    Absence *absence = &student_list[student_id].absences[student_absence_idx];
+    Absence *absence = &student_list[student_id - 1].absences[student_absence_idx];
     if (absence->justified == ABSENCE_JUSTIFIED || absence->justified == ABSENCE_NOT_JUSTIFIED)
     {
         puts("Justificatif deja connu");
         return;
     }
-    if (strcmp())
 
+    if (strcmp(validation_code, "ok") == 0)
+    {
+        absence->justified = ABSENCE_JUSTIFIED;
+        puts("Validation enregistree");
+        return;
+    }
+
+    if (strcmp(validation_code, "ko") == 0)
+    {
+        absence->justified = ABSENCE_NOT_JUSTIFIED;
+        puts("Validation enregistree");
+        return;
+    }
 }
