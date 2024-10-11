@@ -60,6 +60,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
     case COMMAND_ETUDIANT:
         break;
     case COMMAND_DEFAILLANTS:
+        handle_defaillants(parsed_command, *nb_students, student_list);
         break;
     case COMMAND_UNKNOWN:
         break;
@@ -467,4 +468,80 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
         puts("Validation enregistree");
         return;
     }
+}
+
+int count_absences_injustifiees(int student_id, Student* student_list)
+{
+    int count = 0;
+
+    for (int abs = 0; abs < student_list[student_id].nb_absence; ++abs)
+    {
+        if (student_list[student_id].absences[abs].justified == ABSENCE_NOT_JUSTIFIED)
+        {
+            ++count;
+        }
+    }
+
+    return count;
+}
+
+void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list)
+{
+    if (parsed_command.arguments_count < DEFAILLANTS_ARGS_COUNT)
+        return;
+
+    int current_day = atoi(parsed_command.arguments_list[0]);
+    if (current_day < MIN_DAY)
+    {
+        puts("Date incorrecte");
+        return;
+    }
+
+    int nb_defaillants = 0;
+
+    for (int etu = 0; etu < nb_students; ++etu) // Flag les défaillants !
+    {
+
+        int absences_injustifiees = count_absences_injustifiees(etu, student_list);
+
+        if (absences_injustifiees < 5)
+        {
+            student_list[etu].defaillance = PASDEFAILLANT;
+        }
+        else
+        {
+            student_list[etu].defaillance = DEFAILLANT;
+            ++nb_defaillants;
+        }
+        
+    }
+
+    if (nb_defaillants == 0)
+    {
+        puts("Aucun defaillant");
+        return;
+    }
+    else
+    {
+        for (int etu = 0; etu < nb_students; ++etu)
+        {
+            
+            if (student_list[etu].defaillance == DEFAILLANT)
+            {
+
+                // C'EST LE MEME CODE QUE CELUI DE LA COMMANDE ETUDIANTS LIGNE 232
+                // METTRE DANS UNE FONCTION ?
+
+                int total_absences = get_absence_count_before(&student_list[etu], current_day);
+                printf("(%d) %-13s %2d %d\n", student_list[etu].student_id,
+                student_list[etu].name,
+                student_list[etu].group,
+                total_absences);
+                
+            }
+
+        }
+    }
+        
+    
 }
