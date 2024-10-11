@@ -58,6 +58,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         handle_validation(parsed_command, *nb_students, *nb_absence, student_list);
         break;
     case COMMAND_ETUDIANT:
+        handle_etudiant(parsed_command, *nb_students, student_list);
         break;
     case COMMAND_DEFAILLANTS:
         break;
@@ -205,6 +206,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     absence->date = atoi(parsed_command.arguments_list[1]);
     absence->student_id = atoi(parsed_command.arguments_list[0]);
+    strcpy(absence->justification, "");
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
@@ -230,7 +232,7 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
     for (int i = 0; i < nb_students; ++i)
     {
         int total_absences = get_absence_count_before(&sorted_student_array[i], current_day);
-        printf("(%d) %-13s %2d %d\n", sorted_student_array[i].student_id,
+        printf("(%d) %-12s %2d %d\n", sorted_student_array[i].student_id,
                sorted_student_array[i].name,
                sorted_student_array[i].group,
                total_absences);
@@ -291,12 +293,18 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
     if ((atoi(parsed_command.arguments_list[1]) - student->absences[student_absence_index].date) > 3)
     {
         student->absences[student_absence_index].justified = ABSENCE_NOT_JUSTIFIED;
-        return;
+        {
+            puts("Justificatif enregistre");
+            strcpy(student->absences[student_absence_index].justification, parsed_command.arguments_list[2]);
+            return;
+        }
     }
     if (strlen(parsed_command.arguments_list[2]) > MAX_JUSTIFICATION_LENGTH)
+    {
         return;
+    }
 
-    if (strcmp(student->absences[student_absence_index].justification, parsed_command.arguments_list[2]) == 0)
+    if (student->absences[student_absence_index].justified != ABSENCE_WAITING_JUSTIFICATION)
     {
         puts("Justificatif deja connu");
         return;
@@ -364,7 +372,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
         char justification[MAX_JUSTIFICATION_LENGTH];
         strcpy(justification, absences_waiting_validation_list[i].justification);
 
-        printf("[%-2d]   (%-2d)   %-5s   %-3d   %5d/%s   (%s)\n", absence_id, student_id, student_name, group, absence_date, am_pm, justification);
+        printf("[%d] (%d) %-14s %-1d %d/%s (%s)\n", absence_id, student_id, student_name, group, absence_date, am_pm, justification);
     }
     free(absences_waiting_validation_list);
 }
@@ -412,7 +420,7 @@ int compare_student_id(const void *a, const void *b)
     return a1->date - a2->date;
 }
 
-void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list)
+void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_absence, Student *student_list)
 {
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
         return;
@@ -435,7 +443,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
     int student_id = 0;
     int student_absence_idx = 0;
 
-    for (int i = 0; i < nb_student; ++i)
+    for (int i = 0; i < nb_students; ++i)
     {
         for (int j = 0; j < student_list[i].nb_absence; ++j)
         {
@@ -450,7 +458,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
     Absence *absence = &student_list[student_id - 1].absences[student_absence_idx];
     if (absence->justified == ABSENCE_JUSTIFIED || absence->justified == ABSENCE_NOT_JUSTIFIED)
     {
-        puts("Justificatif deja connu");
+        puts("Validation deja connue");
         return;
     }
 
@@ -466,5 +474,66 @@ void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_abse
         absence->justified = ABSENCE_NOT_JUSTIFIED;
         puts("Validation enregistree");
         return;
+    }
+}
+
+void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list)
+{
+    if (parsed_command.arguments_count != ETUDIANT_ARGS_COUNT)
+        return;
+
+    int student_id = atoi(parsed_command.arguments_list[0]);
+    if (student_id > nb_students)
+    {
+        puts("Identifiant incorrect");
+        return;
+    }
+
+    int date = atoi(parsed_command.arguments_list[1]);
+    if (date < 1)
+    {
+        puts("Date incorrecte");
+        return;
+    }
+
+    Student student = student_list[student_id - 1];
+    printf("(%d) %s %d %d", student_id, student.name, student.group, student.nb_absence);
+
+    int nb_absence_waiting_justification = count_absence_status(ABSENCE_WAITING_JUSTIFICATION, nb_students, student_list);
+    int nb_absence_waiting_validation = count_absence_status(ABSENCE_WAITING_VALIDATION, nb_students, student_list);
+    int nb_absence_justified = count_absence_status(ABSENCE_JUSTIFIED, nb_students, student_list);
+    int nb_absence_not_justified = count_absence_status(ABSENCE_NOT_JUSTIFIED, nb_students, student_list);
+
+    if (nb_absence_waiting_justification > 0)
+    {
+        puts("- En attente justificatif");
+        for (int i = 0; i < nb_absence_waiting_justification; ++i)
+            printf("\t[%d] %d/%s\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm);
+    }
+
+    if (nb_absence_waiting_validation > 0)
+    {
+        puts("- En attente validation");
+        for (int i = 0; i < nb_absence_waiting_validation; ++i)
+            printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+    }
+
+    if (nb_absence_justified > 0)
+    {
+        puts("- Justifiees");
+        for (int i = 0; i < nb_absence_justified; ++i)
+            printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+    }
+
+    if (nb_absence_not_justified > 0)
+    {
+        puts("- Non-justifiees");
+        for (int i = 0; i < nb_absence_not_justified; ++i)
+        {
+            if (strcmp(student.absences[i].justification, "") != 0)
+                printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+            else
+                printf("\t[%d] %d/%s \n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm);
+        }
     }
 }
