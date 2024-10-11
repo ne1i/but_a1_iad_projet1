@@ -1,7 +1,4 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -25,7 +22,6 @@
       "preLaunchTask": "Build (GCC)"
     },
     {
-      // redirect content of test_commands.txt to stdin by using > operator
       "name": "Launch initial tests (Windows)",
       "type": "cppvsdbg",
       "request": "launch",
@@ -52,6 +48,25 @@
       "stopAtEntry": false,
       "cwd": "${workspaceRoot}",
       "preLaunchTask": "Build (GCC)"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/feron/Documents/dev/c projet/but_a1_iad_projet1",
+      "program": "c:/Users/feron/Documents/dev/c projet/but_a1_iad_projet1/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }
