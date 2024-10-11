@@ -79,6 +79,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
 void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list);
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list);
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list);
+void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list);
 
 int compare_group(const void *a, const void *b);
 int compare_student_id(const void *a, const void *b);
