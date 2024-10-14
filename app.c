@@ -74,6 +74,8 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
 // OUT: command enum value, arguments list, and arguments count
 // In this function we transform the command line into a command enum value and a list of arguments
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
+
+// Sépare la commande et renvoie à parsed_command la commande qui est appelée par l'utilisateur
 void parse_command(char *command_line, ParsedCommand *parsed_command)
 {
     // creating a copy of command_line to use for justificatif
@@ -124,8 +126,10 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     // Stupid test that made me lose 1 hour of my life
     // printf("command: %d\nargument_1 %s\nargument_2 %s\n", *command, arguments_list[0], arguments_list[1]);
     // NOTE(Valentin): never use printf to test your code, use breakpoints !
+    // (supperimer ça le prof il va rien capter)
 }
 
+// Sépare correctement les arguments de la commande Justificatif
 void parse_command_justificatif(ParsedCommand *parsed_command)
 {
     const char *space_separator = " ";
@@ -137,7 +141,7 @@ void parse_command_justificatif(ParsedCommand *parsed_command)
     parsed_command->arguments_list[2] = strtok(NULL, newline_separator);
 }
 
-// Signs a student up with his name and his group number
+// COMMANDE INSCRIPTION :
 void handle_inscription(const ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
@@ -163,7 +167,7 @@ void handle_inscription(const ParsedCommand parsed_command, int *nb_students, St
     printf("Inscription enregistree (%d)\n", student.student_id);
 }
 
-// Adds an absence to the student with the student_id
+// COMMANDE ABSENCE :
 void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *nb_absences, Student *student_list)
 {
     if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
@@ -211,6 +215,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
+// COMMANDE ETUDIANTS
 void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
@@ -241,6 +246,7 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
     free(sorted_student_array);
 }
 
+//
 int compare_group(const void *a, const void *b)
 {
     const Student *s1 = (const Student *)a;
@@ -252,6 +258,7 @@ int compare_group(const void *a, const void *b)
     return strcmp(s1->name, s2->name);
 }
 
+// Récupère le nombre d'absences d'un élève avant un jour donné
 int get_absence_count_before(const Student *student, int max_day)
 {
     int total_absences = 0;
@@ -263,6 +270,7 @@ int get_absence_count_before(const Student *student, int max_day)
     return total_absences;
 }
 
+// COMMANDE JUSTIFICATIF :
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
 
@@ -333,6 +341,7 @@ int check_absence_exists(int absence_id, int *nb_students, Student *student_list
     return student_id;
 }
 
+// COMMANDE VALIDATIONS :
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list)
 {
     if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, *nb_students, student_list) == -1)
@@ -378,6 +387,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
     free(absences_waiting_validation_list);
 }
 
+//
 int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Student *student_list)
 {
     int exists = -1;
@@ -395,6 +405,7 @@ int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Stud
     return exists;
 }
 
+// Compte le nombre d'absence d'un élève en fonction du status de l'absence
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list)
 {
     int absence_count = 0;
@@ -410,6 +421,8 @@ int count_absence_status(enum AbsenceStatus status, int nb_students, Student *st
     }
     return absence_count;
 }
+
+// 
 int compare_student_id(const void *a, const void *b)
 {
     const Absence *a1 = (const Absence *)a;
@@ -421,6 +434,7 @@ int compare_student_id(const void *a, const void *b)
     return a1->date - a2->date;
 }
 
+// COMMANDE VALIDATION :
 void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_absence, Student *student_list)
 {
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
@@ -478,6 +492,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     }
 }
 
+// COMMANDE ETUDIANT :
 void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count != ETUDIANT_ARGS_COUNT)
@@ -539,6 +554,8 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
     }
 }
 
+
+// COMMANDE DEFAILLANT :
 void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < DEFAILLANTS_ARGS_COUNT)
@@ -595,6 +612,8 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     }
 }
 
+
+// Compte le nombre d'absences injustifiées d'un élève
 int count_absences_injustifiees(int student_id, Student *student_list)
 {
     int count = 0;
