@@ -499,7 +499,7 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
     }
 
     Student student = student_list[student_id - 1];
-    printf("(%d) %s %d %d", student_id, student.name, student.group, student.nb_absence);
+    printf("(%d) %s %d %d\n", student_id, student.name, student.group, student.nb_absence);
 
     int nb_absence_waiting_justification = count_absence_status(ABSENCE_WAITING_JUSTIFICATION, nb_students, student_list);
     int nb_absence_waiting_validation = count_absence_status(ABSENCE_WAITING_VALIDATION, nb_students, student_list);
@@ -560,7 +560,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     for (int etu = 0; etu < nb_students; ++etu) 
     {
 
-        int absences_injustifiees = count_absence_injustifiees(etu, student_list);
+        int absences_injustifiees = count_absences_injustifiees(etu, student_list);
 
         if (absences_injustifiees < 5)
         {
