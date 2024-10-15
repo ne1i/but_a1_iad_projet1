@@ -12,28 +12,20 @@ int main(void)
 
     char current_command_line[MAX_COMMAND_LENGTH];
 
-    // Handle user input until the user enters 'exit'
-    while (fgets(current_command_line, MAX_COMMAND_LENGTH, stdin) != 0)
+    // Boucle jusqu'à ce que l'utilisateur rentre la commande exit
+    while (fgets(current_command_line, MAX_COMMAND_LENGTH, stdin) != 0) // "!= 0" pour les cas où on rentre un fichier dans le flux d'execution
     {
         handle_command(current_command_line, &student_id_counter, &absence_id_counter, student_list);
     }
     return 0;
 }
 
-// NOTE(Valentin): Naming conventions
-// camelCase -> starts with lowercase and separates each word with a capital letter
-// PascalCase -> starts with uppercase and separates each word with a capital letter
-// snake_case -> separates each word with an underscore
-// kebab-case -> separates each word with a hyphen
-
-// EXAMPLE: "inscription Lea 101"
-// command = inscription
-// arguments = Lea, 101
+// utilise une variable de type ParsedCommand pour appeler la commande correspondante avec un switch
 void handle_command(char *command_line, int *nb_students, int *nb_absence, Student *student_list)
 {
-    // cleanup command by replacing trailing newline (\n) with string terminator (\0)
+    // remplace le \n a la fin de la commande par un \0
     command_line[strcspn(command_line, "\n")] = 0;
-    // parse command and get sublist of arguments
+    // récupérer la commande séparée
     ParsedCommand parsed_command;
     parse_command(command_line, &parsed_command);
 
@@ -71,17 +63,12 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
 }
 
 // IN: command_line
-// OUT: command enum value, arguments list, and arguments count
-// In this function we transform the command line into a command enum value and a list of arguments
+// OUT: ParsedCommand, constitué d'une variable de type CommandType, une liste d'argument et du nombre d'argument
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
 
 // Sépare la commande et renvoie à parsed_command la commande qui est appelée par l'utilisateur
 void parse_command(char *command_line, ParsedCommand *parsed_command)
 {
-    // creating a copy of command_line to use for justificatif
-    // char *intact_command_line = NULL;
-    // strcpy(intact_command_line, command_line);
-
     const char *separator = " ";
     char *word = strtok(command_line, separator);
 
@@ -92,7 +79,6 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
     }
 
     if (strcmp(word, "exit") == 0)
-        // -> instead of . because parsed_command is a ParsedCommand*
         parsed_command->command_type = COMMAND_EXIT;
     else if (strcmp(word, "inscription") == 0)
         parsed_command->command_type = COMMAND_INSCRIPTION;
@@ -102,6 +88,7 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
         parsed_command->command_type = COMMAND_ETUDIANTS;
     else if (strcmp(word, "justificatif") == 0)
     {
+        // le parcours de commande est différent pour la commande justificatif car le dernier argument est une suite de plusieurs mots
         parse_command_justificatif(parsed_command);
         return;
     }
@@ -123,13 +110,9 @@ void parse_command(char *command_line, ParsedCommand *parsed_command)
         count++;
     };
     parsed_command->arguments_count = count;
-    // Stupid test that made me lose 1 hour of my life
-    // printf("command: %d\nargument_1 %s\nargument_2 %s\n", *command, arguments_list[0], arguments_list[1]);
-    // NOTE(Valentin): never use printf to test your code, use breakpoints !
-    // (supperimer ça le prof il va rien capter)
 }
 
-// Sépare correctement les arguments de la commande Justificatif
+// Sépare les arguments de la commande Justificatif
 void parse_command_justificatif(ParsedCommand *parsed_command)
 {
     const char *space_separator = " ";
@@ -141,7 +124,7 @@ void parse_command_justificatif(ParsedCommand *parsed_command)
     parsed_command->arguments_list[2] = strtok(NULL, newline_separator);
 }
 
-// COMMANDE INSCRIPTION :
+// Gère la commande inscription :
 void handle_inscription(const ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < INSCRIPTION_ARGS_COUNT)
@@ -167,7 +150,7 @@ void handle_inscription(const ParsedCommand parsed_command, int *nb_students, St
     printf("Inscription enregistree (%d)\n", student.student_id);
 }
 
-// COMMANDE ABSENCE :
+// Gère la commande absence :
 void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *nb_absences, Student *student_list)
 {
     if (parsed_command.arguments_count < ABSENCE_ARGS_COUNT)
@@ -215,7 +198,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
 
-// COMMANDE ETUDIANTS
+// Gère la commande etudiants
 void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
@@ -228,8 +211,9 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
         return;
     }
 
-    // creating a temporary copy of student_list that we will sort by group
+    // copie temporaire de student_list
     Student *sorted_student_array = NULL;
+    // utilisation de malloc pour ne pas stocker 100 etudiants même si il n'y a pas 100 etudiants inscrits
     int mem = sizeof(Student) * nb_students;
     sorted_student_array = (Student *)malloc(mem);
     memcpy(sorted_student_array, student_list, mem);
@@ -243,10 +227,11 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
                sorted_student_array[i].group,
                total_absences);
     }
+    // rendu de la mémoire utilisée pour sorted_student_array
     free(sorted_student_array);
 }
 
-//
+// Compare la classe (puis le nom si la classe est égale) de 2 étudiants et renvoie les valeurs voulues pour pouvoir être utilisée avec qsort 
 int compare_group(const void *a, const void *b)
 {
     const Student *s1 = (const Student *)a;
@@ -270,11 +255,11 @@ int get_absence_count_before(const Student *student, int max_day)
     return total_absences;
 }
 
-// COMMANDE JUSTIFICATIF :
+// Gère la commande justificatif
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
 
-    // check if absence exists, and get the id of the corresponding student
+    // vérifie si l'absence existe, si elle existe on récupère le student_id
     int absence_id = atoi(parsed_command.arguments_list[0]);
     int student_id = check_absence_exists(absence_id, nb_students, student_list);
     if (student_id == -1)
@@ -283,7 +268,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
         return;
     }
 
-    // check if the date is correct
+    // vérification de la date
     Student *student = &student_list[student_id - 1];
     int student_absence_index = 0;
     for (int i = 0; i < student->nb_absence; ++i)
@@ -298,7 +283,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
         return;
     }
 
-    // check if the justification is given in time (3 days max)
+    // vérification du délai d'absence
     if ((atoi(parsed_command.arguments_list[1]) - student->absences[student_absence_index].date) > 3)
     {
         student->absences[student_absence_index].justified = ABSENCE_NOT_JUSTIFIED;
@@ -324,6 +309,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
     puts("Justificatif enregistre");
 }
 
+// vérifie si l'absence d'id absence_id existe
 int check_absence_exists(int absence_id, int *nb_students, Student *student_list)
 {
     int student_id = -1;
@@ -341,7 +327,7 @@ int check_absence_exists(int absence_id, int *nb_students, Student *student_list
     return student_id;
 }
 
-// COMMANDE VALIDATIONS :
+// Gère la commande validations
 void handle_validations(int *nb_students, int *nb_absences, Student *student_list)
 {
     if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, *nb_students, student_list) == -1)
@@ -352,7 +338,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
 
     int nb_absences_waiting_validation = count_absence_status(ABSENCE_WAITING_VALIDATION, *nb_students, student_list);
 
-    // creating a list with all the absences that we will later sort
+    // liste des absences en attente de validation
     Absence *absences_waiting_validation_list = (Absence *)malloc(nb_absences_waiting_validation * sizeof(Absence));
     int count = 0;
     for (int i = 0; i < *nb_students; ++i)
@@ -366,7 +352,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
             }
         }
     }
-    // sorting the absences by absence id
+    // tri des absences par id
     qsort(absences_waiting_validation_list, nb_absences_waiting_validation, sizeof(Absence), compare_student_id);
 
     for (int i = 0; i < nb_absences_waiting_validation; ++i)
@@ -387,7 +373,7 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
     free(absences_waiting_validation_list);
 }
 
-//
+// vérifie si il y a au moins une absence de statut status
 int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Student *student_list)
 {
     int exists = -1;
@@ -405,7 +391,7 @@ int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Stud
     return exists;
 }
 
-// Compte le nombre d'absence d'un élève en fonction du status de l'absence
+// Compte le nombre d'absence de tous les elèves en fonction du statut de l'absence
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list)
 {
     int absence_count = 0;
@@ -422,7 +408,7 @@ int count_absence_status(enum AbsenceStatus status, int nb_students, Student *st
     return absence_count;
 }
 
-// 
+// compare les identifiants des etudiants de 2 absences (puis la date de l'absence si les id sont égaux) et renvoie des valeurs en accord avec la fonction qsort
 int compare_student_id(const void *a, const void *b)
 {
     const Absence *a1 = (const Absence *)a;
@@ -434,7 +420,7 @@ int compare_student_id(const void *a, const void *b)
     return a1->date - a2->date;
 }
 
-// COMMANDE VALIDATION :
+// Gère la commande validation
 void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_absence, Student *student_list)
 {
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
@@ -447,7 +433,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
         return;
     }
 
-    char validation_code[3]; // 3 because "ok\0" or "ko\0"
+    char validation_code[3]; // 3 car "ok\0" ou "ko\0"
     strcpy(validation_code, parsed_command.arguments_list[1]);
     if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
     {
@@ -492,7 +478,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     }
 }
 
-// COMMANDE ETUDIANT :
+// Gère la commande etudiant
 void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count != ETUDIANT_ARGS_COUNT)
@@ -555,7 +541,7 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
 }
 
 
-// COMMANDE DEFAILLANT :
+// Gère la commande defaillants
 void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list)
 {
     if (parsed_command.arguments_count < DEFAILLANTS_ARGS_COUNT)
@@ -570,10 +556,11 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 
     int nb_defaillants = 0;
 
-    for (int etu = 0; etu < nb_students; ++etu) // Flag les défaillants !
+    // Vérifie si chaque etudiant est defaillant, et incrémente nb_defaillants dans le cas échéant
+    for (int etu = 0; etu < nb_students; ++etu) 
     {
 
-        int absences_injustifiees = count_absences_injustifiees(etu, student_list);
+        int absences_injustifiees = count_absence_injustifiees(etu, student_list);
 
         if (absences_injustifiees < 5)
         {
@@ -598,10 +585,6 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 
             if (student_list[etu].defaillance == DEFAILLANT)
             {
-
-                // C'EST LE MEME CODE QUE CELUI DE LA COMMANDE ETUDIANTS LIGNE 232
-                // METTRE DANS UNE FONCTION ?
-
                 int total_absences = get_absence_count_before(&student_list[etu], current_day);
                 printf("(%d) %-13s %2d %d\n", student_list[etu].student_id,
                        student_list[etu].name,
@@ -613,7 +596,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 }
 
 
-// Compte le nombre d'absences injustifiées d'un élève
+// Compte et renvoie le nombre d'absences injustifiées d'un élève
 int count_absences_injustifiees(int student_id, Student *student_list)
 {
     int count = 0;
