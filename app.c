@@ -608,8 +608,8 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     if (parsed_command.arguments_count < DEFAILLANTS_ARGS_COUNT)
         return;
 
-    int current_day = atoi(parsed_command.arguments_list[0]);
-    if (current_day < MIN_DAY)
+    int date = atoi(parsed_command.arguments_list[0]);
+    if (date < MIN_DAY)
     {
         puts("Date incorrecte");
         return;
@@ -618,18 +618,18 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     int nb_defaillants = 0;
 
     // Vérifie si chaque etudiant est defaillant, et incrémente nb_defaillants dans le cas échéant
-    for (int etu = 0; etu < nb_students; ++etu)
+    for (int i = 0; i < nb_students; ++i)
     {
 
-        int absences_injustifiees = count_absences_injustifiees(etu, student_list);
+        int absences_injustifiees = count_absences_injustifiees(student_list[i], date);
 
         if (absences_injustifiees < 5)
         {
-            student_list[etu].defaillance = PASDEFAILLANT;
+            student_list[i].defaillance = PASDEFAILLANT;
         }
         else
         {
-            student_list[etu].defaillance = DEFAILLANT;
+            student_list[i].defaillance = DEFAILLANT;
             ++nb_defaillants;
         }
     }
@@ -646,7 +646,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 
             if (student_list[etu].defaillance == DEFAILLANT)
             {
-                int total_absences = get_absence_count_before(&student_list[etu], current_day);
+                int total_absences = get_absence_count_before(&student_list[etu], date);
                 printf("(%d) %-13s %2d %d\n", student_list[etu].student_id,
                        student_list[etu].name,
                        student_list[etu].group,
@@ -656,18 +656,17 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     }
 }
 
-// Compte et renvoie le nombre d'absences injustifiées d'un élève
-int count_absences_injustifiees(int student_id, Student *student_list)
+// Compte et renvoie le nombre d'absences injustifiées d'un élève avant une date donnée
+int count_absences_injustifiees(Student student, int date)
 {
     int count = 0;
-
-    for (int abs = 0; abs < student_list[student_id].nb_absence; ++abs)
+    Absence *absences = student.absences;
+    for (int i = 0; i < student.nb_absence; ++i)
     {
-        if (student_list[student_id].absences[abs].justified == ABSENCE_NOT_JUSTIFIED)
-        {
+        if (absences[i].justified == ABSENCE_NOT_JUSTIFIED)
             ++count;
-        }
+        if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && date > absences[i].date)
+            ++count;
     }
-
     return count;
 }

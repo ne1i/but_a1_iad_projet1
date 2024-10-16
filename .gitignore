@@ -61,3 +61,5 @@ out*.txt
 *.bat
 
 # End of https://www.toptal.com/developers/gitignore/api/c
+in-out.zip
+out_corrige.zip
