@@ -23,7 +23,8 @@
 
 enum AbsenceStatus
 {
-    ABSENCE_JUSTIFIED,
+    ABSENCE_FUTURE,
+    ABSENCE_JUSTIFIED = 0,
     ABSENCE_NOT_JUSTIFIED,
     ABSENCE_WAITING_JUSTIFICATION,
     ABSENCE_WAITING_VALIDATION
@@ -42,6 +43,7 @@ typedef struct
     char am_pm[3];
     int id_absence;
     int date;
+    int date_justification;
     enum AbsenceStatus justified;
 
 } Absence;
@@ -61,7 +63,7 @@ enum CommandType
     COMMAND_DEFAILLANTS
 };
 
-typedef struct
+typedef struct 
 {
     enum CommandType command_type;
     char *arguments_list[MAX_ARGUMENTS_COUNT];
@@ -97,6 +99,8 @@ int get_absence_count_before(const Student *student, int max_day);
 int check_absence_exists(int student_id, int *nb_students, Student *student_list);
 int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, Student *student_list);
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
+int count_student_absence_before(int student_id, int date, Student *student_list);
+int count_student_absence_status_before(enum AbsenceStatus status, int student_id, int date, Student *student_list);
 int count_absences_injustifiees(int student_id, Student *student_list);
 
 #endif
