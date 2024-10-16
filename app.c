@@ -231,7 +231,7 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
     free(sorted_student_array);
 }
 
-// Compare la classe (puis le nom si la classe est égale) de 2 étudiants et renvoie les valeurs voulues pour pouvoir être utilisée avec qsort 
+// Compare la classe (puis le nom si la classe est égale) de 2 étudiants et renvoie les valeurs voulues pour pouvoir être utilisée avec qsort
 int compare_group(const void *a, const void *b)
 {
     const Student *s1 = (const Student *)a;
@@ -487,24 +487,27 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
         return;
 
     int student_id = atoi(parsed_command.arguments_list[0]);
-    if (student_id > nb_students)
+    if (student_id > nb_students || student_id <= 0)
     {
         puts("Identifiant incorrect");
         return;
     }
 
     int date = atoi(parsed_command.arguments_list[1]);
-    if (date < 1)
+    if (date < MIN_DAY)
     {
         puts("Date incorrecte");
         return;
     }
 
     Student student = student_list[student_id - 1];
+    // création d'une copie du tableau student.absences
+    // pour pouvoir modifier le statut des absences en fonction de la date
     int mem = sizeof(Absence) * student.nb_absence;
-    Absence *student_absence_list_copy = (Absence*) malloc(mem);
+    Absence *student_absence_list_copy = (Absence *)malloc(mem);
     memcpy(student_absence_list_copy, student.absences, mem);
 
+    // modification du statut des absences en fonction de la date
     for (int i = 0; i < student.nb_absence; ++i)
     {
         Absence *absence = &student_absence_list_copy[i];
@@ -528,50 +531,49 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
     int nb_absence_before = count_student_absence_before(student_id, date, student_list);
     printf("(%d) %s %d %d\n", student_id, student.name, student.group, nb_absence_before);
 
-    if (count_student_absence_status_before(ABSENCE_WAITING_JUSTIFICATION, student_id, date, student_list) > 0)
+    if (count_student_absence_status_before(ABSENCE_WAITING_JUSTIFICATION, student_absence_list_copy, student.nb_absence, date) > 0)
     {
-    puts("- En attente justificatif");
+        puts("- En attente justificatif");
         for (int i = 0; i < student.nb_absence; ++i)
         {
-            if (student.absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && student.absences[i].date <= date)
-                printf("\t[%d] %d/%s\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm);
+            if (student_absence_list_copy[i].justified == ABSENCE_WAITING_JUSTIFICATION && student_absence_list_copy[i].date <= date)
+                printf("  [%d] %d/%s\n", student_absence_list_copy[i].id_absence, student_absence_list_copy[i].date, student_absence_list_copy[i].am_pm);
         }
     }
 
-    if (count_student_absence_status_before(ABSENCE_WAITING_VALIDATION, student_id, date, student_list) > 0)
+    if (count_student_absence_status_before(ABSENCE_WAITING_VALIDATION, student_absence_list_copy, student.nb_absence, date) > 0)
     {
         puts("- En attente validation");
         for (int i = 0; i < student.nb_absence; ++i)
         {
-            if (student.absences[i].justified == ABSENCE_WAITING_VALIDATION && student.absences[i].date <= date)
-                printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+            if (student_absence_list_copy[i].justified == ABSENCE_WAITING_VALIDATION && student_absence_list_copy[i].date <= date)
+                printf("  [%d] %d/%s (%s)\n", student_absence_list_copy[i].id_absence, student_absence_list_copy[i].date, student_absence_list_copy[i].am_pm, student_absence_list_copy[i].justification);
         }
     }
 
-
-    if (count_student_absence_status_before(ABSENCE_JUSTIFIED, student_id, date, student_list) > 0)
+    if (count_student_absence_status_before(ABSENCE_JUSTIFIED, student_absence_list_copy, student.nb_absence, date) > 0)
     {
         puts("- Justifiees");
         for (int i = 0; i < student.nb_absence; ++i)
         {
-            if (student.absences[i].justified == ABSENCE_JUSTIFIED && student.absences[i].date <= date)
-                printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+            if (student_absence_list_copy[i].justified == ABSENCE_JUSTIFIED && student_absence_list_copy[i].date <= date)
+                printf("  [%d] %d/%s (%s)\n", student_absence_list_copy[i].id_absence, student_absence_list_copy[i].date, student_absence_list_copy[i].am_pm, student_absence_list_copy[i].justification);
         }
     }
 
-    if (count_student_absence_status_before(ABSENCE_NOT_JUSTIFIED, student_id, date, student_list) > 0)
+    if (count_student_absence_status_before(ABSENCE_NOT_JUSTIFIED, student_absence_list_copy, student.nb_absence, date) > 0)
     {
         puts("- Non-justifiees");
         for (int i = 0; i < student.nb_absence; ++i)
         {
-            if (student.absences[i].justified == ABSENCE_NOT_JUSTIFIED && student.absences[i].date <= date)
+            if (student_absence_list_copy[i].justified == ABSENCE_NOT_JUSTIFIED && student_absence_list_copy[i].date <= date)
             {
-                if (strcmp(student.absences[i].justification, "") != 0)
-                    printf("\t[%d] %d/%s (%s)\n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm, student.absences[i].justification);
+                if (strcmp(student_absence_list_copy[i].justification, "") != 0)
+                    printf("  [%d] %d/%s (%s)\n", student_absence_list_copy[i].id_absence, student_absence_list_copy[i].date, student_absence_list_copy[i].am_pm, student_absence_list_copy[i].justification);
                 else
-                    printf("\t[%d] %d/%s \n", student.absences[i].id_absence, student.absences[i].date, student.absences[i].am_pm);
+                    printf("  [%d] %d/%s \n", student_absence_list_copy[i].id_absence, student_absence_list_copy[i].date, student_absence_list_copy[i].am_pm);
             }
-    }
+        }
     }
     free(student_absence_list_copy);
 }
@@ -589,8 +591,15 @@ int count_student_absence_before(int student_id, int date, Student *student_list
     return count;
 }
 
-int count_student_absence_status_before(enum AbsenceStatus status, int student_id, int date, Student *student_list)
+int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date)
 {
+    int count = 0;
+    for (int i = 0; i < nb_absences; ++i)
+    {
+        if (absences[i].date <= date && absences[i].justified == status)
+            ++count;
+    }
+    return count;
 }
 
 // Gère la commande defaillants
@@ -609,7 +618,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     int nb_defaillants = 0;
 
     // Vérifie si chaque etudiant est defaillant, et incrémente nb_defaillants dans le cas échéant
-    for (int etu = 0; etu < nb_students; ++etu) 
+    for (int etu = 0; etu < nb_students; ++etu)
     {
 
         int absences_injustifiees = count_absences_injustifiees(etu, student_list);
@@ -646,7 +655,6 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
         }
     }
 }
-
 
 // Compte et renvoie le nombre d'absences injustifiées d'un élève
 int count_absences_injustifiees(int student_id, Student *student_list)

@@ -63,7 +63,7 @@ enum CommandType
     COMMAND_DEFAILLANTS
 };
 
-typedef struct 
+typedef struct
 {
     enum CommandType command_type;
     char *arguments_list[MAX_ARGUMENTS_COUNT];
@@ -100,7 +100,7 @@ int check_absence_exists(int student_id, int *nb_students, Student *student_list
 int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, Student *student_list);
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
 int count_student_absence_before(int student_id, int date, Student *student_list);
-int count_student_absence_status_before(enum AbsenceStatus status, int student_id, int date, Student *student_list);
+int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date);
 int count_absences_injustifiees(int student_id, Student *student_list);
 
 #endif
