@@ -536,14 +536,6 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
         return;
     }
 
-    char validation_code[3]; // 3 car "ok\0" ou "ko\0"
-    strcpy(validation_code, parsed_command.arguments_list[1]);
-    if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
-    {
-        puts("Code incorrect");
-        return;
-    }
-
     int student_id = 0;
     int student_absence_idx = 0;
 
@@ -559,10 +551,19 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
             }
         }
     }
+
     Absence *absence = &student_list[student_id - 1].absences[student_absence_idx];
     if (absence->justified == ABSENCE_JUSTIFIED || absence->justified == ABSENCE_NOT_JUSTIFIED)
     {
         puts("Validation deja connue");
+        return;
+    }
+
+    char validation_code[3]; // 3 car "ok\0" ou "ko\0"
+    strcpy(validation_code, parsed_command.arguments_list[1]);
+    if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
+    {
+        puts("Code incorrect");
         return;
     }
 
