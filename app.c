@@ -11,6 +11,9 @@
 #define MAX_NB_STUDENTS 100
 #define MAX_ASBENCE_DAY 40
 
+#define DEFAILLANT_NB_ABSENCE 5
+#define JUSTIFICATION_DEADLINE 3
+
 #define MIN_DAY 1
 #define MIN_ABSENCE_DAY 1
 
@@ -385,7 +388,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
     }
 
     // vérification du délai d'absence
-    if ((atoi(parsed_command.arguments_list[1]) - student->absences[student_absence_index].date) > 3)
+    if ((atoi(parsed_command.arguments_list[1]) - student->absences[student_absence_index].date) > JUSTIFICATION_DEADLINE)
     {
         student->absences[student_absence_index].justified = ABSENCE_NOT_JUSTIFIED;
         {
@@ -624,7 +627,7 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
             absence->justified = ABSENCE_WAITING_JUSTIFICATION;
         }
 
-        if (absence->justified == ABSENCE_WAITING_JUSTIFICATION && date > (absence->date + 3))
+        if (absence->justified == ABSENCE_WAITING_JUSTIFICATION && date > (absence->date + JUSTIFICATION_DEADLINE))
         {
             absence->justified = ABSENCE_NOT_JUSTIFIED;
         }
@@ -725,7 +728,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 
         int absences_injustifiees = count_absences_injustifiees(student_list[i], date);
 
-        if (absences_injustifiees < 5)
+        if (absences_injustifiees < DEFAILLANT_NB_ABSENCE)
         {
             student_list[i].defaillance = PASDEFAILLANT;
         }
