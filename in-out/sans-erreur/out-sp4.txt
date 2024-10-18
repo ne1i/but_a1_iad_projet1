@@ -1,0 +1,682 @@
+Aucun inscrit
+Aucune validation en attente
+Aucun defaillant
+Inscription enregistree (1)
+Absence enregistree [1]
+Inscription enregistree (2)
+Inscription enregistree (3)
+Inscription enregistree (4)
+Aucun defaillant
+Absence enregistree [2]
+(3) fred        102 0
+(1) isadora     201 1
+(2) emmet       202 0
+(4) purushottam 202 1
+Absence enregistree [3]
+Inscription enregistree (5)
+Inscription enregistree (6)
+Aucun defaillant
+Aucun defaillant
+Absence enregistree [4]
+Inscription enregistree (7)
+Inscription enregistree (8)
+Absence enregistree [5]
+Inscription enregistree (9)
+Absence enregistree [6]
+Inscription enregistree (10)
+Justificatif enregistre
+Absence enregistree [7]
+Absence enregistree [8]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [9]
+Absence enregistree [10]
+Inscription enregistree (11)
+Absence enregistree [11]
+Inscription enregistree (12)
+Absence enregistree [12]
+Inscription enregistree (13)
+Absence enregistree [13]
+Absence enregistree [14]
+Absence enregistree [15]
+Inscription enregistree (14)
+Absence enregistree [16]
+Absence enregistree [17]
+Absence enregistree [18]
+Absence enregistree [19]
+Absence enregistree [20]
+Absence enregistree [21]
+Justificatif enregistre
+Absence enregistree [22]
+Absence enregistree [23]
+Justificatif enregistre
+Absence enregistree [24]
+Absence enregistree [25]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [26]
+[4]  (3) fred   102 36/am (j'avais d'autres choses a faire)
+[13] (8) murdag 202  8/pm (j'aime pas ce cours)
+Absence enregistree [27]
+Absence enregistree [28]
+Absence enregistree [29]
+Absence enregistree [30]
+Absence enregistree [31]
+Absence enregistree [32]
+Absence enregistree [33]
+Absence enregistree [34]
+Absence enregistree [35]
+Absence enregistree [36]
+Absence enregistree [37]
+Absence enregistree [38]
+Absence enregistree [39]
+Justificatif enregistre
+Absence enregistree [40]
+Absence enregistree [41]
+Justificatif enregistre
+Absence enregistree [42]
+Inscription enregistree (15)
+Absence enregistree [43]
+Absence enregistree [44]
+(5) efigenia 40 0
+Justificatif enregistre
+Absence enregistree [45]
+Absence enregistree [46]
+Absence enregistree [47]
+Absence enregistree [48]
+Absence enregistree [49]
+Absence enregistree [50]
+Absence enregistree [51]
+Absence enregistree [52]
+Absence enregistree [53]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [54]
+Justificatif enregistre
+(9) hildegard 50 0
+Absence enregistree [55]
+Justificatif enregistre
+Absence enregistree [56]
+Justificatif enregistre
+Absence enregistree [57]
+[41] (2) emmet       202 26/am (j'avais piscine)
+[4]  (3) fred        102 36/am (j'avais d'autres choses a faire)
+[37] (4) purushottam 202 17/am (ma chaine de velo a deraille)
+[13] (8) murdag      202  8/pm (j'aime pas ce cours)
+Absence enregistree [58]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [59]
+Absence enregistree [60]
+Absence enregistree [61]
+Absence enregistree [62]
+Absence enregistree [63]
+Absence enregistree [64]
+Justificatif enregistre
+Absence enregistree [65]
+Absence enregistree [66]
+Absence enregistree [67]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [68]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [69]
+Justificatif enregistre
+Absence enregistree [70]
+Absence enregistree [71]
+Justificatif enregistre
+Absence enregistree [72]
+Absence enregistree [73]
+Absence enregistree [74]
+Absence enregistree [75]
+Absence enregistree [76]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [77]
+Justificatif enregistre
+Validation enregistree
+(10) temujin 103 0
+Absence enregistree [78]
+Validation enregistree
+(5)  efigenia     40 6
+(11) grant        40 4
+(6)  lawrie       40 4
+(7)  corrado      50 4
+(9)  hildegard    50 7
+(14) kaapo       101 5
+(3)  fred        102 7
+(15) alexis      103 3
+(12) salomea     103 6
+(10) temujin     103 2
+(1)  isadora     201 3
+(2)  emmet       202 7
+(13) mark        202 7
+(8)  murdag      202 9
+(4)  purushottam 202 4
+Absence enregistree [79]
+Justificatif enregistre
+Absence enregistree [80]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [81]
+Validation enregistree
+Absence enregistree [82]
+Absence enregistree [83]
+(3) fred 102 5
+- En attente justificatif
+  [6] 30/am
+- En attente validation
+  [50] 26/pm (Journee defense et citoyennete)
+- Non-justifiees
+  [55]  8/pm
+  [58] 20/pm (permis de conduire)
+  [7]  22/am
+Absence enregistree [84]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [85]
+Absence enregistree [86]
+Absence enregistree [87]
+Justificatif enregistre
+Absence enregistree [88]
+Justificatif enregistre
+(5)  efigenia     40 5
+(11) grant        40 1
+(6)  lawrie       40 3
+(7)  corrado      50 3
+(9)  hildegard    50 4
+(14) kaapo       101 1
+(3)  fred        102 1
+(15) alexis      103 3
+(12) salomea     103 2
+(10) temujin     103 1
+(1)  isadora     201 2
+(2)  emmet       202 3
+(13) mark        202 3
+(8)  murdag      202 5
+(4)  purushottam 202 2
+Absence enregistree [89]
+[49] (2)  emmet    202 14/pm (j'avais piscine)
+[50] (3)  fred     102 26/pm (Journee defense et citoyennete)
+[74] (5)  efigenia  40 14/am (ma chaine de velo a deraille)
+[59] (6)  lawrie    40 40/pm (convoc. tribunal)
+[24] (7)  corrado   50  9/pm (j'aime pas ce prof)
+[13] (8)  murdag   202  8/pm (j'aime pas ce cours)
+[46] (8)  murdag   202 14/pm (convoc. police)
+[38] (8)  murdag   202 31/am (convoc. tribunal)
+[29] (13) mark     202 31/am (j'avais d'autres choses a faire)
+(10) temujin 103 2
+- Non-justifiees
+  [17]  9/am (Journee defense et citoyennete)
+  [10] 27/pm
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [90]
+Absence enregistree [91]
+Absence enregistree [92]
+Justificatif enregistre
+Absence enregistree [93]
+Absence enregistree [94]
+Absence enregistree [95]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [96]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [97]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [98]
+Absence enregistree [99]
+Justificatif enregistre
+Absence enregistree [100]
+Absence enregistree [101]
+Validation enregistree
+Absence enregistree [102]
+Justificatif enregistre
+Aucun defaillant
+Absence enregistree [103]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [104]
+Absence enregistree [105]
+Absence enregistree [106]
+Absence enregistree [107]
+Justificatif enregistre
+Absence enregistree [108]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [109]
+Absence enregistree [110]
+Absence enregistree [111]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Aucun defaillant
+Absence enregistree [112]
+Validation enregistree
+Validation enregistree
+Absence enregistree [113]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [114]
+Absence enregistree [115]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [116]
+Justificatif enregistre
+Absence enregistree [117]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [118]
+Absence enregistree [119]
+Validation enregistree
+Validation enregistree
+Absence enregistree [120]
+Aucun defaillant
+Justificatif enregistre
+Absence enregistree [121]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [122]
+Justificatif enregistre
+Absence enregistree [123]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [124]
+Absence enregistree [125]
+Validation enregistree
+Absence enregistree [126]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [127]
+Absence enregistree [128]
+Justificatif enregistre
+Absence enregistree [129]
+Justificatif enregistre
+Absence enregistree [130]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [131]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Absence enregistree [132]
+Absence enregistree [133]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [134]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [135]
+Absence enregistree [136]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [137]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [138]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [139]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [140]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [141]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [142]
+Justificatif enregistre
+Absence enregistree [143]
+Absence enregistree [144]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Absence enregistree [145]
+Validation enregistree
+Absence enregistree [146]
+[55]  (3)  fred    102  8/pm (permis de conduire)
+[82]  (6)  lawrie   40 11/pm (j'aime pas ce prof)
+[107] (6)  lawrie   40 21/am (certif. medical)
+[108] (7)  corrado  50 14/am (j'aime pas ce cours)
+[45]  (13) mark    202  8/am (convoc. tribunal)
+[126] (14) kaapo   101 23/am (j'avais d'autres choses a faire)
+[60]  (14) kaapo   101 35/pm (convoc. police)
+[55]  (3)  fred    102  8/pm (permis de conduire)
+[82]  (6)  lawrie   40 11/pm (j'aime pas ce prof)
+[107] (6)  lawrie   40 21/am (certif. medical)
+[108] (7)  corrado  50 14/am (j'aime pas ce cours)
+[45]  (13) mark    202  8/am (convoc. tribunal)
+[126] (14) kaapo   101 23/am (j'avais d'autres choses a faire)
+[60]  (14) kaapo   101 35/pm (convoc. police)
+Absence enregistree [147]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+(5) efigenia 40 3
+- En attente justificatif
+  [106] 3/am
+  [75]  4/am
+  [110] 4/pm
+Justificatif enregistre
+Absence enregistree [148]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [149]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [150]
+Absence enregistree [151]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [152]
+Justificatif enregistre
+Absence enregistree [153]
+Absence enregistree [154]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [155]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [156]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+(5)  efigenia     40 0
+(11) grant        40 0
+(6)  lawrie       40 0
+(7)  corrado      50 0
+(9)  hildegard    50 0
+(14) kaapo       101 1
+(3)  fred        102 0
+(15) alexis      103 0
+(12) salomea     103 0
+(10) temujin     103 0
+(1)  isadora     201 0
+(2)  emmet       202 1
+(13) mark        202 0
+(8)  murdag      202 0
+(4)  purushottam 202 0
+(5)  efigenia     40 12
+(11) grant        40  8
+(6)  lawrie       40 13
+(7)  corrado      50 16
+(9)  hildegard    50 10
+(14) kaapo       101 16
+(3)  fred        102 15
+(15) alexis      103  5
+(12) salomea     103  7
+(10) temujin     103  2
+(1)  isadora     201  6
+(2)  emmet       202 13
+(13) mark        202 15
+(8)  murdag      202 14
+(4)  purushottam 202  4
+Aucune validation en attente
+(1) isadora 201 0
+(1) isadora 201 6
+- Non-justifiees
+  [1]    3/pm
+  [121]  7/am
+  [43]  13/pm (j'aime pas ce cours)
+  [92]  20/pm (j'avais d'autres choses a faire)
+  [61]  29/am (j'avais piscine)
+  [102] 40/am
+(2) emmet 202 1
+- En attente justificatif
+  [70] 1/am
+(2) emmet 202 13
+- Justifiees
+  [113]  7/am (permis de conduire)
+  [117] 17/am (Journee defense et citoyennete)
+  [125] 27/pm (Journee defense et citoyennete)
+- Non-justifiees
+  [70]   1/am (j'aime pas ce prof)
+  [8]    6/am (j'aime pas ce cours)
+  [49]  14/pm (j'avais piscine)
+  [137] 16/am (certif. medical)
+  [140] 18/pm (j'aime pas ce cours)
+  [35]  25/am
+  [84]  25/pm (j'aime pas ce prof)
+  [41]  26/am (j'avais piscine)
+  [30]  35/am (certif. medical)
+  [27]  38/am
+(3) fred 102 0
+(3) fred 102 15
+- Justifiees
+  [155]  9/pm (permis de conduire)
+  [100] 22/pm (j'aime pas ce prof)
+  [101] 37/am (ma chaine de velo a deraille)
+- Non-justifiees
+  [91]   7/pm (j'avais piscine)
+  [55]   8/pm (permis de conduire)
+  [138] 11/pm
+  [129] 17/am (ma chaine de velo a deraille)
+  [58]  20/pm (permis de conduire)
+  [7]   22/am
+  [95]  26/am (convoc. tribunal)
+  [50]  26/pm (Journee defense et citoyennete)
+  [6]   30/am (ma chaine de velo a deraille)
+  [4]   36/am (j'avais d'autres choses a faire)
+  [86]  38/pm (j'avais piscine)
+  [78]  40/pm
+(4) purushottam 202 0
+(4) purushottam 202 4
+- Justifiees
+  [37] 17/am (ma chaine de velo a deraille)
+- Non-justifiees
+  [5] 12/am (j'aime pas ce prof)
+  [2] 33/pm
+  [3] 38/am
+(5) efigenia 40 0
+(5) efigenia 40 12
+- Non-justifiees
+  [106]  3/am (permis de conduire)
+  [75]   4/am (j'aime pas ce cours)
+  [110]  4/pm (j'aime pas ce cours)
+  [21]   5/am (certif. medical)
+  [123]  8/pm (j'avais d'autres choses a faire)
+  [12]   9/am
+  [65]  13/am
+  [93]  13/pm (j'aime pas ce cours)
+  [74]  14/am (ma chaine de velo a deraille)
+  [124] 19/pm (j'avais piscine)
+  [44]  25/pm
+  [80]  36/am (j'aime pas ce prof)
+(6) lawrie 40 0
+(6) lawrie 40 13
+- Justifiees
+  [97]   9/am (j'aime pas ce cours)
+  [79]  15/pm (convoc. police)
+  [135] 25/pm (j'avais piscine)
+  [66]  33/pm (Journee defense et citoyennete)
+  [59]  40/pm (convoc. tribunal)
+- Non-justifiees
+  [145]  5/pm (permis de conduire)
+  [156]  6/pm (Journee defense et citoyennete)
+  [76]   7/am
+  [82]  11/pm (j'aime pas ce prof)
+  [107] 21/am (certif. medical)
+  [120] 22/am
+  [47]  22/pm (j'aime pas ce prof)
+  [134] 23/am
+(7) corrado 50 0
+(7) corrado 50 16
+- Justifiees
+  [150] 39/am (j'avais piscine)
+- Non-justifiees
+  [63]   5/am (Journee defense et citoyennete)
+  [31]   7/am
+  [127]  7/pm
+  [24]   9/pm (j'aime pas ce prof)
+  [104] 12/pm
+  [130] 13/am (ma chaine de velo a deraille)
+  [108] 14/am (j'aime pas ce cours)
+  [149] 17/am (Journee defense et citoyennete)
+  [122] 26/pm
+  [152] 29/am
+  [142] 33/am
+  [139] 35/am
+  [18]  35/pm (convoc. tribunal)
+  [136] 39/pm
+  [148] 40/am
+(8) murdag 202 0
+(8) murdag 202 14
+- Justifiees
+  [13]   8/pm (j'aime pas ce cours)
+  [116] 29/pm (j'avais piscine)
+- Non-justifiees
+  [28]   3/am
+  [54]   9/am (certif. medical)
+  [85]  10/pm
+  [46]  14/pm (convoc. police)
+  [118] 19/am (convoc. tribunal)
+  [131] 21/pm (certif. medical)
+  [33]  24/am (j'aime pas ce prof)
+  [25]  26/pm
+  [38]  31/am (convoc. tribunal)
+  [36]  32/am (certif. medical)
+  [98]  38/am
+  [39]  40/am (j'avais d'autres choses a faire)
+(9) hildegard 50 0
+(9) hildegard 50 10
+- Non-justifiees
+  [103]  4/am (certif. medical)
+  [19]   5/am (j'avais d'autres choses a faire)
+  [111]  6/am (convoc. tribunal)
+  [23]   9/am (j'aime pas ce cours)
+  [26]  11/am
+  [16]  11/pm
+  [14]  18/pm (j'aime pas ce cours)
+  [94]  26/pm
+  [9]   30/am
+  [11]  36/am (certif. medical)
+(10) temujin 103 0
+(10) temujin 103 2
+- Non-justifiees
+  [17]  9/am (Journee defense et citoyennete)
+  [10] 27/pm
+(11) grant 40 0
+(11) grant 40 8
+- Non-justifiees
+  [67]   5/pm (Journee defense et citoyennete)
+  [105] 17/am (ma chaine de velo a deraille)
+  [99]  18/pm (ma chaine de velo a deraille)
+  [128] 19/am (Journee defense et citoyennete)
+  [69]  19/pm (j'aime pas ce cours)
+  [68]  23/am (ma chaine de velo a deraille)
+  [83]  28/am (j'avais piscine)
+  [72]  31/pm (j'aime pas ce prof)
+(12) salomea 103 0
+(12) salomea 103 7
+- Non-justifiees
+  [71]  10/am (j'avais d'autres choses a faire)
+  [32]  15/am
+  [119] 15/pm
+  [73]  18/pm (j'avais piscine)
+  [77]  24/am (j'avais piscine)
+  [15]  25/pm (j'avais piscine)
+  [51]  36/pm
+(13) mark 202 0
+(13) mark 202 15
+- Justifiees
+  [133] 25/am (ma chaine de velo a deraille)
+  [88]  33/pm (j'aime pas ce cours)
+  [64]  36/am (convoc. tribunal)
+- Non-justifiees
+  [153]  2/am
+  [48]   4/am (Journee defense et citoyennete)
+  [45]   8/am (convoc. tribunal)
+  [40]  11/am
+  [57]  18/am (ma chaine de velo a deraille)
+  [114] 20/pm (j'aime pas ce prof)
+  [42]  22/am (convoc. tribunal)
+  [154] 22/pm
+  [146] 30/am (convoc. police)
+  [29]  31/am (j'avais d'autres choses a faire)
+  [147] 34/am
+  [132] 37/am
+(14) kaapo 101 1
+- En attente justificatif
+  [112] 1/am
+(14) kaapo 101 16
+- Justifiees
+  [109]  2/am (j'aime pas ce cours)
+  [141] 18/am (j'avais piscine)
+  [60]  35/pm (convoc. police)
+- Non-justifiees
+  [112]  1/am
+  [81]  12/pm (j'aime pas ce cours)
+  [144] 13/am (convoc. police)
+  [143] 15/pm
+  [151] 17/pm
+  [90]  20/am
+  [115] 21/pm (j'aime pas ce cours)
+  [126] 23/am (j'avais d'autres choses a faire)
+  [52]  26/am (ma chaine de velo a deraille)
+  [89]  28/am
+  [34]  29/pm (j'aime pas ce prof)
+  [20]  35/am (Journee defense et citoyennete)
+  [22]  38/pm
+(15) alexis 103 0
+(15) alexis 103 5
+- Non-justifiees
+  [56]  3/pm
+  [62]  4/am (certif. medical)
+  [87]  6/pm (convoc. tribunal)
+  [96] 21/am
+  [53] 31/am (Journee defense et citoyennete)
+Aucun defaillant
+(5)  efigenia  40 12
+(6)  lawrie    40 13
+(7)  corrado   50 16
+(14) kaapo    101 16
+(3)  fred     102 15
+(1)  isadora  201  6
+(2)  emmet    202 13
+(13) mark     202 15
+(8)  murdag   202 14

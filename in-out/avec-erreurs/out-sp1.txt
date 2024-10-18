@@ -1,0 +1,48 @@
+Aucun inscrit
+Inscription enregistree (1)
+(1) rebeccah 40 0
+Demi-journee incorrecte
+(1) rebeccah 40 0
+Inscription enregistree (2)
+Absence enregistree [1]
+(1) rebeccah  40 0
+(2) ayesha   103 1
+Inscription enregistree (3)
+Absence enregistree [2]
+Absence enregistree [3]
+Inscription enregistree (4)
+Nom incorrect
+Absence enregistree [4]
+Date incorrecte
+Inscription enregistree (5)
+Absence enregistree [5]
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Absence enregistree [9]
+(1) rebeccah  40 1
+(5) hamza    101 0
+(2) ayesha   103 1
+(4) sundar   202 1
+(3) brent    203 2
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+Absence deja connue
+Absence enregistree [13]
+(1) rebeccah  40 1
+(5) hamza    101 0
+(2) ayesha   103 1
+(4) sundar   202 1
+(3) brent    203 1
+Absence deja connue
+(1) rebeccah  40 0
+(5) hamza    101 0
+(2) ayesha   103 0
+(4) sundar   202 0
+(3) brent    203 0
+(1) rebeccah  40 3
+(5) hamza    101 2
+(2) ayesha   103 3
+(4) sundar   202 2
+(3) brent    203 3

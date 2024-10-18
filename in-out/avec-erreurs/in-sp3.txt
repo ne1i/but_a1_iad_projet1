@@ -1,0 +1,225 @@
+etudiants 1
+validations
+inscription hildegard 202
+inscription hildegard 202
+inscription christer 203
+absence 1 8 pm
+inscription rebeccah 101
+inscription dakota 30
+absence 101 1 pm
+absence 2 17 am
+absence 3 25 am
+etudiant 2 10
+inscription anselma 203
+absence 1 36 pm
+absence 1 41 pm
+validations
+justificatif 0 10 j'ai mal au ventre
+inscription nicodemus 40
+absence 1 34 pm
+inscription christer 203
+inscription giselle 101
+absence 1 17 am
+absence 5 24 am
+absence 7 3 pm
+absence 1 34 pm
+absence 7 30 pm
+absence 1 3 am
+inscription salomea 203
+absence 5 30 pm
+justificatif 6 20 ma chaine de velo a deraille
+absence 2 27 am
+absence 6 29 am
+etudiants 23
+absence 1 1 an
+absence 2 29 pm
+inscription savino 101
+absence 1 6 pm
+absence 2 21 pm
+absence 3 13 am
+absence 2 13 am
+etudiant 3 45
+justificatif 8 6 convoc. tribunal
+justificatif 9 29 convoc. tribunal
+absence 8 26 pm
+absence 2 35 am
+absence 3 34 am
+etudiant 3 21
+absence 7 16 pm
+absence 6 29 pm
+etudiant 2 39
+justificatif 2 18 ma chaine de velo a deraille
+absence 9 10 am
+justificatif 17 15 j'avais piscine
+absence 5 34 am
+etudiant 6 40
+absence 9 37 pm
+absence 2 21 pm
+absence 4 22 pm
+etudiant 1 38
+absence 4 8 pm
+justificatif 19 31 permis de conduire
+inscription evfemia 50
+justificatif 20 39 j'avais piscine
+justificatif 19 25 certif. medical
+absence 4 32 pm
+absence 2 2 pm
+absence 8 33 am
+justificatif 31 39 certif. medical
+validation 17 ko
+absence 9 19 pm
+absence 9 18 am
+absence 7 27 pm
+absence 10 20 pm
+justificatif 7 23 ma chaine de velo a deraille
+absence 8 18 am
+absence 7 20 am
+absence 7 16 am
+absence 1 4 am
+absence 10 31 am
+absence 9 1 pm
+justificatif 1 13 j'avais piscine
+absence 6 17 am
+justificatif 27 24 j'avais d'autres choses a faire
+absence 2 34 am
+justificatif 36 19 j'avais piscine
+justificatif 9 29 convoc. tribunal
+validation 36 ko
+justificatif 14 33 j'aime pas ce cours
+absence 5 37 pm
+absence 7 24 pm
+absence 10 26 pm
+justificatif 33 21 ma chaine de velo a deraille
+etudiants 28
+validation 27 ko
+justificatif 28 9 ma chaine de velo a deraille
+etudiant 7 22
+absence 10 4 pm
+justificatif 23 31 certif. medical
+absence 9 17 am
+absence 10 7 pm
+validation 23 ko
+absence 5 12 pm
+absence 9 39 am
+absence 10 18 am
+absence 9 36 pm
+absence 6 33 am
+absence 2 26 pm
+absence 1 6 pm
+validation 33 ko
+justificatif 21 33 convoc. police
+validation 2 ko
+etudiant 9 29
+justificatif 48 18 permis de conduire
+absence 9 9 am
+etudiants 5
+absence 7 13 am
+justificatif 9 32 convoc. police
+validation 28 ko
+absence 7 17 pm
+justificatif 24 13 convoc. police
+justificatif 30 7 certif. medical
+absence 1 5 am
+justificatif 47 6 Journee defense et citoyennete
+absence 1 7 am
+justificatif 11 35 j'avais d'autres choses a faire
+etudiant 5 29
+validation 47 ko
+justificatif 47 3 ma chaine de velo a deraille
+absence 2 7 pm
+validation 24 ok
+justificatif 15 7 j'avais piscine
+absence 5 9 pm
+validation 9 ok
+justificatif 54 37 j'aime pas ce cours
+absence 6 26 pm
+absence 6 1 am
+validation 48 ko
+absence 9 5 pm
+absence 6 21 am
+justificatif 32 20 convoc. police
+justificatif 65 7 convoc. police
+justificatif 64 4 j'aime pas ce prof
+validation 6 ok
+justificatif 53 39 convoc. tribunal
+absence 5 19 pm
+absence 5 33 am
+justificatif 5 35 j'aime pas ce cours
+absence 1 9 pm
+absence 1 19 am
+justificatif 59 6 certif. medical
+absence 5 27 pm
+validation 32 ko
+absence 1 1 pm
+validation 65 ko
+etudiant 10 12
+absence 5 14 pm
+justificatif 22 22 certif. medical
+validation 64 ko
+justificatif 10 5 j'aime pas ce prof
+justificatif 51 45 permis de conduire
+absence 5 29 pm
+justificatif 44 43 j'aime pas ce cours
+justificatif 62 14 j'avais piscine
+justificatif 42 18 j'aime pas ce cours
+validation 53 ok
+justificatif 37 26 j'avais d'autres choses a faire
+justificatif 57 17 ma chaine de velo a deraille
+validation 8 ko
+absence 6 36 am
+validation 5 ko
+absence 9 11 pm
+justificatif 76 14 convoc. police
+justificatif 38 19 j'aime pas ce prof
+justificatif 13 33 certif. medical
+validation 76 ko
+validation 42 ko
+absence 7 32 pm
+justificatif 66 25 permis de conduire
+absence 6 12 am
+justificatif 74 35 convoc. tribunal
+justificatif 63 29 j'avais piscine
+absence 7 29 am
+absence 5 27 am
+justificatif 77 36 convoc. tribunal
+justificatif 71 31 permis de conduire
+absence 7 13 pm
+justificatif 78 17 ma chaine de velo a deraille
+justificatif 80 33 convoc. police
+justificatif 4 39 permis de conduire
+validation 63 ok
+validation 38 ok
+justificatif 39 9 convoc. police
+validation 15 ko
+justificatif 79 33 j'aime pas ce cours
+validation 59 ko
+justificatif 81 14 Journee defense et citoyennete
+justificatif 70 23 Journee defense et citoyennete
+validation 10 ko
+validation 81 ko
+validation 4 ok
+etudiants 12
+etudiants 1
+etudiants 41
+validations
+etudiant 1 1
+etudiant 1 45
+etudiant 2 1
+etudiant 2 45
+etudiant 3 1
+etudiant 3 45
+etudiant 4 1
+etudiant 4 45
+etudiant 5 1
+etudiant 5 45
+etudiant 6 1
+etudiant 6 45
+etudiant 7 1
+etudiant 7 45
+etudiant 8 1
+etudiant 8 45
+etudiant 9 1
+etudiant 9 45
+etudiant 10 1
+etudiant 10 45
+exit

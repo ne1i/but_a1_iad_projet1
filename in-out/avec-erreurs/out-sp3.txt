@@ -1,0 +1,420 @@
+Aucun inscrit
+Aucune validation en attente
+Inscription enregistree (1)
+Nom incorrect
+Inscription enregistree (2)
+Absence enregistree [1]
+Inscription enregistree (3)
+Inscription enregistree (4)
+Identifiant incorrect
+Absence enregistree [2]
+Absence enregistree [3]
+(2) christer 203 0
+Inscription enregistree (5)
+Absence enregistree [4]
+Date incorrecte
+Aucune validation en attente
+Identifiant incorrect
+Inscription enregistree (6)
+Absence enregistree [5]
+Nom incorrect
+Inscription enregistree (7)
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Absence deja connue
+Absence enregistree [9]
+Absence enregistree [10]
+Inscription enregistree (8)
+Absence enregistree [11]
+Justificatif enregistre
+Absence enregistree [12]
+Absence enregistree [13]
+(4) dakota     30 0
+(6) nicodemus  40 0
+(7) giselle   101 1
+(3) rebeccah  101 0
+(1) hildegard 202 3
+(5) anselma   203 0
+(2) christer  203 1
+(8) salomea   203 0
+Demi-journee incorrecte
+Absence enregistree [14]
+Inscription enregistree (9)
+Absence enregistree [15]
+Absence enregistree [16]
+Absence enregistree [17]
+Absence enregistree [18]
+(3) rebeccah 101 2
+- Non-justifiees
+  [17] 13/am
+  [3]  25/am
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [19]
+Absence enregistree [20]
+Absence enregistree [21]
+(3) rebeccah 101 1
+- Non-justifiees
+  [17] 13/am
+Absence enregistree [22]
+Absence enregistree [23]
+(2) christer 203 6
+- Non-justifiees
+  [18] 13/am
+  [2]  17/am
+  [16] 21/pm
+  [12] 27/am
+  [14] 29/pm
+  [20] 35/am
+Justificatif enregistre
+Absence enregistree [24]
+Justificatif enregistre
+Absence enregistree [25]
+(6) nicodemus 40 2
+- Non-justifiees
+  [13] 29/am
+  [23] 29/pm
+Absence enregistree [26]
+Absence deja connue
+Absence enregistree [27]
+(1) hildegard 202 6
+- En attente justificatif
+  [4] 36/pm
+- En attente validation
+  [6] 17/am (ma chaine de velo a deraille)
+- Non-justifiees
+  [10]  3/am
+  [15]  6/pm
+  [1]   8/pm
+  [5]  34/pm
+Absence enregistree [28]
+Justificatif enregistre
+Inscription enregistree (10)
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [29]
+Absence enregistree [30]
+Absence enregistree [31]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [32]
+Absence enregistree [33]
+Absence enregistree [34]
+Absence enregistree [35]
+Date incorrecte
+Absence enregistree [36]
+Absence enregistree [37]
+Absence enregistree [38]
+Absence enregistree [39]
+Absence enregistree [40]
+Absence enregistree [41]
+Justificatif enregistre
+Absence enregistree [42]
+Justificatif enregistre
+Absence enregistree [43]
+Justificatif enregistre
+Date incorrecte
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [44]
+Absence enregistree [45]
+Absence enregistree [46]
+Justificatif enregistre
+(4)  dakota     30 2
+(6)  nicodemus  40 1
+(10) evfemia    50 2
+(7)  giselle   101 6
+(3)  rebeccah  101 2
+(9)  savino    101 4
+(1)  hildegard 202 5
+(5)  anselma   203 1
+(2)  christer  203 5
+(8)  salomea   203 2
+Validation enregistree
+Justificatif enregistre
+(7) giselle 101 4
+- En attente justificatif
+  [37] 20/am
+- En attente validation
+  [8] 3/pm (convoc. tribunal)
+- Non-justifiees
+  [38] 16/am
+  [22] 16/pm
+Absence enregistree [47]
+Justificatif enregistre
+Absence enregistree [48]
+Absence enregistree [49]
+Validation enregistree
+Absence enregistree [50]
+Absence enregistree [51]
+Absence enregistree [52]
+Absence enregistree [53]
+Absence enregistree [54]
+Absence enregistree [55]
+Absence deja connue
+Validation enregistree
+Date incorrecte
+Validation enregistree
+(9) savino 101 5
+- Non-justifiees
+  [41]  1/pm
+  [24] 10/am
+  [48] 17/am
+  [33] 18/am (ma chaine de velo a deraille)
+  [32] 19/pm
+Justificatif enregistre
+Absence enregistree [56]
+(4)  dakota     30 0
+(6)  nicodemus  40 0
+(10) evfemia    50 1
+(7)  giselle   101 1
+(3)  rebeccah  101 0
+(9)  savino    101 1
+(1)  hildegard 202 2
+(5)  anselma   203 0
+(2)  christer  203 1
+(8)  salomea   203 0
+Absence enregistree [57]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [58]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [59]
+Justificatif enregistre
+Absence enregistree [60]
+Justificatif enregistre
+(5) anselma 203 2
+- Non-justifiees
+  [50] 12/pm
+  [7]  24/am
+Validation enregistree
+Date incorrecte
+Absence enregistree [61]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [62]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [63]
+Absence enregistree [64]
+Validation enregistree
+Absence enregistree [65]
+Absence enregistree [66]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [67]
+Absence enregistree [68]
+Justificatif enregistre
+Absence enregistree [69]
+Absence enregistree [70]
+Justificatif enregistre
+Absence enregistree [71]
+Validation enregistree
+Absence enregistree [72]
+Validation enregistree
+(10) evfemia 50 2
+- Non-justifiees
+  [47] 4/pm (Journee defense et citoyennete)
+  [49] 7/pm
+Absence enregistree [73]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [74]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [75]
+Validation enregistree
+Absence enregistree [76]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [77]
+Justificatif enregistre
+Absence enregistree [78]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [79]
+Absence enregistree [80]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [81]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+(4)  dakota     30 1
+(6)  nicodemus  40 2
+(10) evfemia    50 2
+(7)  giselle   101 1
+(3)  rebeccah  101 0
+(9)  savino    101 5
+(1)  hildegard 202 8
+(5)  anselma   203 2
+(2)  christer  203 2
+(8)  salomea   203 0
+(4)  dakota     30 0
+(6)  nicodemus  40 1
+(10) evfemia    50 0
+(7)  giselle   101 0
+(3)  rebeccah  101 0
+(9)  savino    101 1
+(1)  hildegard 202 1
+(5)  anselma   203 0
+(2)  christer  203 0
+(8)  salomea   203 0
+(4)  dakota     30  3
+(6)  nicodemus  40  9
+(10) evfemia    50  6
+(7)  giselle   101 12
+(3)  rebeccah  101  3
+(9)  savino    101 11
+(1)  hildegard 202 12
+(5)  anselma   203 12
+(2)  christer  203 10
+(8)  salomea   203  3
+Aucune validation en attente
+(1) hildegard 202 1
+- En attente justificatif
+  [72] 1/pm
+(1) hildegard 202 12
+- Justifiees
+  [6] 17/am (ma chaine de velo a deraille)
+  [4] 36/pm (permis de conduire)
+- Non-justifiees
+  [72]  1/pm
+  [10]  3/am (j'aime pas ce prof)
+  [39]  4/am (convoc. police)
+  [59]  5/am (certif. medical)
+  [15]  6/pm (j'avais piscine)
+  [60]  7/am
+  [1]   8/pm (j'avais piscine)
+  [69]  9/pm
+  [70] 19/am (Journee defense et citoyennete)
+  [5]  34/pm (j'aime pas ce cours)
+(2) christer 203 0
+(2) christer 203 10
+- Non-justifiees
+  [30]  2/pm (certif. medical)
+  [61]  7/pm
+  [18] 13/am
+  [2]  17/am (ma chaine de velo a deraille)
+  [16] 21/pm
+  [55] 26/pm
+  [12] 27/am
+  [14] 29/pm (j'aime pas ce cours)
+  [43] 34/am
+  [20] 35/am (j'avais piscine)
+(3) rebeccah 101 0
+(3) rebeccah 101 3
+- Non-justifiees
+  [17] 13/am (j'avais piscine)
+  [3]  25/am
+  [21] 34/am
+(4) dakota 30 0
+(4) dakota 30 3
+- Non-justifiees
+  [28]  8/pm (ma chaine de velo a deraille)
+  [27] 22/pm (j'avais d'autres choses a faire)
+  [29] 32/pm
+(5) anselma 203 0
+(5) anselma 203 12
+- Non-justifiees
+  [62]  9/pm (j'avais piscine)
+  [50] 12/pm
+  [73] 14/pm
+  [67] 19/pm
+  [7]  24/am
+  [80] 27/am (convoc. police)
+  [71] 27/pm (permis de conduire)
+  [74] 29/pm (convoc. tribunal)
+  [11] 30/pm (j'avais d'autres choses a faire)
+  [68] 33/am
+  [25] 34/am
+  [44] 37/pm (j'aime pas ce cours)
+(6) nicodemus 40 1
+- En attente justificatif
+  [64] 1/am
+(6) nicodemus 40 9
+- Justifiees
+  [63] 26/pm (j'avais piscine)
+- Non-justifiees
+  [64]  1/am (j'aime pas ce prof)
+  [78] 12/am (ma chaine de velo a deraille)
+  [42] 17/am (j'aime pas ce cours)
+  [66] 21/am (permis de conduire)
+  [13] 29/am (certif. medical)
+  [23] 29/pm (certif. medical)
+  [54] 33/am (j'aime pas ce cours)
+  [75] 36/am
+(7) giselle 101 0
+(7) giselle 101 12
+- Justifiees
+  [38] 16/am (j'aime pas ce prof)
+  [9]  30/pm (convoc. police)
+- Non-justifiees
+  [8]   3/pm (convoc. tribunal)
+  [57] 13/am (ma chaine de velo a deraille)
+  [81] 13/pm (Journee defense et citoyennete)
+  [22] 16/pm (certif. medical)
+  [58] 17/pm
+  [37] 20/am (j'avais d'autres choses a faire)
+  [45] 24/pm
+  [34] 27/pm
+  [79] 29/am (j'aime pas ce cours)
+  [77] 32/pm (convoc. tribunal)
+(8) salomea 203 0
+(8) salomea 203 3
+- Non-justifiees
+  [36] 18/am (j'avais piscine)
+  [19] 26/pm (permis de conduire)
+  [31] 33/am (certif. medical)
+(9) savino 101 1
+- En attente justificatif
+  [41] 1/pm
+(9) savino 101 11
+- Justifiees
+  [24] 10/am (convoc. police)
+  [53] 36/pm (convoc. tribunal)
+- Non-justifiees
+  [41]  1/pm
+  [65]  5/pm (convoc. police)
+  [56]  9/am
+  [76] 11/pm (convoc. police)
+  [48] 17/am (permis de conduire)
+  [33] 18/am (ma chaine de velo a deraille)
+  [32] 19/pm (convoc. police)
+  [26] 37/pm
+  [51] 39/am (permis de conduire)
+(10) evfemia 50 0
+(10) evfemia 50 6
+- Non-justifiees
+  [47]  4/pm (Journee defense et citoyennete)
+  [49]  7/pm
+  [52] 18/am
+  [35] 20/pm
+  [46] 26/pm
+  [40] 31/am

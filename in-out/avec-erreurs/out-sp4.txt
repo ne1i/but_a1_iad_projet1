@@ -1,0 +1,676 @@
+Aucun inscrit
+Aucune validation en attente
+Aucun defaillant
+Inscription enregistree (1)
+Inscription enregistree (2)
+Absence enregistree [1]
+Nom incorrect
+Inscription enregistree (3)
+Inscription enregistree (4)
+Absence enregistree [2]
+Inscription enregistree (5)
+Absence deja connue
+Inscription enregistree (6)
+Absence enregistree [3]
+Inscription enregistree (7)
+Inscription enregistree (8)
+Date incorrecte
+Absence enregistree [4]
+Absence enregistree [5]
+Inscription enregistree (9)
+Absence enregistree [6]
+Absence enregistree [7]
+Absence enregistree [8]
+Absence enregistree [9]
+Absence enregistree [10]
+Inscription enregistree (10)
+Absence enregistree [11]
+Absence enregistree [12]
+Absence enregistree [13]
+Inscription enregistree (11)
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [14]
+Absence enregistree [15]
+Absence enregistree [16]
+Inscription enregistree (12)
+Validation enregistree
+[10] (6) norah 50 8/am (j'avais d'autres choses a faire)
+Absence enregistree [17]
+Absence enregistree [18]
+Inscription enregistree (13)
+Absence enregistree [19]
+(6) norah 50 2
+- En attente justificatif
+  [10] 8/am
+- Non-justifiees
+  [9] 3/am
+Absence enregistree [20]
+Inscription enregistree (14)
+(11) dakota    30 0
+(10) takeshi   30 2
+(12) fiona     50 0
+(9)  marcello  50 0
+(6)  norah     50 2
+(8)  kelda    101 0
+(3)  thoth    101 2
+(14) cailin   103 0
+(1)  parris   103 0
+(13) geronimo 201 0
+(4)  heino    201 1
+(2)  mihhaelo 202 0
+(7)  pino     202 1
+(5)  yasmina  203 1
+Justificatif enregistre
+Absence enregistree [21]
+Absence enregistree [22]
+Identifiant incorrect
+(10) takeshi 30 2
+- Non-justifiees
+  [13] 1/am
+  [14] 8/am
+Absence enregistree [23]
+Absence enregistree [24]
+Inscription enregistree (15)
+Absence enregistree [25]
+Absence enregistree [26]
+Aucun defaillant
+Absence enregistree [27]
+Absence enregistree [28]
+Justificatif enregistre
+Absence enregistree [29]
+Absence enregistree [30]
+Justificatif enregistre
+Absence enregistree [31]
+Justificatif enregistre
+Absence enregistree [32]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [33]
+Absence enregistree [34]
+Absence enregistree [35]
+Absence enregistree [36]
+Nom incorrect
+Absence enregistree [37]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [38]
+Absence enregistree [39]
+Aucun defaillant
+Absence enregistree [40]
+Justificatif enregistre
+Absence enregistree [41]
+Absence enregistree [42]
+Absence enregistree [43]
+Absence enregistree [44]
+Validation enregistree
+Absence enregistree [45]
+Absence enregistree [46]
+Absence enregistree [47]
+Absence enregistree [48]
+Absence enregistree [49]
+Absence enregistree [50]
+Justificatif enregistre
+Absence enregistree [51]
+Justificatif enregistre
+Absence enregistree [52]
+(11) dakota    30 3
+(10) takeshi   30 4
+(12) fiona     50 1
+(9)  marcello  50 1
+(6)  norah     50 3
+(8)  kelda    101 1
+(3)  thoth    101 3
+(14) cailin   103 3
+(1)  parris   103 2
+(13) geronimo 201 1
+(4)  heino    201 3
+(15) lydie    202 5
+(2)  mihhaelo 202 1
+(7)  pino     202 1
+(5)  yasmina  203 2
+Absence enregistree [53]
+Identifiant incorrect
+Justificatif enregistre
+(12) fiona 50 1
+- En attente justificatif
+  [23] 4/pm
+Absence enregistree [54]
+Absence enregistree [55]
+Absence enregistree [56]
+Justificatif enregistre
+Absence enregistree [57]
+Absence enregistree [58]
+Absence enregistree [59]
+Absence enregistree [60]
+Absence enregistree [61]
+Absence enregistree [62]
+[10] (6) norah 50 8/am (j'avais d'autres choses a faire)
+Justificatif enregistre
+Absence enregistree [63]
+Absence enregistree [64]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif deja connu
+Absence enregistree [65]
+Absence enregistree [66]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [67]
+Absence enregistree [68]
+Absence enregistree [69]
+Validation enregistree
+Absence enregistree [70]
+[17] (4) heino 201 4/am (Journee defense et citoyennete)
+[9]  (6) norah  50 3/am (j'avais piscine)
+[10] (6) norah  50 8/am (j'avais d'autres choses a faire)
+Absence enregistree [71]
+Absence enregistree [72]
+Justificatif enregistre
+Justificatif enregistre
+Absence deja connue
+Validation enregistree
+Absence enregistree [73]
+Absence deja connue
+Justificatif enregistre
+Absence enregistree [74]
+Justificatif enregistre
+Justificatif enregistre
+(9) marcello 50 2
+- En attente validation
+  [56] 4/pm (Journee defense et citoyennete)
+- Non-justifiees
+  [24] 15/am (j'avais d'autres choses a faire)
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+(8)  kelda    101 6
+(4)  heino    201 6
+(15) lydie    202 8
+(2)  mihhaelo 202 6
+(11) dakota 30 6
+- En attente justificatif
+  [35] 38/pm
+  [68] 39/pm
+- En attente validation
+  [42] 9/am (j'aime pas ce prof)
+- Non-justifiees
+  [33] 13/am
+  [34] 15/pm (ma chaine de velo a deraille)
+  [16] 37/pm
+Validation enregistree
+Absence enregistree [75]
+Absence enregistree [76]
+Nom incorrect
+Absence enregistree [77]
+(4)  heino 201 6
+(15) lydie 202 7
+Justificatif enregistre
+(11) dakota    30 0
+(10) takeshi   30 1
+(12) fiona     50 2
+(9)  marcello  50 1
+(6)  norah     50 2
+(8)  kelda    101 0
+(3)  thoth    101 0
+(14) cailin   103 1
+(1)  parris   103 2
+(13) geronimo 201 2
+(4)  heino    201 2
+(15) lydie    202 2
+(2)  mihhaelo 202 0
+(7)  pino     202 2
+(5)  yasmina  203 0
+Absence enregistree [78]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [79]
+Justificatif enregistre
+Absence enregistree [80]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence deja connue
+Justificatif enregistre
+Absence enregistree [81]
+Absence enregistree [82]
+Absence enregistree [83]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [84]
+Absence enregistree [85]
+Justificatif enregistre
+Aucun defaillant
+Absence enregistree [86]
+Absence enregistree [87]
+Justificatif enregistre
+Absence enregistree [88]
+Validation enregistree
+Absence enregistree [89]
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Date incorrecte
+(6) norah 50 4
+- Justifiees
+  [10] 8/am (j'avais d'autres choses a faire)
+- Non-justifiees
+  [9]   3/am (j'avais piscine)
+  [38]  6/am
+  [58] 24/am
+(11) dakota    30 4
+(10) takeshi   30 5
+(12) fiona     50 6
+(9)  marcello  50 2
+(6)  norah     50 4
+(8)  kelda    101 5
+(3)  thoth    101 4
+(14) cailin   103 3
+(1)  parris   103 4
+(13) geronimo 201 5
+(4)  heino    201 7
+(15) lydie    202 8
+(2)  mihhaelo 202 6
+(7)  pino     202 3
+(5)  yasmina  203 4
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [90]
+Absence enregistree [91]
+Nom incorrect
+Absence enregistree [92]
+Justificatif deja connu
+Validation enregistree
+Absence enregistree [93]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [94]
+Justificatif enregistre
+Absence enregistree [95]
+Absence enregistree [96]
+Justificatif enregistre
+Absence enregistree [97]
+Absence enregistree [98]
+Absence enregistree [99]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [100]
+Absence enregistree [101]
+Absence enregistree [102]
+Absence enregistree [103]
+Absence enregistree [104]
+Justificatif enregistre
+Justificatif deja connu
+Absence enregistree [105]
+Validation enregistree
+Absence enregistree [106]
+Absence enregistree [107]
+Absence enregistree [108]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [109]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence deja connue
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [110]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Nom incorrect
+Absence enregistree [111]
+Validation deja connue
+Justificatif enregistre
+Absence enregistree [112]
+Justificatif enregistre
+Absence enregistree [113]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [114]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [115]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [116]
+Justificatif enregistre
+[66]  (6)  norah  50 40/pm (convoc. police)
+[74]  (7)  pino  202  1/am (permis de conduire)
+[78]  (7)  pino  202 12/am (permis de conduire)
+[104] (8)  kelda 101 22/am (j'avais d'autres choses a faire)
+[90]  (8)  kelda 101 29/am (certif. medical)
+[91]  (8)  kelda 101 39/pm (Journee defense et citoyennete)
+[84]  (12) fiona  50 33/am (ma chaine de velo a deraille)
+[115] (12) fiona  50 36/am (Journee defense et citoyennete)
+[60]  (15) lydie 202 19/am (ma chaine de velo a deraille)
+[49]  (15) lydie 202 21/pm (j'aime pas ce prof)
+Justificatif enregistre
+Absence enregistree [117]
+Absence enregistree [118]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [119]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Date incorrecte
+Absence enregistree [120]
+Validation enregistree
+(11) dakota    30 11
+(8)  kelda    101 16
+(4)  heino    201 11
+(15) lydie    202 13
+(2)  mihhaelo 202 12
+(7)  pino     202  9
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [121]
+Absence enregistree [122]
+Absence enregistree [123]
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [124]
+Absence enregistree [125]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Absence enregistree [126]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [127]
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Validation enregistree
+Absence enregistree [128]
+Justificatif enregistre
+Absence enregistree [129]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [130]
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [131]
+Validation enregistree
+Validation enregistree
+Validation enregistree
+(11) dakota    30 0
+(10) takeshi   30 1
+(12) fiona     50 1
+(9)  marcello  50 0
+(6)  norah     50 0
+(8)  kelda    101 0
+(3)  thoth    101 0
+(14) cailin   103 0
+(1)  parris   103 1
+(13) geronimo 201 1
+(4)  heino    201 0
+(15) lydie    202 0
+(2)  mihhaelo 202 0
+(7)  pino     202 1
+(5)  yasmina  203 0
+(11) dakota    30 15
+(10) takeshi   30  5
+(12) fiona     50 13
+(9)  marcello  50  2
+(6)  norah     50  9
+(8)  kelda    101 16
+(3)  thoth    101  4
+(14) cailin   103  3
+(1)  parris   103  4
+(13) geronimo 201  6
+(4)  heino    201 11
+(15) lydie    202 13
+(2)  mihhaelo 202 14
+(7)  pino     202 10
+(5)  yasmina  203  6
+Aucune validation en attente
+(1) parris 103 1
+- En attente justificatif
+  [70] 1/pm
+(1) parris 103 4
+- Justifiees
+  [51] 4/pm (j'aime pas ce prof)
+- Non-justifiees
+  [70]  1/pm (ma chaine de velo a deraille)
+  [62] 11/am
+  [2]  22/pm (ma chaine de velo a deraille)
+(2) mihhaelo 202 0
+(2) mihhaelo 202 14
+- Justifiees
+  [65] 29/am (ma chaine de velo a deraille)
+- Non-justifiees
+  [119]  5/pm (j'aime pas ce cours)
+  [117]  7/pm
+  [52]   8/am (j'aime pas ce cours)
+  [88]   8/pm (permis de conduire)
+  [85]  12/pm
+  [101] 23/pm (certif. medical)
+  [109] 27/pm (j'avais piscine)
+  [121] 28/am (ma chaine de velo a deraille)
+  [123] 30/pm (j'aime pas ce prof)
+  [3]   31/am (convoc. police)
+  [46]  32/pm
+  [27]  36/pm
+  [1]   39/pm (certif. medical)
+(3) thoth 101 0
+(3) thoth 101 4
+- Non-justifiees
+  [6]   9/am (permis de conduire)
+  [19] 17/am (j'avais piscine)
+  [8]  20/am (convoc. police)
+  [12] 27/pm (ma chaine de velo a deraille)
+(4) heino 201 0
+(4) heino 201 11
+- Justifiees
+  [17]   4/am (Journee defense et citoyennete)
+  [118] 35/pm (convoc. police)
+- Non-justifiees
+  [67]   3/am (j'avais piscine)
+  [48]   7/am
+  [89]   9/pm (j'avais piscine)
+  [107] 10/am
+  [71]  14/am (convoc. tribunal)
+  [20]  21/pm
+  [97]  25/am
+  [114] 26/am (certif. medical)
+  [30]  28/am (j'avais d'autres choses a faire)
+(5) yasmina 203 0
+(5) yasmina 203 6
+- Non-justifiees
+  [5]  13/pm (certif. medical)
+  [7]  22/am (convoc. police)
+  [32] 30/pm (Journee defense et citoyennete)
+  [79] 31/am (ma chaine de velo a deraille)
+  [69] 35/pm (convoc. tribunal)
+  [73] 40/pm
+(6) norah 50 0
+(6) norah 50 9
+- Justifiees
+  [10]   8/am (j'avais d'autres choses a faire)
+  [127] 31/am (j'aime pas ce prof)
+  [66]  40/pm (convoc. police)
+- Non-justifiees
+  [9]   3/am (j'avais piscine)
+  [38]  6/am (certif. medical)
+  [96] 16/pm (Journee defense et citoyennete)
+  [58] 24/am
+  [98] 32/am (permis de conduire)
+  [57] 36/am (ma chaine de velo a deraille)
+(7) pino 202 1
+- En attente justificatif
+  [74] 1/am
+(7) pino 202 10
+- Justifiees
+  [78]  12/am (permis de conduire)
+  [108] 31/pm (ma chaine de velo a deraille)
+- Non-justifiees
+  [74]   1/am (permis de conduire)
+  [15]   3/pm (convoc. tribunal)
+  [125]  6/am (j'aime pas ce prof)
+  [94]  18/pm
+  [116] 31/am (j'avais piscine)
+  [11]  33/pm
+  [75]  38/pm (ma chaine de velo a deraille)
+  [99]  40/am (certif. medical)
+(8) kelda 101 0
+(8) kelda 101 16
+- Justifiees
+  [91] 39/pm (Journee defense et citoyennete)
+- Non-justifiees
+  [81]   6/am
+  [80]   8/pm (ma chaine de velo a deraille)
+  [106] 15/am (certif. medical)
+  [53]  17/am
+  [111] 19/pm
+  [104] 22/am (j'avais d'autres choses a faire)
+  [44]  22/pm
+  [102] 23/am (j'aime pas ce prof)
+  [36]  23/pm (j'avais piscine)
+  [90]  29/am (certif. medical)
+  [100] 29/pm
+  [95]  33/am (ma chaine de velo a deraille)
+  [4]   34/pm (certif. medical)
+  [26]  37/am (j'aime pas ce prof)
+  [18]  39/am
+(9) marcello 50 0
+(9) marcello 50 2
+- Non-justifiees
+  [56]  4/pm (Journee defense et citoyennete)
+  [24] 15/am (j'avais d'autres choses a faire)
+(10) takeshi 30 1
+- En attente justificatif
+  [13] 1/am
+(10) takeshi 30 5
+- Non-justifiees
+  [13]  1/am (j'avais d'autres choses a faire)
+  [14]  8/am
+  [37] 10/pm (ma chaine de velo a deraille)
+  [45] 20/am (j'aime pas ce cours)
+  [54] 27/pm (j'aime pas ce prof)
+(11) dakota 30 0
+(11) dakota 30 15
+- Justifiees
+  [92]  11/am (j'aime pas ce cours)
+  [87]  22/am (certif. medical)
+  [129] 27/pm (convoc. tribunal)
+- Non-justifiees
+  [130]  5/am (j'avais d'autres choses a faire)
+  [42]   9/am (j'aime pas ce prof)
+  [33]  13/am (j'avais d'autres choses a faire)
+  [93]  15/am (j'aime pas ce cours)
+  [34]  15/pm (ma chaine de velo a deraille)
+  [122] 16/am (convoc. police)
+  [110] 31/pm
+  [120] 32/am
+  [131] 36/am
+  [16]  37/pm (ma chaine de velo a deraille)
+  [35]  38/pm
+  [68]  39/pm (j'avais piscine)
+(12) fiona 50 1
+- En attente justificatif
+  [77] 1/am
+(12) fiona 50 13
+- Justifiees
+  [77]   1/am (convoc. police)
+  [105] 21/pm (j'avais piscine)
+  [72]  23/am (convoc. tribunal)
+  [63]  32/pm (certif. medical)
+  [115] 36/am (Journee defense et citoyennete)
+- Non-justifiees
+  [23]   4/pm (Journee defense et citoyennete)
+  [83]  14/am (j'avais piscine)
+  [59]  22/pm (ma chaine de velo a deraille)
+  [124] 26/pm (j'aime pas ce cours)
+  [84]  33/am (ma chaine de velo a deraille)
+  [29]  34/pm (convoc. tribunal)
+  [128] 37/pm (j'aime pas ce prof)
+  [126] 40/am
+(13) geronimo 201 1
+- En attente justificatif
+  [55] 1/am
+(13) geronimo 201 6
+- Non-justifiees
+  [55]  1/am (certif. medical)
+  [61]  3/pm (ma chaine de velo a deraille)
+  [86]  8/pm
+  [47] 20/am (Journee defense et citoyennete)
+  [64] 24/am
+  [25] 35/am (Journee defense et citoyennete)
+(14) cailin 103 0
+(14) cailin 103 3
+- Non-justifiees
+  [22]  6/pm
+  [21]  8/pm (j'avais piscine)
+  [39] 10/am (convoc. tribunal)
+(15) lydie 202 0
+(15) lydie 202 13
+- Justifiees
+  [41] 11/am (j'aime pas ce cours)
+  [31] 13/am (j'avais d'autres choses a faire)
+  [49] 21/pm (j'aime pas ce prof)
+- Non-justifiees
+  [28]   3/am
+  [50]   5/am (ma chaine de velo a deraille)
+  [112] 10/pm
+  [82]  12/pm
+  [60]  19/am (ma chaine de velo a deraille)
+  [103] 28/pm (j'avais d'autres choses a faire)
+  [43]  30/pm
+  [113] 39/am
+  [40]  39/pm (j'aime pas ce prof)
+  [76]  40/pm
+Aucun defaillant
+(11) dakota    30 15
+(8)  kelda    101 16
+(4)  heino    201 11
+(15) lydie    202 13
+(2)  mihhaelo 202 14
+(5)  yasmina  203  6

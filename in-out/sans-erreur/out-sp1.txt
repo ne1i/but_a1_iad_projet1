@@ -1,0 +1,49 @@
+Aucun inscrit
+Inscription enregistree (1)
+(1) bashemath 50 0
+Inscription enregistree (2)
+Absence enregistree [1]
+Absence enregistree [2]
+Inscription enregistree (3)
+Inscription enregistree (4)
+Inscription enregistree (5)
+Absence enregistree [3]
+(2) adrian     40 0
+(1) bashemath  50 2
+(4) elise      50 0
+(3) maud      102 0
+(5) mihhaelo  102 0
+Absence enregistree [4]
+Absence enregistree [5]
+(2) adrian     40 1
+(1) bashemath  50 3
+(4) elise      50 1
+(3) maud      102 0
+(5) mihhaelo  102 0
+Absence enregistree [6]
+Absence enregistree [7]
+(2) adrian     40 2
+(1) bashemath  50 2
+(4) elise      50 1
+(3) maud      102 0
+(5) mihhaelo  102 0
+(2) adrian     40 2
+(1) bashemath  50 3
+(4) elise      50 1
+(3) maud      102 1
+(5) mihhaelo  102 0
+Absence enregistree [8]
+Absence enregistree [9]
+Absence enregistree [10]
+Absence enregistree [11]
+Absence enregistree [12]
+(2) adrian     40 0
+(1) bashemath  50 1
+(4) elise      50 0
+(3) maud      102 0
+(5) mihhaelo  102 0
+(2) adrian     40 3
+(1) bashemath  50 3
+(4) elise      50 2
+(3) maud      102 2
+(5) mihhaelo  102 2

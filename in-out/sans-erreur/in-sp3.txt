@@ -1,0 +1,191 @@
+etudiants 1
+validations
+validations
+etudiants 1
+inscription tomos 202
+inscription cailin 202
+inscription heino 40
+inscription dunja 101
+inscription severo 50
+inscription raina 50
+absence 6 10 pm
+absence 3 15 am
+absence 2 16 pm
+absence 3 30 pm
+absence 6 35 am
+inscription leslie 101
+absence 5 25 pm
+absence 5 22 pm
+absence 3 3 pm
+etudiant 3 42
+absence 2 36 am
+inscription kelda 50
+inscription anselma 103
+absence 9 13 am
+etudiant 3 27
+absence 7 16 pm
+absence 1 13 am
+absence 3 24 am
+inscription rebeccah 201
+absence 8 5 am
+absence 4 38 pm
+absence 7 12 pm
+absence 3 21 pm
+absence 8 8 am
+etudiants 28
+justificatif 5 40 convoc. tribunal
+absence 3 6 pm
+absence 9 4 am
+absence 5 38 am
+absence 4 40 am
+absence 10 39 am
+etudiant 5 35
+etudiant 9 5
+etudiant 3 14
+absence 1 6 am
+absence 9 18 am
+absence 9 26 am
+justificatif 11 18 certif. medical
+absence 8 6 am
+absence 5 30 am
+absence 10 6 am
+absence 2 35 pm
+justificatif 6 26 convoc. tribunal
+absence 9 23 pm
+justificatif 17 24 permis de conduire
+validation 11 ko
+etudiant 6 21
+absence 9 3 am
+absence 4 2 am
+justificatif 1 11 permis de conduire
+absence 10 22 am
+justificatif 7 23 certif. medical
+validations
+justificatif 30 39 certif. medical
+absence 7 34 pm
+justificatif 29 12 j'aime pas ce prof
+justificatif 15 41 j'avais d'autres choses a faire
+absence 2 32 pm
+justificatif 2 21 permis de conduire
+etudiants 26
+validation 6 ko
+absence 7 1 am
+justificatif 8 7 j'avais piscine
+absence 1 33 am
+absence 6 39 am
+absence 8 13 pm
+absence 3 4 am
+validations
+absence 9 33 am
+justificatif 37 6 permis de conduire
+etudiant 2 20
+absence 3 10 am
+justificatif 21 42 j'avais d'autres choses a faire
+justificatif 31 26 convoc. tribunal
+absence 8 6 pm
+justificatif 19 9 j'avais d'autres choses a faire
+absence 1 28 pm
+absence 9 24 pm
+justificatif 46 28 convoc. tribunal
+absence 4 30 am
+justificatif 18 12 ma chaine de velo a deraille
+justificatif 16 13 j'avais piscine
+justificatif 42 36 convoc. tribunal
+justificatif 45 30 j'aime pas ce cours
+absence 9 23 am
+justificatif 22 45 ma chaine de velo a deraille
+justificatif 39 40 permis de conduire
+validation 39 ko
+absence 2 3 pm
+validation 17 ok
+justificatif 47 32 Journee defense et citoyennete
+validation 15 ok
+absence 7 39 pm
+validation 45 ko
+justificatif 50 45 j'avais d'autres choses a faire
+absence 8 1 pm
+justificatif 51 5 certif. medical
+absence 5 11 am
+justificatif 49 8 Journee defense et citoyennete
+absence 7 24 am
+absence 1 26 pm
+justificatif 44 10 j'aime pas ce cours
+validation 16 ok
+justificatif 53 26 certif. medical
+validation 1 ok
+etudiant 4 45
+etudiants 8
+justificatif 36 35 ma chaine de velo a deraille
+validation 47 ko
+absence 4 36 pm
+justificatif 28 33 convoc. tribunal
+absence 2 25 pm
+justificatif 56 30 convoc. tribunal
+validation 36 ko
+validation 19 ko
+absence 8 9 pm
+validation 53 ok
+validation 28 ok
+absence 3 28 am
+absence 5 23 pm
+justificatif 58 31 certif. medical
+justificatif 59 27 Journee defense et citoyennete
+absence 4 16 am
+absence 1 15 pm
+justificatif 60 17 Journee defense et citoyennete
+validation 7 ko
+validation 58 ok
+justificatif 61 16 j'aime pas ce cours
+validation 42 ok
+absence 4 31 am
+justificatif 38 34 permis de conduire
+validation 31 ko
+justificatif 26 30 j'avais piscine
+justificatif 41 10 j'aime pas ce prof
+validation 61 ok
+absence 4 29 pm
+absence 4 6 pm
+justificatif 54 31 ma chaine de velo a deraille
+absence 1 16 pm
+justificatif 65 19 ma chaine de velo a deraille
+absence 1 4 pm
+justificatif 55 39 convoc. police
+justificatif 48 25 certif. medical
+validation 48 ko
+validation 65 ko
+absence 9 26 pm
+justificatif 67 30 convoc. tribunal
+validation 55 ok
+absence 9 33 pm
+justificatif 68 38 j'aime pas ce prof
+validation 60 ok
+validation 38 ko
+absence 1 31 am
+justificatif 69 34 j'aime pas ce prof
+justificatif 66 6 j'avais d'autres choses a faire
+validation 69 ok
+validation 66 ko
+etudiants 1
+etudiants 41
+validations
+etudiant 1 1
+etudiant 1 45
+etudiant 2 1
+etudiant 2 45
+etudiant 3 1
+etudiant 3 45
+etudiant 4 1
+etudiant 4 45
+etudiant 5 1
+etudiant 5 45
+etudiant 6 1
+etudiant 6 45
+etudiant 7 1
+etudiant 7 45
+etudiant 8 1
+etudiant 8 45
+etudiant 9 1
+etudiant 9 45
+etudiant 10 1
+etudiant 10 45
+exit

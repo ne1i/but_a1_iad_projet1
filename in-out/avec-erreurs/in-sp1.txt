@@ -1,0 +1,32 @@
+etudiants 1
+inscription rebeccah 40
+etudiants 19
+absence 1 1 qm
+etudiants 41
+inscription ayesha 103
+absence 2 30 pm
+etudiants 39
+inscription brent 203
+absence 2 8 am
+absence 3 35 am
+inscription sundar 202
+inscription rebeccah 40
+absence 3 5 am
+absence 1 41 pm
+inscription hamza 101
+absence 4 7 pm
+absence 1 12 pm
+absence 3 15 am
+absence 5 17 pm
+absence 4 24 pm
+etudiants 16
+absence 5 27 am
+absence 1 26 pm
+absence 1 9 am
+absence 4 24 pm
+absence 2 15 am
+etudiants 9
+absence 5 17 pm
+etudiants 1
+etudiants 41
+exit

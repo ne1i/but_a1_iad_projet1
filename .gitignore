@@ -56,8 +56,6 @@ Mkfile.old
 dkms.conf
 
 # Test files
-in*.txt
-out*.txt
 *.bat
 
 # End of https://www.toptal.com/developers/gitignore/api/c

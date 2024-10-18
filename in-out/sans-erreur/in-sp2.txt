@@ -1,0 +1,89 @@
+etudiants 1
+validations
+inscription mihhaelo 40
+inscription louiza 201
+absence 1 23 am
+inscription vi 50
+absence 2 32 pm
+etudiants 24
+inscription cezar 50
+inscription adrian 103
+absence 3 7 am
+validations
+absence 2 21 am
+absence 1 18 am
+justificatif 5 20 Journee defense et citoyennete
+validation 5 ko
+absence 3 13 am
+absence 4 29 am
+validations
+justificatif 7 32 j'avais d'autres choses a faire
+validation 7 ko
+validations
+absence 5 4 pm
+validations
+inscription geronimo 102
+absence 5 1 pm
+justificatif 2 33 j'aime pas ce cours
+justificatif 4 23 j'avais d'autres choses a faire
+justificatif 3 12 permis de conduire
+absence 6 21 pm
+inscription olov 202
+absence 7 6 pm
+absence 6 20 pm
+validations
+absence 5 18 am
+justificatif 6 19 convoc. tribunal
+absence 6 12 am
+absence 4 1 am
+absence 3 3 pm
+absence 3 10 pm
+validation 2 ok
+absence 7 6 am
+justificatif 1 29 j'aime pas ce prof
+absence 7 14 pm
+justificatif 16 7 j'aime pas ce prof
+absence 6 37 pm
+absence 7 28 pm
+absence 5 37 pm
+absence 5 29 pm
+validation 4 ok
+absence 3 39 am
+absence 2 26 pm
+justificatif 13 24 j'avais piscine
+absence 6 4 am
+justificatif 24 44 j'avais d'autres choses a faire
+justificatif 17 16 Journee defense et citoyennete
+justificatif 12 21 j'aime pas ce prof
+justificatif 8 8 Journee defense et citoyennete
+absence 2 22 am
+justificatif 25 30 j'avais d'autres choses a faire
+justificatif 27 27 j'avais d'autres choses a faire
+etudiants 25
+absence 7 29 pm
+validation 12 ko
+validations
+absence 3 7 pm
+absence 3 12 am
+absence 5 7 am
+justificatif 30 18 certif. medical
+absence 5 20 pm
+justificatif 32 25 j'aime pas ce cours
+absence 7 12 am
+validations
+justificatif 21 32 certif. medical
+justificatif 28 33 j'avais piscine
+validations
+justificatif 19 16 j'aime pas ce cours
+absence 7 36 pm
+justificatif 18 7 j'avais d'autres choses a faire
+justificatif 31 10 ma chaine de velo a deraille
+validation 31 ko
+justificatif 9 6 Journee defense et citoyennete
+validation 19 ko
+validation 18 ko
+justificatif 33 17 certif. medical
+etudiants 1
+etudiants 41
+validations
+exit

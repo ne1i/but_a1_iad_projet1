@@ -1,0 +1,144 @@
+Aucun inscrit
+Aucune validation en attente
+Inscription enregistree (1)
+Inscription enregistree (2)
+Inscription enregistree (3)
+(3) cailin   101 0
+(1) mellony  101 0
+(2) bergliot 202 0
+Inscription enregistree (4)
+Inscription enregistree (5)
+Absence enregistree [1]
+Absence enregistree [2]
+Identifiant incorrect
+Inscription enregistree (6)
+Date incorrecte
+Absence enregistree [3]
+Nom incorrect
+Absence enregistree [4]
+Absence enregistree [5]
+Absence enregistree [6]
+Justificatif enregistre
+Inscription enregistree (7)
+Justificatif enregistre
+Nom incorrect
+Absence deja connue
+Absence enregistree [7]
+Absence enregistree [8]
+Absence enregistree [9]
+Absence enregistree [10]
+Validation enregistree
+Absence enregistree [11]
+Absence enregistree [12]
+[3] (5) tuomo 101 19/am (convoc. tribunal)
+Justificatif enregistre
+Absence enregistree [13]
+(7) lydie     40 1
+(3) cailin   101 2
+(1) mellony  101 2
+(5) tuomo    101 1
+(6) kaapo    103 1
+(4) josif    201 0
+(2) bergliot 202 0
+[3] (5) tuomo 101 19/am (convoc. tribunal)
+Justificatif enregistre
+Identifiant incorrect
+Absence enregistree [14]
+Absence enregistree [15]
+Absence enregistree [16]
+Justificatif enregistre
+Absence enregistree [17]
+[15] (1) mellony 101 11/pm (j'aime pas ce prof)
+[3]  (5) tuomo   101 19/am (convoc. tribunal)
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [18]
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [19]
+Absence enregistree [20]
+Validation enregistree
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+Absence enregistree [24]
+Justificatif enregistre
+Absence deja connue
+[19] (4) josif 201 29/am (certif. medical)
+[1]  (4) josif 201 31/pm (ma chaine de velo a deraille)
+[4]  (5) tuomo 101 40/pm (j'aime pas ce cours)
+Validation enregistree
+Absence enregistree [25]
+Absence enregistree [26]
+Absence enregistree [27]
+Validation enregistree
+[19] (4) josif 201 29/am (certif. medical)
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [28]
+Absence enregistree [29]
+Validation enregistree
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [30]
+Validation enregistree
+(7) lydie     40 6
+(3) cailin   101 4
+(1) mellony  101 3
+(5) tuomo    101 2
+(6) kaapo    103 2
+(4) josif    201 6
+(2) bergliot 202 3
+Justificatif enregistre
+Absence enregistree [31]
+Absence enregistree [32]
+Justificatif enregistre
+Absence enregistree [33]
+Justificatif enregistre
+Absence enregistree [34]
+Justificatif enregistre
+Absence enregistree [35]
+Identifiant incorrect
+Validation enregistree
+Absence enregistree [36]
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [37]
+Justificatif enregistre
+Absence deja connue
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Absence enregistree [38]
+(7) lydie     40 5
+(3) cailin   101 4
+(1) mellony  101 3
+(5) tuomo    101 1
+(6) kaapo    103 3
+(4) josif    201 2
+(2) bergliot 202 0
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Justificatif deja connu
+Justificatif enregistre
+Validation enregistree
+Aucune validation en attente
+Justificatif enregistre
+Validation enregistree
+(7) lydie     40 0
+(3) cailin   101 0
+(1) mellony  101 0
+(5) tuomo    101 0
+(6) kaapo    103 0
+(4) josif    201 0
+(2) bergliot 202 0
+(7) lydie     40 8
+(3) cailin   101 7
+(1) mellony  101 4
+(5) tuomo    101 3
+(6) kaapo    103 5
+(4) josif    201 6
+(2) bergliot 202 5
+Aucune validation en attente

@@ -1,0 +1,26 @@
+etudiants 1
+inscription bashemath 50
+etudiants 39
+inscription adrian 40
+absence 2 29 pm
+absence 1 1 pm
+inscription maud 102
+inscription elise 50
+inscription mihhaelo 102
+absence 1 12 pm
+etudiants 23
+absence 4 13 am
+absence 1 33 am
+etudiants 37
+absence 2 25 pm
+absence 3 31 am
+etudiants 29
+etudiants 36
+absence 3 30 am
+absence 5 31 am
+absence 2 3 pm
+absence 4 39 am
+absence 5 33 am
+etudiants 1
+etudiants 41
+exit

@@ -1,0 +1,109 @@
+Aucun inscrit
+Aucune validation en attente
+Inscription enregistree (1)
+Inscription enregistree (2)
+Absence enregistree [1]
+Inscription enregistree (3)
+Absence enregistree [2]
+(1) mihhaelo  40 1
+(3) vi        50 0
+(2) louiza   201 0
+Inscription enregistree (4)
+Inscription enregistree (5)
+Absence enregistree [3]
+Aucune validation en attente
+Absence enregistree [4]
+Absence enregistree [5]
+Justificatif enregistre
+Validation enregistree
+Absence enregistree [6]
+Absence enregistree [7]
+Aucune validation en attente
+Justificatif enregistre
+Validation enregistree
+Aucune validation en attente
+Absence enregistree [8]
+Aucune validation en attente
+Inscription enregistree (6)
+Absence enregistree [9]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [10]
+Inscription enregistree (7)
+Absence enregistree [11]
+Absence enregistree [12]
+[4] (2) louiza 201 21/am (j'avais d'autres choses a faire)
+[2] (2) louiza 201 32/pm (j'aime pas ce cours)
+Absence enregistree [13]
+Justificatif enregistre
+Absence enregistree [14]
+Absence enregistree [15]
+Absence enregistree [16]
+Absence enregistree [17]
+Validation enregistree
+Absence enregistree [18]
+Justificatif enregistre
+Absence enregistree [19]
+Justificatif enregistre
+Absence enregistree [20]
+Absence enregistree [21]
+Absence enregistree [22]
+Absence enregistree [23]
+Validation enregistree
+Absence enregistree [24]
+Absence enregistree [25]
+Justificatif enregistre
+Absence enregistree [26]
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Justificatif enregistre
+Absence enregistree [27]
+Justificatif enregistre
+Justificatif enregistre
+(1) mihhaelo  40 2
+(4) cezar     50 1
+(3) vi        50 4
+(6) geronimo 102 4
+(5) adrian   103 3
+(2) louiza   201 2
+(7) olov     202 3
+Absence enregistree [28]
+Validation enregistree
+Aucune validation en attente
+Absence enregistree [29]
+Absence enregistree [30]
+Absence enregistree [31]
+Justificatif enregistre
+Absence enregistree [32]
+Justificatif enregistre
+Absence enregistree [33]
+Aucune validation en attente
+Justificatif enregistre
+Justificatif enregistre
+Aucune validation en attente
+Justificatif enregistre
+Absence enregistree [34]
+Justificatif enregistre
+Justificatif enregistre
+Validation enregistree
+Justificatif enregistre
+Validation enregistree
+Validation enregistree
+Justificatif enregistre
+(1) mihhaelo  40 0
+(4) cezar     50 1
+(3) vi        50 0
+(6) geronimo 102 0
+(5) adrian   103 1
+(2) louiza   201 0
+(7) olov     202 0
+(1) mihhaelo  40 2
+(4) cezar     50 2
+(3) vi        50 7
+(6) geronimo 102 5
+(5) adrian   103 7
+(2) louiza   201 4
+(7) olov     202 7
+Aucune validation en attente
