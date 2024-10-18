@@ -780,15 +780,15 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
         memcpy(sorted_student_array, student_list, mem);
         qsort(sorted_student_array, nb_students, sizeof(Student), compare_group);
 
-        for (int etu = 0; etu < nb_students; ++etu)
+        for (int i = 0; i < nb_students; ++i)
         {
 
-            if (sorted_student_array[etu].defaillance == DEFAILLANT)
+            if (sorted_student_array[i].defaillance == DEFAILLANT)
             {
-                int total_absences = get_absence_count_before(&sorted_student_array[etu], date);
-                printf("(%d) %-13s %d %d\n", sorted_student_array[etu].student_id,
-                       sorted_student_array[etu].name,
-                       sorted_student_array[etu].group,
+                int total_absences = get_absence_count_before(&sorted_student_array[i], date);
+                printf("(%d) %-13s %d %d\n", sorted_student_array[i].student_id,
+                       sorted_student_array[i].name,
+                       sorted_student_array[i].group,
                        total_absences);
             }
         }
@@ -805,8 +805,11 @@ int count_absences_injustifiees(Student student, int date)
     {
         if (absences[i].justified == ABSENCE_NOT_JUSTIFIED && absences[i].date_justification <= date)
             ++count;
-        if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && date > absences[i].date + JUSTIFICATION_DEADLINE && absences[i].date < date)
-            ++count;
+        else if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && absences[i].date < date)
+        {
+            if (date - absences[i].date > JUSTIFICATION_DEADLINE)
+                ++count;
+        }
     }
     return count;
 }
