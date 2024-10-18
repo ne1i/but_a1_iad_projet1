@@ -56,7 +56,7 @@ Mkfile.old
 dkms.conf
 
 # Test files
-*.bat
+
 
 # End of https://www.toptal.com/developers/gitignore/api/c
 in-out.zip

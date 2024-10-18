@@ -28,7 +28,7 @@
 
 enum AbsenceStatus
 {
-    ABSENCE_FUTURE,
+    ABSENCE_FUTURE = -1,
     ABSENCE_JUSTIFIED = 0,
     ABSENCE_NOT_JUSTIFIED,
     ABSENCE_WAITING_JUSTIFICATION,
@@ -50,6 +50,7 @@ typedef struct
     int date;
     int date_justification;
     enum AbsenceStatus justified;
+    int valide;
 
 } Absence;
 
@@ -103,6 +104,7 @@ int compare_student_id(const void *a, const void *b);
 int get_absence_count_before(const Student *student, int max_day);
 int check_absence_exists(int student_id, int *nb_students, Student *student_list);
 int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, Student *student_list);
+int compare_absence_date(const void *a, const void *b);
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
 int count_student_absence_before(int student_id, int date, Student *student_list);
 int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date);
@@ -221,11 +223,15 @@ void parse_command_justificatif(ParsedCommand *parsed_command)
 {
     const char *space_separator = " ";
     const char *newline_separator = "\n";
-
+    int nb_argument = 0;
     parsed_command->command_type = COMMAND_JUSTIFICATIF;
     parsed_command->arguments_list[0] = strtok(NULL, space_separator);
+    ++nb_argument;
     parsed_command->arguments_list[1] = strtok(NULL, space_separator);
+    ++nb_argument;
     parsed_command->arguments_list[2] = strtok(NULL, newline_separator);
+    ++nb_argument;
+    parsed_command->arguments_count = nb_argument;
 }
 
 // Gère la commande inscription :
@@ -298,6 +304,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     absence->date = atoi(parsed_command.arguments_list[1]);
     absence->student_id = atoi(parsed_command.arguments_list[0]);
+    absence->valide = 0;
     strcpy(absence->justification, "");
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
@@ -307,6 +314,12 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
         return;
+
+    if (nb_students == 0)
+    {
+        puts("Aucun inscrit");
+        return;
+    }
 
     int current_day = atoi(parsed_command.arguments_list[0]);
     if (current_day < MIN_DAY)
@@ -362,7 +375,6 @@ int get_absence_count_before(const Student *student, int max_day)
 // Gère la commande justificatif
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list)
 {
-
     // vérifie si l'absence existe, si elle existe on récupère le student_id
     int absence_id = atoi(parsed_command.arguments_list[0]);
     int student_id = check_absence_exists(absence_id, nb_students, student_list);
@@ -387,6 +399,12 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
         return;
     }
 
+    if (student->absences[student_absence_index].justified != ABSENCE_WAITING_JUSTIFICATION)
+    {
+        puts("Justificatif deja connu");
+        return;
+    }
+
     // vérification du délai d'absence
     if ((atoi(parsed_command.arguments_list[1]) - student->absences[student_absence_index].date) > JUSTIFICATION_DEADLINE)
     {
@@ -400,12 +418,6 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
     }
     if (strlen(parsed_command.arguments_list[2]) > MAX_JUSTIFICATION_LENGTH)
     {
-        return;
-    }
-
-    if (student->absences[student_absence_index].justified != ABSENCE_WAITING_JUSTIFICATION)
-    {
-        puts("Justificatif deja connu");
         return;
     }
 
@@ -532,15 +544,9 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
         return;
 
-    int absence_id = atoi(parsed_command.arguments_list[0]);
-    if (absence_id > nb_absence || absence_id <= 0)
-    {
-        puts("Identifiant incorrect");
-        return;
-    }
-
     int student_id = 0;
     int student_absence_idx = 0;
+    int absence_id = atoi(parsed_command.arguments_list[0]);
 
     for (int i = 0; i < nb_students; ++i)
     {
@@ -556,9 +562,16 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     }
 
     Absence *absence = &student_list[student_id - 1].absences[student_absence_idx];
-    if (absence->justified == ABSENCE_JUSTIFIED || absence->justified == ABSENCE_NOT_JUSTIFIED)
+
+    if (absence->valide == 1)
     {
         puts("Validation deja connue");
+        return;
+    }
+
+    if (absence_id > nb_absence || absence_id <= 0 || absence->justified != ABSENCE_WAITING_VALIDATION)
+    {
+        puts("Identifiant incorrect");
         return;
     }
 
@@ -573,6 +586,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     if (strcmp(validation_code, "ok") == 0)
     {
         absence->justified = ABSENCE_JUSTIFIED;
+        absence->valide = 1;
         puts("Validation enregistree");
         return;
     }
@@ -580,6 +594,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
     if (strcmp(validation_code, "ko") == 0)
     {
         absence->justified = ABSENCE_NOT_JUSTIFIED;
+        absence->valide = 1;
         puts("Validation enregistree");
         return;
     }
@@ -633,6 +648,8 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
         }
     }
 
+    qsort(student_absence_list_copy, student.nb_absence, sizeof(Absence), compare_absence_date);
+
     int nb_absence_before = count_student_absence_before(student_id, date, student_list);
     printf("(%d) %s %d %d\n", student_id, student.name, student.group, nb_absence_before);
 
@@ -681,6 +698,18 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
         }
     }
     free(student_absence_list_copy);
+}
+
+// Compare la date  (puis la demi-journée si la date est la même) de 2 absences et renvoie les valeurs voulues pour pouvoir être utilisée avec qsort
+int compare_absence_date(const void *a, const void *b)
+{
+    const Absence *a1 = (const Absence *)a;
+    const Absence *a2 = (const Absence *)b;
+    if (a1->date < a2->date)
+        return -1;
+    if (a1->date > a2->date)
+        return 1;
+    return strcmp(a1->am_pm, a2->am_pm); // cela marche parce qu'alphabétiquement am est avant pm (code horrible mais ça marche)
 }
 
 // Renvoie le nombre d'absence de statut status d'un certain élève avant une certaine date
@@ -746,18 +775,24 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     }
     else
     {
+        int mem = sizeof(Student) * nb_students;
+        Student *sorted_student_array = (Student *)malloc(mem);
+        memcpy(sorted_student_array, student_list, mem);
+        qsort(sorted_student_array, nb_students, sizeof(Student), compare_group);
+
         for (int etu = 0; etu < nb_students; ++etu)
         {
 
-            if (student_list[etu].defaillance == DEFAILLANT)
+            if (sorted_student_array[etu].defaillance == DEFAILLANT)
             {
-                int total_absences = get_absence_count_before(&student_list[etu], date);
-                printf("(%d) %-13s %2d %d\n", student_list[etu].student_id,
-                       student_list[etu].name,
-                       student_list[etu].group,
+                int total_absences = get_absence_count_before(&sorted_student_array[etu], date);
+                printf("(%d) %-13s %d %d\n", sorted_student_array[etu].student_id,
+                       sorted_student_array[etu].name,
+                       sorted_student_array[etu].group,
                        total_absences);
             }
         }
+        free(sorted_student_array);
     }
 }
 
@@ -768,9 +803,9 @@ int count_absences_injustifiees(Student student, int date)
     Absence *absences = student.absences;
     for (int i = 0; i < student.nb_absence; ++i)
     {
-        if (absences[i].justified == ABSENCE_NOT_JUSTIFIED)
+        if (absences[i].justified == ABSENCE_NOT_JUSTIFIED && absences[i].date_justification <= date)
             ++count;
-        if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && date > absences[i].date)
+        if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && date > absences[i].date + JUSTIFICATION_DEADLINE && absences[i].date < date)
             ++count;
     }
     return count;
