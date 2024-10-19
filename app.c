@@ -6,6 +6,8 @@
 #define MAX_ABSENCES 40
 #define MAX_JUSTIFICATION_LENGTH 50
 #define MAX_COMMAND_LENGTH 256
+#define AM_PM_LENGTH 3
+#define VALIDATION_CODE_LENGTH 3
 #define MAX_ARGUMENTS_COUNT 30
 #define MAX_NAME_LENGTH 30
 #define MAX_NB_STUDENTS 100
@@ -45,7 +47,7 @@ typedef struct
 {
     int student_id;
     char justification[MAX_JUSTIFICATION_LENGTH];
-    char am_pm[3];
+    char am_pm[AM_PM_LENGTH];
     char padding[3];
     int id_absence;
     int date;
@@ -485,7 +487,7 @@ void handle_validations(int *nb_students, Student *student_list)
         strcpy(student_name, student_list[student_id - 1].name);
         int group = student_list[student_id - 1].group;
         int absence_date = absences_waiting_validation_list[i].date;
-        char am_pm[3];
+        char am_pm[AM_PM_LENGTH];
         strcpy(am_pm, absences_waiting_validation_list[i].am_pm);
         char justification[MAX_JUSTIFICATION_LENGTH];
         strcpy(justification, absences_waiting_validation_list[i].justification);
@@ -579,7 +581,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
         return;
     }
 
-    char validation_code[3]; // 3 car "ok\0" ou "ko\0"
+    char validation_code[AM_PM_LENGTH]; // 3 car "ok\0" ou "ko\0"
     strcpy(validation_code, parsed_command.arguments_list[1]);
     if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
     {
