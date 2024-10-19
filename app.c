@@ -108,7 +108,7 @@ int compare_absence_date(const void *a, const void *b);
 int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
 int count_student_absence_before(int student_id, int date, Student *student_list);
 int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date);
-int count_absences_injustifiees(Student student, int date);
+int count_absences_injustifiees_before(Student student, int date);
 
 int main(void)
 {
@@ -392,6 +392,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
         if (student->absences[i].id_absence == absence_id)
             student_absence_index = i;
     }
+
     int date = atoi(parsed_command.arguments_list[1]);
     if (date < student->absences[student_absence_index].date)
     {
@@ -645,6 +646,8 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
         if (absence->justified == ABSENCE_WAITING_JUSTIFICATION && date > (absence->date + JUSTIFICATION_DEADLINE))
         {
             absence->justified = ABSENCE_NOT_JUSTIFIED;
+            if (absence->date_justification > date)
+                strcpy(absence->justification, "");
         }
     }
 
@@ -755,7 +758,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     for (int i = 0; i < nb_students; ++i)
     {
 
-        int absences_injustifiees = count_absences_injustifiees(student_list[i], date);
+        int absences_injustifiees = count_absences_injustifiees_before(student_list[i], date);
 
         if (absences_injustifiees < DEFAILLANT_NB_ABSENCE)
         {
@@ -786,7 +789,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
             if (sorted_student_array[i].defaillance == DEFAILLANT)
             {
                 int total_absences = get_absence_count_before(&sorted_student_array[i], date);
-                printf("(%d) %-13s %d %d\n", sorted_student_array[i].student_id,
+                printf("(%d) %-30s %d %d\n", sorted_student_array[i].student_id,
                        sorted_student_array[i].name,
                        sorted_student_array[i].group,
                        total_absences);
@@ -797,18 +800,43 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
 }
 
 // Compte et renvoie le nombre d'absences injustifiées d'un élève avant une date donnée
-int count_absences_injustifiees(Student student, int date)
+int count_absences_injustifiees_before(Student student, int date)
 {
     int count = 0;
     Absence *absences = student.absences;
     for (int i = 0; i < student.nb_absence; ++i)
     {
-        if (absences[i].justified == ABSENCE_NOT_JUSTIFIED && absences[i].date_justification <= date)
-            ++count;
-        else if (absences[i].justified == ABSENCE_WAITING_JUSTIFICATION && absences[i].date < date)
+        Absence absence = absences[i];
+        int is_before_date = absence.date <= date;
+
+        if (is_before_date == 0)
         {
-            if (date - absences[i].date > JUSTIFICATION_DEADLINE)
-                ++count;
+            continue;
+        }
+
+        if (absence.justified == ABSENCE_JUSTIFIED || absence.justified == ABSENCE_WAITING_VALIDATION)
+        {
+            continue;
+        }
+
+        int is_too_late_to_justify = date - absence.date > JUSTIFICATION_DEADLINE;
+        if (is_too_late_to_justify == 0 && absence.justified == ABSENCE_WAITING_JUSTIFICATION)
+        {
+            continue;
+        }
+
+        int was_justified_before_date = date >= absence.date_justification;
+        int is_not_justified = absence.justified == ABSENCE_NOT_JUSTIFIED;
+        if (is_not_justified && was_justified_before_date)
+        {
+            ++count;
+            continue;
+        }
+
+        if (is_too_late_to_justify)
+        {
+            ++count;
+            continue;
         }
     }
     return count;
