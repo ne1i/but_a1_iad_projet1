@@ -28,6 +28,8 @@
             "command": "cl",
             "args": [
                 "/W4",
+                "/analyze",
+                "/TC",
                 "/Zi",
                 "/Od",
                 "/nologo",

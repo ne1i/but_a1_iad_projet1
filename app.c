@@ -46,6 +46,7 @@ typedef struct
     int student_id;
     char justification[MAX_JUSTIFICATION_LENGTH];
     char am_pm[3];
+    char padding[3];
     int id_absence;
     int date;
     int date_justification;
@@ -79,6 +80,7 @@ typedef struct
 typedef struct
 {
     char name[MAX_NAME_LENGTH];
+    char padding[2];
     int nb_absence;
     Absence absences[MAX_ABSENCES];
     int student_id;
@@ -94,7 +96,7 @@ void handle_inscription(ParsedCommand parsed_command, int *nb_students, Student 
 void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *nb_absences, Student *student_list);
 void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list);
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list);
-void handle_validations(int *nb_students, int *nb_absences, Student *student_list);
+void handle_validations(int *nb_students, Student *student_list);
 void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list);
 void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list);
 void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list);
@@ -110,12 +112,13 @@ int count_student_absence_before(int student_id, int date, Student *student_list
 int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date);
 int count_absences_injustifiees_before(Student student, int date);
 
+void *safe_calloc(size_t n);
+
 int main(void)
 {
     int student_id_counter = 0;
     int absence_id_counter = 0;
-    Student student_list[MAX_NB_STUDENTS];
-
+    Student *student_list = (Student *)safe_calloc(sizeof(Student) * MAX_NB_STUDENTS);
     char current_command_line[MAX_COMMAND_LENGTH];
 
     // Boucle jusqu'à ce que l'utilisateur rentre la commande exit
@@ -150,7 +153,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         handle_justificatif(parsed_command, nb_students, student_list);
         break;
     case COMMAND_VALIDATIONS:
-        handle_validations(nb_students, nb_absence, student_list);
+        handle_validations(nb_students, student_list);
         break;
     case COMMAND_VALIDATION:
         handle_validation(parsed_command, *nb_students, *nb_absence, student_list);
@@ -332,7 +335,7 @@ void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *st
     Student *sorted_student_array = NULL;
     // utilisation de malloc pour ne pas stocker 100 etudiants même si il n'y a pas 100 etudiants inscrits
     int mem = sizeof(Student) * nb_students;
-    sorted_student_array = (Student *)malloc(mem);
+    sorted_student_array = (Student *)safe_calloc(mem);
     memcpy(sorted_student_array, student_list, mem);
     qsort(sorted_student_array, nb_students, sizeof(Student), compare_group);
 
@@ -447,7 +450,7 @@ int check_absence_exists(int absence_id, int *nb_students, Student *student_list
 }
 
 // Gère la commande validations
-void handle_validations(int *nb_students, int *nb_absences, Student *student_list)
+void handle_validations(int *nb_students, Student *student_list)
 {
     if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, *nb_students, student_list) == -1)
     {
@@ -458,11 +461,11 @@ void handle_validations(int *nb_students, int *nb_absences, Student *student_lis
     int nb_absences_waiting_validation = count_absence_status(ABSENCE_WAITING_VALIDATION, *nb_students, student_list);
 
     // liste des absences en attente de validation
-    Absence *absences_waiting_validation_list = (Absence *)malloc(nb_absences_waiting_validation * sizeof(Absence));
+    Absence *absences_waiting_validation_list = (Absence *)safe_calloc(nb_absences_waiting_validation * sizeof(Absence));
     int count = 0;
     for (int i = 0; i < *nb_students; ++i)
     {
-        for (int j = 0; j < *nb_absences; ++j)
+        for (int j = 0; j < student_list[i].nb_absence; ++j)
         {
             if (student_list[i].absences[j].justified == ABSENCE_WAITING_VALIDATION)
             {
@@ -625,7 +628,7 @@ void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *stu
     // création d'une copie du tableau student.absences
     // pour pouvoir modifier le statut des absences en fonction de la date
     int mem = sizeof(Absence) * student.nb_absence;
-    Absence *student_absence_list_copy = (Absence *)malloc(mem);
+    Absence *student_absence_list_copy = (Absence *)safe_calloc(mem);
     memcpy(student_absence_list_copy, student.absences, mem);
 
     // modification du statut des absences en fonction de la date
@@ -779,7 +782,7 @@ void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *
     else
     {
         int mem = sizeof(Student) * nb_students;
-        Student *sorted_student_array = (Student *)malloc(mem);
+        Student *sorted_student_array = (Student *)safe_calloc(mem);
         memcpy(sorted_student_array, student_list, mem);
         qsort(sorted_student_array, nb_students, sizeof(Student), compare_group);
 
@@ -840,4 +843,15 @@ int count_absences_injustifiees_before(Student student, int date)
         }
     }
     return count;
+}
+
+void *safe_calloc(size_t n)
+{
+    void *p = calloc(1, n);
+    if (p == NULL)
+    {
+        fprintf(stderr, "Fatal: failed to allocate %zu bytes.\n", n);
+        abort();
+    }
+    return p;
 }
