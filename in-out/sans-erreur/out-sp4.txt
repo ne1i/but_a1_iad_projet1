@@ -671,12 +671,16 @@ Aucune validation en attente
   [96] 21/am
   [53] 31/am (Journee defense et citoyennete)
 Aucun defaillant
-(5)  efigenia  40 12
-(6)  lawrie    40 13
-(7)  corrado   50 16
-(14) kaapo    101 16
-(3)  fred     102 15
-(1)  isadora  201  6
-(2)  emmet    202 13
-(13) mark     202 15
-(8)  murdag   202 14
+(5)  efigenia   40 12
+(11) grant      40  8
+(6)  lawrie     40 13
+(7)  corrado    50 16
+(9)  hildegard  50 10
+(14) kaapo     101 16
+(3)  fred      102 15
+(15) alexis    103  5
+(12) salomea   103  7
+(1)  isadora   201  6
+(2)  emmet     202 13
+(13) mark      202 15
+(8)  murdag    202 14

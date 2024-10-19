@@ -192,7 +192,10 @@ Validation enregistree
 Justificatif enregistre
 Validation enregistree
 Justificatif enregistre
+(11) dakota    30 6
+(12) fiona     50 5
 (8)  kelda    101 6
+(13) geronimo 201 5
 (4)  heino    201 6
 (15) lydie    202 8
 (2)  mihhaelo 202 6
@@ -248,7 +251,7 @@ Justificatif enregistre
 Absence enregistree [84]
 Absence enregistree [85]
 Justificatif enregistre
-Aucun defaillant
+(15) lydie 202 7
 Absence enregistree [86]
 Absence enregistree [87]
 Justificatif enregistre
@@ -383,11 +386,16 @@ Date incorrecte
 Absence enregistree [120]
 Validation enregistree
 (11) dakota    30 11
+(10) takeshi   30  5
+(12) fiona     50 10
+(6)  norah     50  8
 (8)  kelda    101 16
+(13) geronimo 201  6
 (4)  heino    201 11
 (15) lydie    202 13
 (2)  mihhaelo 202 12
 (7)  pino     202  9
+(5)  yasmina  203  6
 Justificatif enregistre
 Justificatif enregistre
 Validation enregistree
@@ -669,8 +677,13 @@ Aucune validation en attente
   [76]  40/pm
 Aucun defaillant
 (11) dakota    30 15
+(10) takeshi   30  5
+(12) fiona     50 13
+(6)  norah     50  9
 (8)  kelda    101 16
+(13) geronimo 201  6
 (4)  heino    201 11
 (15) lydie    202 13
 (2)  mihhaelo 202 14
+(7)  pino     202 10
 (5)  yasmina  203  6
