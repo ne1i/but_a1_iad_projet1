@@ -4,12 +4,12 @@
 #pragma warning(disable : 4996)
 
 #define MAX_ABSENCES 40
-#define MAX_JUSTIFICATION_LENGTH 50
+#define MAX_JUSTIFICATION_LENGTH 51
 #define MAX_COMMAND_LENGTH 256
 #define AM_PM_LENGTH 3
 #define VALIDATION_CODE_LENGTH 3
-#define MAX_ARGUMENTS_COUNT 30
-#define MAX_NAME_LENGTH 30
+#define MAX_ARGUMENTS_COUNT 3
+#define MAX_NAME_LENGTH 31
 #define MAX_NB_STUDENTS 100
 #define MAX_ASBENCE_DAY 40
 
@@ -48,7 +48,7 @@ typedef struct
     int student_id;
     char justification[MAX_JUSTIFICATION_LENGTH];
     char am_pm[AM_PM_LENGTH];
-    char padding[3];
+    // char padding[3];
     int id_absence;
     int date;
     int date_justification;
@@ -82,7 +82,7 @@ typedef struct
 typedef struct
 {
     char name[MAX_NAME_LENGTH];
-    char padding[2];
+    // char padding[2];
     int nb_absence;
     Absence absences[MAX_ABSENCES];
     int student_id;
@@ -581,7 +581,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
         return;
     }
 
-    char validation_code[AM_PM_LENGTH]; // 3 car "ok\0" ou "ko\0"
+    char validation_code[VALIDATION_CODE_LENGTH]; // 3 car "ok\0" ou "ko\0"
     strcpy(validation_code, parsed_command.arguments_list[1]);
     if (strcmp(validation_code, "ok") != 0 && strcmp(validation_code, "ko") != 0)
     {
