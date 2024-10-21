@@ -96,23 +96,23 @@ void parse_command_justificatif(ParsedCommand *parsed_command);
 
 void handle_inscription(ParsedCommand parsed_command, int *nb_students, Student *student_list);
 void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *nb_absences, Student *student_list);
-void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list);
+void handle_etudiants(ParsedCommand parsed_command, int nb_students, const Student *student_list);
 void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student *student_list);
-void handle_validations(int *nb_students, Student *student_list);
+void handle_validations(int *nb_students, const Student *student_list);
 void handle_validation(ParsedCommand parsed_command, int nb_student, int nb_absence, Student *student_list);
-void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list);
+void handle_etudiant(ParsedCommand parsed_command, int nb_students,  const Student *student_list);
 void handle_defaillants(ParsedCommand parsed_command, int nb_students, Student *student_list);
 
 int compare_group(const void *a, const void *b);
 int compare_student_id(const void *a, const void *b);
 int get_absence_count_before(const Student *student, int max_day);
-int check_absence_exists(int student_id, int *nb_students, Student *student_list);
-int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, Student *student_list);
+int check_absence_exists(int student_id, int *nb_students, const Student *student_list);
+int check_absence_status_exists(enum AbsenceStatus ABSENCE_STATUS, int nb_students, const Student *student_list);
 int compare_absence_date(const void *a, const void *b);
-int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list);
-int count_student_absence_before(int student_id, int date, Student *student_list);
+int count_absence_status(enum AbsenceStatus status, int nb_students, const Student *student_list);
+int count_student_absence_before(int student_id, int date, const Student *student_list);
 int count_student_absence_status_before(enum AbsenceStatus status, Absence *absences, int nb_absences, int date);
-int count_absences_injustifiees_before(Student student, int date);
+int count_absences_injustifiees_before(const Student student, int date);
 
 void *safe_calloc(size_t n);
 
@@ -315,7 +315,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
 }
 
 // Gère la commande etudiants
-void handle_etudiants(ParsedCommand parsed_command, int nb_students, Student *student_list)
+void handle_etudiants(ParsedCommand parsed_command, int nb_students, const Student *student_list)
 {
     if (parsed_command.arguments_count < ETUDIANTS_ARGS_COUNT)
         return;
@@ -434,7 +434,7 @@ void handle_justificatif(ParsedCommand parsed_command, int *nb_students, Student
 }
 
 // vérifie si l'absence d'id absence_id existe
-int check_absence_exists(int absence_id, int *nb_students, Student *student_list)
+int check_absence_exists(int absence_id, int *nb_students, const Student *student_list)
 {
     int student_id = -1;
     for (int i = 0; i < *nb_students; ++i)
@@ -452,7 +452,7 @@ int check_absence_exists(int absence_id, int *nb_students, Student *student_list
 }
 
 // Gère la commande validations
-void handle_validations(int *nb_students, Student *student_list)
+void handle_validations(int *nb_students, const Student *student_list)
 {
     if (check_absence_status_exists(ABSENCE_WAITING_VALIDATION, *nb_students, student_list) == -1)
     {
@@ -498,7 +498,7 @@ void handle_validations(int *nb_students, Student *student_list)
 }
 
 // vérifie si il y a au moins une absence de statut status
-int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Student *student_list)
+int check_absence_status_exists(enum AbsenceStatus status, int nb_students, const Student *student_list)
 {
     int exists = -1;
     for (int i = 0; i < nb_students; ++i)
@@ -516,7 +516,7 @@ int check_absence_status_exists(enum AbsenceStatus status, int nb_students, Stud
 }
 
 // Compte le nombre d'absence de tous les elèves en fonction du statut de l'absence
-int count_absence_status(enum AbsenceStatus status, int nb_students, Student *student_list)
+int count_absence_status(enum AbsenceStatus status, int nb_students, const Student *student_list)
 {
     int absence_count = 0;
     for (int i = 0; i < nb_students; ++i)
@@ -607,7 +607,7 @@ void handle_validation(ParsedCommand parsed_command, int nb_students, int nb_abs
 }
 
 // Gère la commande etudiant
-void handle_etudiant(ParsedCommand parsed_command, int nb_students, Student *student_list)
+void handle_etudiant(ParsedCommand parsed_command, int nb_students, const Student *student_list)
 {
     if (parsed_command.arguments_count != ETUDIANT_ARGS_COUNT)
         return;
@@ -721,7 +721,7 @@ int compare_absence_date(const void *a, const void *b)
 }
 
 // Renvoie le nombre d'absence de statut status d'un certain élève avant une certaine date
-int count_student_absence_before(int student_id, int date, Student *student_list)
+int count_student_absence_before(int student_id, int date, const Student *student_list)
 {
     Student student = student_list[student_id - 1];
     int count = 0;
