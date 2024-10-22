@@ -3,8 +3,8 @@
 #include <string.h>
 #pragma warning(disable : 4996)
 
-#define MAX_ABSENCES 40
-#define MAX_JUSTIFICATION_LENGTH 51
+#define MAX_ABSENCES 80 // 80 absences car 40 jours possible * 2 demies journées possibles
+#define MAX_JUSTIFICATION_LENGTH 50
 #define MAX_COMMAND_LENGTH 256
 #define AM_PM_LENGTH 3
 #define VALIDATION_CODE_LENGTH 3
