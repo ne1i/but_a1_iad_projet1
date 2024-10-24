@@ -547,7 +547,11 @@ int compare_student_id(const void *a, const void *b)
         return -1;
     if (a1->student_id > a2->student_id)
         return 1;
-    return a1->date - a2->date;
+    if (a1->date < a2->date)
+        return -1;
+    if (a1->date > a2->date)
+        return 1;
+    return strcmp(a1->am_pm, a2->am_pm); // marche car am est avant pm dans l'ordre alphabétique
 }
 
 // Gère la commande validation
