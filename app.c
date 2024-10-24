@@ -43,6 +43,12 @@ enum estDefaillant
     PASDEFAILLANT
 };
 
+enum estValide
+{
+    NON_VALIDE,
+    VALIDE
+};
+
 typedef struct
 {
     int student_id;
@@ -128,6 +134,7 @@ int main(void)
     {
         handle_command(current_command_line, &student_id_counter, &absence_id_counter, student_list);
     }
+    free(student_list);
     return 0;
 }
 
@@ -172,7 +179,6 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
         exit(0);
     }
 }
-
 // IN: command_line
 // OUT: ParsedCommand, constitué d'une variable de type CommandType, une liste d'argument et du nombre d'argument
 // EXAMPLE : "inscription Lea 101\0" -> COMMAND_INSCRIPTION, ["Lea", "101"], 2
@@ -309,7 +315,7 @@ void handle_absence(const ParsedCommand parsed_command, int *nb_students, int *n
     absence->justified = ABSENCE_WAITING_JUSTIFICATION;
     absence->date = atoi(parsed_command.arguments_list[1]);
     absence->student_id = atoi(parsed_command.arguments_list[0]);
-    absence->valide = 0;
+    absence->valide = NON_VALIDE;
     strcpy(absence->justification, "");
     printf("Absence enregistree [%d]\n", absence->id_absence);
 }
@@ -569,7 +575,7 @@ void handle_validation(const ParsedCommand parsed_command, int nb_students, int 
 
     Absence *absence = &student_list[student_id - 1].absences[student_absence_idx];
 
-    if (absence->valide == 1)
+    if (absence->valide == VALIDE)
     {
         puts("Validation deja connue");
         return;
@@ -592,7 +598,7 @@ void handle_validation(const ParsedCommand parsed_command, int nb_students, int 
     if (strcmp(validation_code, "ok") == 0)
     {
         absence->justified = ABSENCE_JUSTIFIED;
-        absence->valide = 1;
+        absence->valide = VALIDE;
         puts("Validation enregistree");
         return;
     }
@@ -600,7 +606,7 @@ void handle_validation(const ParsedCommand parsed_command, int nb_students, int 
     if (strcmp(validation_code, "ko") == 0)
     {
         absence->justified = ABSENCE_NOT_JUSTIFIED;
-        absence->valide = 1;
+        absence->valide = VALIDE;
         puts("Validation enregistree");
         return;
     }
