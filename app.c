@@ -144,7 +144,7 @@ void handle_command(char *command_line, int *nb_students, int *nb_absence, Stude
     // remplace le \n a la fin de la commande par un \0
     command_line[strcspn(command_line, "\n")] = 0;
     // récupérer la commande séparée
-    ParsedCommand parsed_command;
+    ParsedCommand parsed_command = {0};
     parse_command(command_line, &parsed_command);
 
     switch (parsed_command.command_type)
@@ -560,9 +560,15 @@ void handle_validation(const ParsedCommand parsed_command, int nb_students, int 
     if (parsed_command.arguments_count != VALIDATION_ARGS_COUNT)
         return;
 
+    int absence_id = atoi(parsed_command.arguments_list[0]);
+    if (absence_id > nb_absence || absence_id <= 0)
+    {
+        puts("Identifiant incorrect");
+        return;
+    }
+
     int student_id = 0;
     int student_absence_idx = 0;
-    int absence_id = atoi(parsed_command.arguments_list[0]);
 
     for (int i = 0; i < nb_students; ++i)
     {
@@ -585,7 +591,7 @@ void handle_validation(const ParsedCommand parsed_command, int nb_students, int 
         return;
     }
 
-    if (absence_id > nb_absence || absence_id <= 0 || absence->justified != ABSENCE_WAITING_VALIDATION)
+    if (absence->justified != ABSENCE_WAITING_VALIDATION)
     {
         puts("Identifiant incorrect");
         return;
